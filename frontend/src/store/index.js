@@ -25,3 +25,5 @@ const options = {
 }
 
 sessionService.initSessionService(store, options)
+
+export default store
