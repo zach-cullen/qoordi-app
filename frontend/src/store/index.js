@@ -16,7 +16,6 @@ const validateSession = () => {
   // returning false will destroy the session
   return true
 }
-}
 
 const options = {
   refreshOnCheckAuth: false, // if true, refresh redux store in the checkAuth function
