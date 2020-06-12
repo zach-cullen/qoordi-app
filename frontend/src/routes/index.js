@@ -8,27 +8,25 @@ import UserContainer from '../containers/UserContainer'
 
 const Routes = ({ session }) => {
 
-  const loggedIn = session.authenticated
+  const loggedIn = () => {
+      return session.authenticated
+    }
 
   return(
     <Switch>
-      <Route exact path="/home" component={Home} />
+      <Route exact path="/home" component={ Home } />
+
+      <Route exact path="/app" component={ loggedIn() ? UserContainer : Home } />
 
       <Route exact path="/login">
-        { loggedIn ? <Redirect to="/home" /> : <LoginContainer /> }
+        { loggedIn() ? <Redirect to="/app" /> : <LoginContainer /> }
       </Route>
 
       <Route exact path="/signup">
-        { loggedIn ? <Redirect to="/home" /> : <SignupContainer /> }
+        { loggedIn() ? <Redirect to="/app" /> : <SignupContainer /> }
       </Route>
 
-      <Route exact path="/app">
-        { loggedIn ? < UserContainer /> : <Redirect to="/home" /> }
-      </Route>
-
-      <Route path="/">
-        <Redirect exact to="/home" />
-      </Route>
+      <Route path="/" component={ loggedIn() ? UserContainer : Home } />
 
     </Switch>
   )
