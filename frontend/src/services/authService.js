@@ -15,6 +15,7 @@ const headers = {
 export const logInUser = (user) => {
   let payload = {
     ...headers,
+    credentials: "include",
     method: "POST",
     body: JSON.stringify({ user })
   }
