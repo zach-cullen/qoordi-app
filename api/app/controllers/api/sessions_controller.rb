@@ -6,7 +6,6 @@ class Api::SessionsController < ApplicationController
       .try(:authenticate, params[:user][:password])
 
     if @user
-
       session[:user_id] = @user.id
 
       render json: {
