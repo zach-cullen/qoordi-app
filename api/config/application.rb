@@ -36,6 +36,6 @@ module Api
 
     # manually add in cookies and sessions middleware w/ options
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, key: '_my_secure_cookie', expire_after: 1.days, httponly: true
+    config.middleware.use ActionDispatch::Session::CookieStore, key: 'qoordi_api_session', expire_after: 1.days, httponly: true
   end
 end
