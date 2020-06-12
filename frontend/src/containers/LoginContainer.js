@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { logInUser } from '../actions/sessionActions'
 import LoginForm from '../components/forms/LoginForm'
 
-const LoginContainer = () => {
+class LoginContainer extends Component {
 
-  return(
-    <div id="login">
-      <h1>Log In</h1>
-      <LoginForm />
-    </div>
-  )
+  submitLogin = (user) => {
+    // dispatch logInUser action with payload of user
+    this.props.logInUser(user)
+  }
+
+  render() {
+    return(
+      <div id="login">
+        <h1>Log In</h1>
+        <LoginForm propFunction={this.submitLogin}/>
+      </div>
+    )
+  }
 }
 
-export default LoginContainer
+// map dispatch to props with imported logInUser action creator as argument
+export default connect(null, { logInUser })(LoginContainer)
