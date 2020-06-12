@@ -12,15 +12,12 @@ const headers = {
   }
 }
 
-export const logInUser = (credentials = {email: '', password: ''}) => {
-
+export const logInUser = (user) => {
   let payload = {
     ...headers,
     method: "POST",
-    body: JSON.stringify(credentials)
+    body: JSON.stringify({ user })
   }
-
-  console.log("about to fetch: ", payload)
 
   return fetch(`${API_URL}/login`, payload)
     .then(res => res.json())
