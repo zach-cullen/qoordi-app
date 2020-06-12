@@ -13,6 +13,7 @@ class Api::SessionsController < ApplicationController
         user: @user.as_json(only: [:id])
       }
     else 
+      reset_session
       render json: login_error
     end
 
