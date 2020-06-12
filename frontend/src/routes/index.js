@@ -5,6 +5,7 @@ import Home from '../components/Home'
 import LoginContainer from '../containers/LoginContainer'
 import SignupContainer from '../containers/SignupContainer'
 import UserContainer from '../containers/UserContainer'
+import LogoutContainer from '../containers/LogoutContainer'
 
 const Routes = ({ session }) => {
 
@@ -24,6 +25,10 @@ const Routes = ({ session }) => {
 
       <Route exact path="/signup">
         { loggedIn() ? <Redirect to="/app" /> : <SignupContainer /> }
+      </Route>
+
+      <Route exact path="/logout">
+        { loggedIn() ? <LogoutContainer /> : <Redirect to="/home" />}
       </Route>
 
       <Route path="/" component={ loggedIn() ? UserContainer : Home } />
