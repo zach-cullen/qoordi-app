@@ -1,6 +1,6 @@
 class Api::SessionsController < ApplicationController
 
-  def login
+  def create
     @user = User
       .find_by(email: params[:user][:email])
       .try(:authenticate, params[:user][:password])
@@ -17,6 +17,14 @@ class Api::SessionsController < ApplicationController
       render json: login_error
     end
 
+  end
+
+
+  def destroy
+    byebug
+    render json: {
+      message: "log out from api!"
+    }
   end
 
   private 
