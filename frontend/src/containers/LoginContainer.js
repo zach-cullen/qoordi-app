@@ -5,7 +5,6 @@ import LoginForm from '../components/forms/LoginForm'
 class LoginContainer extends Component {
 
   submitLogin = (user) => {
-    // dispatch logInUser action with payload of user
     logInUser(user)
   }
 
