@@ -1,28 +1,28 @@
-import { sessionService } from 'redux-react-session'
-
 /* 
 authService is responsible for fetching authentication data from the api and 
 calling functions from the sessionService library to affect the sessionReducer via side-effect
 */
 
+import { sessionService } from 'redux-react-session'
 import { API_URL } from '../store/constants'
 
-const headers = {
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
+// configures post request payload and returns promise from fetch request to url
+const postToApi = (params, url) => {
+  let payload = {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+    credentials: "include",
+    method: "POST",
+    body: JSON.stringify({ user: params })
   }
+
+  return fetch(`${API_URL}${url}`, payload)
 }
 
 export const logInUser = (user) => {
-  let payload = {
-    ...headers,
-    credentials: "include",
-    method: "POST",
-    body: JSON.stringify({ user })
-  }
-
-  return fetch(`${API_URL}/login`, payload)
+  return postToApi(user, "/login")
     .then(res => res.json())
     .then(json => {
       let login = () => {
@@ -43,3 +43,4 @@ export const logInUser = (user) => {
       json.authenticated ? login() : error()
     })
 }
+
