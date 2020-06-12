@@ -7,12 +7,9 @@ import { sessionService } from 'redux-react-session'
 import { API_URL } from '../store/constants'
 
 // configures post request payload and returns promise from fetch request to url
-const postToApi = (params, url) => {
+const postToApi = (params = {}, url = '') => {
   let payload = {
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-    },
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
     credentials: "include",
     method: "POST",
     body: JSON.stringify({ user: params })
@@ -42,5 +39,11 @@ export const logInUser = (user) => {
       
       json.authenticated ? login() : error()
     })
+}
+
+export const logOutUser = (user) => {
+  return postToApi(user, "/logout")
+    .then(res => res.json())
+    .then(json => console.log(json))
 }
 
