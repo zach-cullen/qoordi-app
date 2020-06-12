@@ -1,28 +1,42 @@
-import React from 'react'
-import { logInUser } from '../../actions/authActions'
+import React, { Component } from 'react'
 
-const LoginForm = () => {
+class LoginForm extends Component {
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    logInUser()
+  constructor() {
+    super()
+    this.state = {
+      email: '',
+      password: ''
+    }
   }
 
-  return(
-    <form id="login-form" onSubmit={handleSubmit}>
-      <label>
-        Email: 
-        <input type="text" name="email-input" />
-      </label>
-      <br/>
-      <label>
-        Password: 
-        <input type="password" name="password-input" />
-      </label>
-      <br/>
-      <input type="submit" value="Submit"/>
-    </form>
-  )
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+  }
+
+  render(){
+    return(
+      <form id="login-form" onSubmit={this.handleSubmit}>
+        <label>
+          Email: 
+          <input type="text" name="email" onChange={this.handleChange} value={this.state.email}/>
+        </label>
+        <br/>
+        <label>
+          Password: 
+          <input type="password" name="password" onChange={this.handleChange} value={this.state.password}/>
+        </label>
+        <br/>
+        <input type="submit" value="Submit"/>
+      </form>
+    )
+  }
 }
 
 export default LoginForm

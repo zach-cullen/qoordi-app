@@ -1,7 +1,7 @@
 import React from 'react'
-import LoginForm from './forms/LoginForm'
+import LoginForm from '../components/forms/LoginForm'
 
-const Login = () => {
+const LoginContainer = () => {
 
   return(
     <div id="login">
@@ -11,4 +11,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginContainer
