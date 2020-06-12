@@ -33,12 +33,13 @@ export const logInUser = (user) => {
       }
       
       let error = () => {
-        sessionService.deleteUser()
+        // sets redux session state authenticated to false
         sessionService.deleteSession()
+        // removes data from user object in session state
+        sessionService.deleteUser()
         console.log(json.errors)
       }
       
       json.authenticated ? login() : error()
-
     })
 }
