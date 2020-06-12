@@ -18,6 +18,7 @@ class LoginForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    this.props.propFunction({user: this.state})
   }
 
   render(){
