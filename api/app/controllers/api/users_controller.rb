@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class Api::UsersController < ApiController
 
   def create
   end
