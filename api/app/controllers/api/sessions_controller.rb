@@ -1,4 +1,4 @@
-class Api::SessionsController < ApplicationController
+class Api::SessionsController < Api::ApiController
 
   def create
     @user = User
@@ -21,10 +21,17 @@ class Api::SessionsController < ApplicationController
 
 
   def destroy
+    @user = User.find_by(id: params[:user][:id])
     byebug
-    render json: {
-      message: "log out from api!"
-    }
+    if @current_user == @user 
+      render json: {
+        message: "Logging out the right guy: #{@current_user[:given_name]}" 
+      }
+    else
+      render json: {
+        errors: ["Invalid request"]
+      }
+    end
   end
 
   private 
