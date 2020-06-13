@@ -44,6 +44,13 @@ export const logInUser = (user) => {
 export const logOutUser = (user) => {
   return postToApi(user, "/logout")
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => {
+      if (json.logged_out) {
+        sessionService.deleteUser()
+        sessionService.deleteSession()
+      } else {
+        console.log(json.errors)
+      }
+    })
 }
 
