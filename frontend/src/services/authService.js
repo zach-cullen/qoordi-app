@@ -6,6 +6,14 @@ calling functions from the sessionService library to affect the sessionReducer v
 import { sessionService } from 'redux-react-session'
 import { API_URL } from '../store/constants'
 
+
+const resetClientSideSession = () => {
+  // remove user data from user session cookie, thus altering state.session
+  sessionService.deleteUser()
+  // resets client session cookie to authenticated false ,thus altering state.session 
+  sessionService.deleteSession()
+}
+
 // configures post request payload and returns promise from fetch request to url
 const postToApi = (params = {}, url = '') => {
   let payload = {
@@ -30,10 +38,7 @@ export const logInUser = (user) => {
       }
       
       let error = () => {
-        // sets redux session state authenticated to false
-        sessionService.deleteSession()
-        // removes data from user object in session state
-        sessionService.deleteUser()
+        resetClientSideSession()
         console.log(json.errors)
       }
       
@@ -46,9 +51,9 @@ export const logOutUser = (user) => {
     .then(res => res.json())
     .then(json => {
       if (json.logged_out) {
-        sessionService.deleteUser()
-        sessionService.deleteSession()
+        resetClientSideSession()
       } else {
+        resetClientSideSession()
         console.log(json.errors)
       }
     })
