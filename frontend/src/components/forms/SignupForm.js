@@ -21,6 +21,7 @@ class SignupForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    // calls function passed down from container component with this.state object as argument
     this.props.propFunction(this.state)
   }
 
