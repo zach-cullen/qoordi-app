@@ -1,9 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { logOutUser } from '../services/authService'
 
-const LogoutContainer = () => {
+const LogoutContainer = ({ session }) => {
 
-  logOutUser({id: 1})
+  logOutUser({id: session.user.id})
 
   return(
     <div id="logout">
@@ -12,4 +13,4 @@ const LogoutContainer = () => {
   )
 }
 
-export default LogoutContainer
+export default connect(state => ({session: state.session}))(LogoutContainer)
