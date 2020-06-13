@@ -22,10 +22,10 @@ class Api::SessionsController < Api::ApiController
 
   def destroy
     @user = User.find_by(id: params[:user][:id])
-    byebug
-    if @current_user == @user 
+    if @current_user == @user
+      reset_session
       render json: {
-        message: "Logging out the right guy: #{@current_user[:given_name]}" 
+        logged_out: !session[:user_id]
       }
     else
       render json: {
