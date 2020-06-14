@@ -64,9 +64,13 @@ export const signUpUser = (formData) => {
   return postToApi(formData, "/users")
     .then(res => res.json())
     .then(json => {
-      if (!json.signed_up) { return json }
+      if (json.signed_up) {
+        sessionService.saveSession()
+        sessionService.saveUser(json.user)
+      }
 
-      return json.user
+      // need to return json to calling component as it may need to display errors from api to user
+      return json
     })
 }
 
