@@ -1,6 +1,23 @@
-class Api::UsersController < ApiController
+class Api::UsersController < Api::ApiController
 
   def create
+
+    @user = User.new(
+      given_name: user_params[:firstName],
+      family_name: user_params[:lastName],
+      email: user_params[:email],
+      password: user_params[:password],
+      password_confirmation: user_params[:password_confirmation],
+    )
+
+    if @user.save
+      render json: @user.as_json, only: [:id, :given_name, :family_name]
+    else
+      render json: {
+        errors: @user.errors.full_messages
+      }
+    end
+
   end
 
   def show
@@ -17,11 +34,15 @@ class Api::UsersController < ApiController
 
   def destroy
   end
-
+  
   private
 
   def invalid_request(args)
     { errors: ["Invalid request."]}
+  end
+
+  def user_params
+    params.require(:user).permit(:firstName, :lastName, :email, :password, :passwordConfirmation)
   end
 
 end
