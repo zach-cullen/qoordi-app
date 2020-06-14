@@ -68,6 +68,7 @@ class SignupForm extends Component {
 
     const checkForInvalidEmail = (formData) => {
       if (!formData) return false
+      // uses node package to validate format of email (returns boolean)
       return EmailValidator.validate(formData.email) === false ? "Please enter a valid email address" : false
     }
 
