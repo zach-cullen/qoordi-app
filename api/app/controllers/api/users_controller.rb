@@ -7,13 +7,17 @@ class Api::UsersController < Api::ApiController
       family_name: user_params[:lastName],
       email: user_params[:email],
       password: user_params[:password],
-      password_confirmation: user_params[:password_confirmation],
+      password_confirmation: user_params[:password_confirmation]
     )
 
     if @user.save
-      render json: @user.as_json, only: [:id, :given_name, :family_name]
+      render json: {
+        signed_up: true,
+        user: @user.as_json(only: [:id, :given_name, :family_name])
+      }
     else
       render json: {
+        signed_up: false,
         errors: @user.errors.full_messages
       }
     end
