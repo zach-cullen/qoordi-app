@@ -4,8 +4,8 @@ import LoginForm from '../components/forms/LoginForm'
 
 class LoginContainer extends Component {
 
-  submitLogin = (user) => {
-    logInUser(user)
+  submitLogin = (formData) => {
+    logInUser(formData)
   }
 
   render() {
