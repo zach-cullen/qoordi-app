@@ -59,3 +59,7 @@ export const logOutUser = (user) => {
     })
 }
 
+export const signUpUser = (user) => {
+  console.log("signing up: ", user)
+}
+
