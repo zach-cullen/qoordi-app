@@ -15,6 +15,7 @@ const resetClientSideSession = () => {
 }
 
 // configures post request payload and returns promise from fetch request to url
+// assigns passed in params to new object with key of user
 const postToApi = (params = {}, url = '') => {
   let payload = {
     headers: {"Content-Type": "application/json", "Accept": "application/json"},
@@ -26,8 +27,8 @@ const postToApi = (params = {}, url = '') => {
   return fetch(`${API_URL}${url}`, payload)
 }
 
-export const logInUser = (user) => {
-  return postToApi(user, "/login")
+export const logInUser = (formData) => {
+  return postToApi(formData, "/login")
     .then(res => res.json())
     .then(json => {
       let login = () => {
@@ -46,8 +47,8 @@ export const logInUser = (user) => {
     })
 }
 
-export const logOutUser = (user) => {
-  return postToApi(user, "/logout")
+export const logOutUser = (userFromSession) => {
+  return postToApi(userFromSession, "/logout")
     .then(res => res.json())
     .then(json => {
       if (json.logged_out) {
@@ -59,7 +60,7 @@ export const logOutUser = (user) => {
     })
 }
 
-export const signUpUser = (user) => {
-  console.log("signing up: ", user)
+export const signUpUser = (formData) => {
+  console.log("signing up: ", formData)
 }
 
