@@ -14,6 +14,13 @@ const resetClientSideSession = () => {
   sessionService.deleteSession()
 }
 
+const createClientSideSession = (user) => {
+  // sets redux session state authenticated to true
+  sessionService.saveSession()
+  // populates user object in redux session state
+  sessionService.saveUser(user)
+} 
+
 // configures post request payload and returns promise from fetch request to url
 // assigns passed in params to new object with key of user
 const postToApi = (params = {}, url = '') => {
@@ -32,10 +39,7 @@ export const logInUser = (formData) => {
     .then(res => res.json())
     .then(json => {
       let login = () => {
-        // sets redux session state authenticated to true
-        sessionService.saveSession()
-        // populates user object in redux session state
-        sessionService.saveUser(json.user)
+        createClientSideSession(json.user)
       }
       
       let error = () => {
@@ -65,11 +69,10 @@ export const signUpUser = (formData) => {
     .then(res => res.json())
     .then(json => {
       if (json.signed_up) {
-        sessionService.saveSession()
-        sessionService.saveUser(json.user)
+        createClientSideSession(json.user)
       }
 
-      // need to return json to calling component as it may need to display errors from api to user
+      // return json so calling component can display errors from api to user
       return json
     })
 }
