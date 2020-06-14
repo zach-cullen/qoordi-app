@@ -3,8 +3,9 @@ import SignupForm from '../components/forms/SignupForm'
 
 class SignupContainer extends Component {
 
+  // passes formData to auth service if no errors
   submitSignup = (formData) => {
-    console.log("submitting info: ", formData )
+    console.log("submitting: ", formData)
   }
 
   render() {
