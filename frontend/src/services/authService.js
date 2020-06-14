@@ -61,6 +61,8 @@ export const logOutUser = (userFromSession) => {
 }
 
 export const signUpUser = (formData) => {
-  console.log("signing up: ", formData)
+  return postToApi(formData, "/users")
+    .then(res => res.json())
+    .then(json => console.log(json))
 }
 
