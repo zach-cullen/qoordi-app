@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import * as EmailValidator from 'email-validator'
 
 class SignupForm extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class SignupForm extends Component {
 
   // checks formData for errors and returns array of error message strings
   checkFormForErrors = (formData) => {
+
     const checkForEmptyFields = (formData) => {
       const emptyEntries = Object.entries(formData).filter((entry) => entry[1].length === 0 )
       return emptyEntries.length > 0 ? "Please do not leave any fields blank." : false
@@ -64,9 +66,16 @@ class SignupForm extends Component {
       return formData.password !== formData.passwordConfirmation ? "Passwords do not match." : false
     }
 
-    let errors = [
+    const checkForInvalidEmail = (formData) => {
+      if (!formData) return false
+      return EmailValidator.validate(formData.email) === false ? "Please enter a valid email address" : false
+    }
+
+    // populates array of results of functions, and removes all that are false or empty
+    const errors = [
       checkForEmptyFields(formData), 
-      checkForPasswordMismatch(formData)
+      checkForInvalidEmail(formData),
+      checkForPasswordMismatch(formData),
     ].filter(error => !!error)
 
     return errors
