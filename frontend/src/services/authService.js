@@ -63,6 +63,10 @@ export const logOutUser = (userFromSession) => {
 export const signUpUser = (formData) => {
   return postToApi(formData, "/users")
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => {
+      if (!json.signed_up) { return json }
+
+      return json.user
+    })
 }
 
