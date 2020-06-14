@@ -7,7 +7,7 @@ class SignupContainer extends Component {
   constructor() {
     super()
     this.state = {
-      errorsFromApi: ["banana"]
+      errorsFromApi: []
     }
   }
 
