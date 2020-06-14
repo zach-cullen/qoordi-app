@@ -14,7 +14,7 @@ class Api::UsersController < Api::ApiController
       session[:user_id] = @user.id
       render json: {
         signed_up: true,
-        user: @user.as_json(only: [:id, :given_name, :family_name])
+        user: @user.as_json(only: [:id])
       }
     else
       render json: {
