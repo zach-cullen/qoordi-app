@@ -42,7 +42,10 @@ class SignupForm extends Component {
 
   // maps error messages in state to array of divs containing each message
   renderErrors = () => {
-    return this.state.errorMessages.map((error, index) => {
+
+    const combinedErrors = this.state.errorMessages.concat(this.props.errorsFromApi)
+
+    return combinedErrors.map((error, index) => {
       return (
         <div key={`signup-form-error-${index}`}>{error}</div>
       )
