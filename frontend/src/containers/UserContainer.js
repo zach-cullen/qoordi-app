@@ -5,7 +5,7 @@ import { fetchUser } from '../actions/usersActions'
 class UserContainer extends Component {
 
   componentDidMount() {
-    
+    this.props.fetchUser(this.props.session.user)
   }
 
 
@@ -24,4 +24,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(UserContainer)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUser: (user) => {
+      dispatch(fetchUser(user))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(UserContainer)
