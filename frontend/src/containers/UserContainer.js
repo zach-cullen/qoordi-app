@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class UserContainer extends Component {
+
+  componentDidMount() {
+    console.log("User Container mounted for user: ", this.props.session.user)
+  }
+
 
   render() {
     return(
@@ -11,4 +17,10 @@ class UserContainer extends Component {
   }
 }
 
-export default UserContainer
+const mapDispatchToProps = (state) => {
+  return {
+    session: state.session,
+  }
+}
+
+export default connect(mapDispatchToProps)(UserContainer)
