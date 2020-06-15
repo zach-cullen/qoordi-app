@@ -28,7 +28,7 @@ class Api::UsersController < Api::ApiController
   def show
     @user = User.find_by(id: params[:id])
     if @user
-      render json: @user, except: [:password_digest, :created_at, :updated_at]
+      render json: @user.as_json(only: [:id, :given_name, :family_name])
     else 
       render json: invalid_request
     end
