@@ -8,7 +8,6 @@ const usersReducer = (state = {
     case "ADD_USER":
       const userData = action.payload.user
 
-      console.log("action payload", userData)
       return {
         ...state,
         byId: {
