@@ -10,7 +10,7 @@ import LogoutContainer from '../containers/LogoutContainer'
 const Routes = ({ session }) => {
 
   const loggedIn = () => {
-      return session.authenticated
+      return session.authenticated && Object.keys(session.user).length > 0
     }
 
   return(
