@@ -9,6 +9,8 @@ import LogoutContainer from '../containers/LogoutContainer'
 
 const Routes = ({ session }) => {
 
+  // checks for both valid session and user object since they are created with separate promises that may race each other,
+  // this prevents protected routes from mounting components prior to having user data
   const loggedIn = () => {
       return session.authenticated && Object.keys(session.user).length > 0
     }
