@@ -8,7 +8,7 @@ const NavBar = ({ session }) => {
 
   const loggedInNav = () => {
     return(
-      <nav id="app-nav">
+      <nav id="main-nav">
         <NavLink exact to="/home">Home </NavLink>
         <NavLink exact to="/app">Dash </NavLink>
         <NavLink exact to="/logout">Logout </NavLink>
