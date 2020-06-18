@@ -1,3 +1,4 @@
+import './NavBar.css'
 import React from 'react'
 import { connect} from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -25,9 +26,9 @@ const NavBar = ({ session }) => {
   }
 
   return(
-    <nav id="main-nav">
+    <nav id="navbar">
       <div className="main-container">
-        <NavLink className="main-nav-home" exact to="/home">Home </NavLink>
+        <NavLink className="main-nav-home" exact to="/home">Home</NavLink>
         { loggedIn() ?  loggedInNav() : loggedOutNav() }
       </div>
     </nav>
