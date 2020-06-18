@@ -3,9 +3,19 @@
 
 * {
   margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: 'Source Sans pro', sans-serif;
+  font-size: 20px;
+
+  --light-bg-1: #FFFDFD;
+  --light-bg-2: #FBF7F4;
 }
 
 body {
-  background-color: #FBF7F4;
-  font-family: 'Source Sans pro', sans-serif;
+  background-color: var(--light-bg-2);
 }
+
+
