@@ -7,3 +7,8 @@
   height: 3.5rem;
   background-color: var(--light-bg-2)
 }
+
+.main-container {
+  width: 1050px;
+  margin: 0 auto;
+}
