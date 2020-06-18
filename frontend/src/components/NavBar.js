@@ -25,12 +25,12 @@ const NavBar = ({ session }) => {
   }
 
   return(
-    <div className="main-container">
-      <nav id="main-nav">
+    <nav id="main-nav">
+      <div className="main-container">
         <NavLink className="main-nav-home" exact to="/home">Home </NavLink>
         { loggedIn() ?  loggedInNav() : loggedOutNav() }
-      </nav>
-    </div>
+      </div>
+    </nav>
   )
 }
 
