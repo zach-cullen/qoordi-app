@@ -2,3 +2,25 @@
   height: 3.5rem;
   background-color: var(--light-bg-2)
 }
+
+.navbar-grid {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr 10rem;
+  grid-template-areas: "home space links"
+}
+
+.navbar-home {
+  margin: 1.25rem 0;
+  grid-area: home;
+}
+
+.navbar-links {
+  margin: 1.25rem 0;
+  grid-area: links;
+  text-align: right;
+}
+
+.navbar-links a {
+  margin-left: 1.5rem;
+}
+

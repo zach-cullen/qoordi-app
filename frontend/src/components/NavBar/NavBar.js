@@ -9,7 +9,7 @@ const NavBar = ({ session }) => {
 
   const loggedInNav = () => {
     return(
-      <div id="main-nav-links">
+      <div className="navbar-links">
         <NavLink exact to="/app">Dash </NavLink>
         <NavLink exact to="/logout">Logout </NavLink>
       </div>
@@ -18,17 +18,17 @@ const NavBar = ({ session }) => {
 
   const loggedOutNav = () => {
     return(
-      <div id="main-nav-links">
-        <NavLink exact to="/login">Login </NavLink>
-        <NavLink exact to="/signup">Signup </NavLink>
+      <div className="navbar-links">
+        <NavLink exact to="/login">Log in</NavLink>
+        <NavLink exact to="/signup">Sign up</NavLink>
       </div>
     )
   }
 
   return(
     <nav id="navbar">
-      <div className="main-container">
-        <NavLink className="main-nav-home" exact to="/home">Home</NavLink>
+      <div className="main-container navbar-grid">
+        <NavLink className="navbar-home" exact to="/home">Home</NavLink>
         { loggedIn() ?  loggedInNav() : loggedOutNav() }
       </div>
     </nav>
