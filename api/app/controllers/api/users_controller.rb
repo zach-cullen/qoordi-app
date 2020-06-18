@@ -21,6 +21,7 @@ class Api::UsersController < Api::ApiController
         signed_up: false,
         errors: @user.errors.full_messages
       }
+      
     end
 
   end
