@@ -9,7 +9,7 @@ const LogoutContainer = ({ session }) => {
 
   // this container renders a temporary element until successful logout action updates state and causes router to redirect
   return(
-    <div id="logout">
+    <div className="main-container" id="logout">
       <h1>Logging out user...</h1>
     </div>
   )

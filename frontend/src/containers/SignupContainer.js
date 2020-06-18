@@ -26,7 +26,7 @@ class SignupContainer extends Component {
 
   render() {
     return(
-      <div id="signup">
+      <div className="main-container" id="signup">
         <h1>Sign Up</h1>
         <SignupForm propFunction={this.submitSignup} errorsFromApi={this.state.errorsFromApi} />
       </div>

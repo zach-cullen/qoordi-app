@@ -10,7 +10,7 @@ class LoginContainer extends Component {
 
   render() {
     return(
-      <div id="login">
+      <div className="main-container" id="login">
         <h1>Log In</h1>
         <LoginForm propFunction={this.submitLogin}/>
       </div>

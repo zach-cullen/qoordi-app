@@ -27,7 +27,7 @@ class UserContainer extends Component {
 
   render() {
     return(
-      <div id="user-container">
+      <div className="main-container" id="user-container">
         <h1>User</h1>
         { this.renderUserName() }
       </div>
