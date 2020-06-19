@@ -4,7 +4,6 @@
 }
 
 .navbar-grid {
-
   height: 3.5rem;
   display: grid;
   grid-template-columns: min-content 1fr 10rem;
@@ -23,6 +22,12 @@
 }
 
 .navbar-links a {
+  text-decoration: none;
+  color: var(--med-gray-1);
   margin-left: 1.5rem;
+}
+
+.navbar-links a:hover {
+  color: black;
 }
 
