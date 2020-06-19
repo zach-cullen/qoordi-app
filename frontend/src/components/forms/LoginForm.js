@@ -1,3 +1,4 @@
+import './forms.css'
 import React, { Component } from 'react'
 
 class LoginForm extends Component {
@@ -23,19 +24,20 @@ class LoginForm extends Component {
 
   render(){
     return(
-      <form id="login-form" onSubmit={this.handleSubmit}>
-        <label>
-          Email: 
-          <input type="text" name="email" onChange={this.handleChange} value={this.state.email}/>
-        </label>
-        <br/>
-        <label>
-          Password: 
-          <input type="password" name="password" onChange={this.handleChange} value={this.state.password}/>
-        </label>
-        <br/>
-        <input type="submit" value="Submit"/>
-      </form>
+      <div className="user-info-form">
+        <div className="user-info-form-header">Log in</div>
+        <form id="login-form" onSubmit={this.handleSubmit}>
+          <label>
+            <input type="text" name="email" onChange={this.handleChange} value={this.state.email} placeholder="Email"/>
+          </label>
+          <br/>
+          <label>
+            <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password"/>
+          </label>
+          <br/>
+          <button className="form-btn" type="submit">Submit</button>
+        </form>
+      </div>
     )
   }
 }
