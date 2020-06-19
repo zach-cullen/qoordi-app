@@ -17,7 +17,7 @@ const Routes = ({ session }) => {
 
   return(
     <Switch>
-      <Route exact path="/home" component={ Home } />
+      <Route exact path="/" component={ Home } />
 
       <Route exact path="/app" component={ loggedIn() ? UserContainer : Home } />
 
@@ -30,7 +30,7 @@ const Routes = ({ session }) => {
       </Route>
 
       <Route exact path="/logout">
-        { loggedIn() ? <LogoutContainer /> : <Redirect to="/home" />}
+        { loggedIn() ? <LogoutContainer /> : <Redirect to="/" />}
       </Route>
 
       <Route path="/" component={ loggedIn() ? UserContainer : Home } />
