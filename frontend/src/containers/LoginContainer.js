@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { logInUser } from '../services/authService'
-import LoginForm from '../components/forms/LoginForm'
+import LoginForm from '../components/forms/LoginForm.js'
 
 class LoginContainer extends Component {
 
@@ -11,7 +11,6 @@ class LoginContainer extends Component {
   render() {
     return(
       <div className="main-container" id="login">
-        <h1>Log In</h1>
         <LoginForm propFunction={this.submitLogin}/>
       </div>
     )
