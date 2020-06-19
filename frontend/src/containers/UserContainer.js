@@ -1,39 +1,33 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions/usersActions'
+import Dashboard from '../components/Dashboard/Dashboard'
 
 class UserContainer extends Component {
 
+  // after first first render asks api to load user data for the logged in user
   componentDidMount() {
     this.props.fetchUser(this.props.session.user)
   }
 
-  userIsLoaded = () => {
-    const allUserIds = this.props.entities.users.allIds
-    if (allUserIds.length > 0) {
-      return allUserIds.includes(this.props.session.user.id)
-    }
-    return false
+  // returns user in entities corresponding to the session user, returns undefined if not found
+  currentUser = () => {
+    return this.props.entities.users.byId[this.props.session.user.id]
   }
 
-  renderUserName = () => {
-    if (this.userIsLoaded()) {
-      const currentUser = this.props.entities.users.byId[this.props.session.user.id]
-      return(
-        <h2>{ currentUser.given_name }</h2>
-      )
-    }
+  todayDate = () => {
+    
   }
 
   render() {
     return(
-      <div className="main-container" id="user-container">
-        <h1>User</h1>
-        { this.renderUserName() }
+      <div className="main-container">
+        <Dashboard currentUser={this.currentUser()} />
       </div>
     )
   }
 }
+
 
 const mapStateToProps = (state) => {
   return {
