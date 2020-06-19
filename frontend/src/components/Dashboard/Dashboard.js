@@ -1,7 +1,10 @@
 import './Dashboard.css'
+import React from 'react'
 import DashGreeting from './DashGreeting'
 import SidebarLineBreak from '../decorators/SidebarLineBreak'
-import React from 'react'
+import ProjectBoardTools from '../ProjectBoard/ProjectBoardTools'
+import ProjectBoard from '../ProjectBoard/ProjectBoard'
+
 
 const Dashboard = (props) => {
 
@@ -12,6 +15,8 @@ const Dashboard = (props) => {
         <SidebarLineBreak />
       </div>
       <div id="dashboard-main">
+        <ProjectBoardTools />
+        <ProjectBoard />
       </div>
     </div>
   )
