@@ -1,4 +1,5 @@
 import './NavBar.css'
+import { ReactComponent as Logo } from '../../assets/logo/qoordi-logo-bright-purple.svg'
 import React from 'react'
 import { connect} from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -28,7 +29,7 @@ const NavBar = ({ session }) => {
   return(
     <nav id="navbar">
       <div className="navbar-grid width-container">
-        <NavLink className="navbar-home" exact to="/home">Home</NavLink>
+        <NavLink className="navbar-home" exact to="/home"><Logo /></NavLink>
         { loggedIn() ?  loggedInNav() : loggedOutNav() }
       </div>
     </nav>
