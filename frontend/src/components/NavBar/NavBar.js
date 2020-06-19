@@ -27,7 +27,7 @@ const NavBar = ({ session }) => {
 
   return(
     <nav id="navbar">
-      <div className="main-container navbar-grid">
+      <div className="navbar-grid width-container">
         <NavLink className="navbar-home" exact to="/home">Home</NavLink>
         { loggedIn() ?  loggedInNav() : loggedOutNav() }
       </div>

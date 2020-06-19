@@ -4,6 +4,7 @@
 }
 
 .navbar-grid {
+
   height: 3.5rem;
   display: grid;
   grid-template-columns: min-content 1fr 10rem;
