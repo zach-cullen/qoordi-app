@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Home from '../components/views/Home/Home'
+import HomeContainer from '../containers/HomeContainer'
 import LoginContainer from '../containers/LoginContainer'
 import SignupContainer from '../containers/SignupContainer'
 import UserContainer from '../containers/UserContainer'
@@ -17,9 +17,9 @@ const Routes = ({ session }) => {
 
   return(
     <Switch>
-      <Route exact path="/" component={ Home } />
+      <Route exact path="/" component={ HomeContainer } />
 
-      <Route exact path="/app" component={ loggedIn() ? UserContainer : Home } />
+      <Route exact path="/app" component={ loggedIn() ? UserContainer : HomeContainer } />
 
       <Route exact path="/login">
         { loggedIn() ? <Redirect to="/app" /> : <LoginContainer /> }
@@ -33,7 +33,7 @@ const Routes = ({ session }) => {
         { loggedIn() ? <LogoutContainer /> : <Redirect to="/" />}
       </Route>
 
-      <Route path="/" component={ loggedIn() ? UserContainer : Home } />
+      <Route path="/" component={ loggedIn() ? UserContainer : HomeContainer } />
 
     </Switch>
   )
