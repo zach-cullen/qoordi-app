@@ -1,4 +1,3 @@
-import './forms.css'
 import React, { Component } from 'react'
 import * as EmailValidator from 'email-validator'
 

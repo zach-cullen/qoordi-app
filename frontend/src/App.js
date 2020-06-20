@@ -1,4 +1,7 @@
-import './app.css'
+import './styles/containers.css'
+import './styles/forms.css'
+import './styles/buttons.css'
+
 import React from 'react';
 import Routes from './routes'
 

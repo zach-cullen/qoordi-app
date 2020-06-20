@@ -1,6 +1,6 @@
 import './ProjectBoard.css'
 import React from 'react'
-import NewProjectButton from './NewProjectButton'
+import NewProjectButton from '../NewProjectButton'
 
 const ProjectBoardTools = () => {
   return (
