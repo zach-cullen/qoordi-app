@@ -92,26 +92,45 @@ class SignupForm extends Component {
 
         <div className="name-inputs-container">
           <label>
-            <input type="text" name="firstName" onChange={this.handleChange} value={this.state.formData.firstName} placeholder="First name"/>
+            <input 
+              type="text" name="firstName" placeholder="First name"
+              onChange={this.handleChange} 
+              value={this.state.formData.firstName} 
+            />
           </label>
           
           <label>
-            <input type="text" name="lastName" onChange={this.handleChange} value={this.state.formData.lastName} placeholder="Last name"/>
+            <input type="text" name="lastName" placeholder="Last name"
+              onChange={this.handleChange} 
+              value={this.state.formData.lastName} 
+            />
           </label>
         </div>
 
         <label>
-          <input type="text" name="email" onChange={this.handleChange} value={this.state.formData.email} placeholder="Email"/>
+          <input 
+            type="text" name="email" placeholder="Email"
+            onChange={this.handleChange} 
+            value={this.state.formData.email} 
+          />
         </label>
         <br/>
 
         <label>
-          <input type="password" name="password" onChange={this.handleChange} value={this.state.formData.password} placeholder="Password"/>
+          <input 
+            type="password" name="password" placeholder="Password"
+            onChange={this.handleChange} 
+            value={this.state.formData.password}
+          />
         </label>
         <br/>
 
         <label>
-          <input type="password" name="passwordConfirmation" onChange={this.handleChange} value={this.state.formData.passwordConfirmation} placeholder="Confirm password"/>
+          <input 
+            type="password" name="passwordConfirmation" placeholder="Confirm password"
+            onChange={this.handleChange} 
+            value={this.state.formData.passwordConfirmation} 
+          />
         </label>
         <br/>
         
