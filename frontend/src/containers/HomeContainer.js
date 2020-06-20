@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Home from '../components/views/Home/Home'
+import Home from '../components/views/Home'
 import NavBar from '../components/views/NavBar/NavBar'
 
 class HomeContainer extends Component {
