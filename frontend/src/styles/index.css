@@ -25,9 +25,7 @@
   /* --bright-purple: #873CE6;
   --vibrant-indigo: #4C34E0; */
 
-  --brand-color-1: #873CE6;
-  --brand-color-2: #4C34E0;
-  --brand-color-3: #D760AE;
+  --brand-color-1: #34ADF1;
 
   --lrg-border-radius: 0.5rem;
   --med-border-radius: 0.3rem;
@@ -36,8 +34,6 @@
   --sm-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   --med-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
 
-  --linear-gradient-bright-purple: linear-gradient(121.06deg, var(--brand-color-1) 16.4%, var(--brand-color-3) 104.9%);
-  --linear-gradient-deep-purple: linear-gradient(167.74deg, var(--brand-color-2) 13.33%, var(--brand-color-1) 93.62%);;
 }
 
 body {

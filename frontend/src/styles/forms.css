@@ -40,19 +40,3 @@
   column-gap: 0.8rem;
   width: 100%;
 }
-
-.form-btn {
-  cursor: pointer;
-  width: 100%;
-  height: 2rem;
-  margin: 0.5rem 0;
-  border: none;
-  font-size: var(--h5-size);
-  color: #fff;
-  border-radius: var(--med-border-radius);
-  background: var(--linear-gradient-bright-purple);
-}
-
-.form-btn:focus {
-  outline: none;
-}
