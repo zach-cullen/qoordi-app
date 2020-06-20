@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Home from '../components/Home'
+import Home from '../components/views/Home/Home'
 import LoginContainer from '../containers/LoginContainer'
 import SignupContainer from '../containers/SignupContainer'
 import UserContainer from '../containers/UserContainer'

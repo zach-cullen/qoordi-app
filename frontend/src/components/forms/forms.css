@@ -23,7 +23,7 @@
 
 .user-info-form input:focus {
   background-color: #fff;
-  border: solid 1px var(--bright-purple);
+  border: solid 1px var(--brand-color-1);
   outline: none;
 }
 
