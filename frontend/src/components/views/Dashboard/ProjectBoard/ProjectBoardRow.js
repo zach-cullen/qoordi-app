@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProjectBoardRow = ({ project }) => {
   return(
-    <div class="project-row-columns project-board-row">
+    <div className="project-row-columns project-board-row">
       <div>
         { project.title }
       </div>
