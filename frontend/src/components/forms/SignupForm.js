@@ -38,7 +38,7 @@ class SignupForm extends Component {
     })
 
     if (errors.length === 0 ) {
-      this.props.propFunction(this.state.formData)
+      this.props.submitSignup(this.state.formData)
     }
   }
 

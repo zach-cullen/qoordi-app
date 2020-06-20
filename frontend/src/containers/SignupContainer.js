@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { signUpUser } from '../services/authService'
-import SignupForm from '../components/forms/SignupForm'
+import Signup from '../components/views/Signup'
+import NavBar from '../components/views/NavBar'
 
 class SignupContainer extends Component {
 
@@ -26,8 +27,11 @@ class SignupContainer extends Component {
 
   render() {
     return(
-      <div className="main-container" id="signup">
-        <SignupForm propFunction={this.submitSignup} errorsFromApi={this.state.errorsFromApi} />
+      <div id="signup-container">
+        <NavBar />
+        <div className="main-container" id="signup">
+          <Signup submitSignup={this.submitSignup} errorsFromApi={this.state.errorsFromApi} />
+        </div>
       </div>
     )
   }
