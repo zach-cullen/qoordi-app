@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions/usersActions'
-import Dashboard from '../components/Dashboard/Dashboard'
+import Dashboard from '../components/views/Dashboard/Dashboard'
 
 class UserContainer extends Component {
 

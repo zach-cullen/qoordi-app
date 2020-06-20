@@ -54,4 +54,21 @@ h6 {
   font-size: var(--h6-size);
 }
 
+.med-btn {
+  cursor: pointer;
+  height: 1.5rem;
+  width: 7.5rem;
+  box-sizing: border-box;
+  border-radius: var(--med-border-radius);
+  border: none;
+}
+
+.deep-purple-btn {
+  background: var(--linear-gradient-deep-purple);
+  box-shadow: var(--sm-box-shadow);
+  font-size: var(--h5-size);
+  font-weight: 400;
+  color: #fff;
+}
+
 

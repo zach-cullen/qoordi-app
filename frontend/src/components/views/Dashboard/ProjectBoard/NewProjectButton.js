@@ -1,4 +1,3 @@
-import './buttons.css'
 import React from 'react'
 
 const NewProjectButton = () => {
