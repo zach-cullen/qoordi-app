@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Home from '../components/views/Home'
-import NavBar from '../components/views/NavBar/NavBar'
+import NavBar from '../components/views/NavBar'
 
 class HomeContainer extends Component {
 
