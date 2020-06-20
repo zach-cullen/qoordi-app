@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ProjectBoardHeaders = () => {
+const ProjectTableHeaders = () => {
   return (
-    <div className="project-row-columns" id="project-board-headers">
+    <div className="project-row-columns" id="project-table-headers">
       <div>
         PROJECT
       </div>
@@ -16,4 +16,4 @@ const ProjectBoardHeaders = () => {
   )
 }
 
-export default ProjectBoardHeaders
+export default ProjectTableHeaders

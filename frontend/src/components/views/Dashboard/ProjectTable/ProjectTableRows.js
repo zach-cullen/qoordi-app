@@ -1,7 +1,7 @@
 import React from 'react'
-import ProjectBoardRow from './ProjectBoardRow'
+import ProjectTableRow from './ProjectTableRow'
 
-const ProjectBoardRows = () => {
+const ProjectTableRows = () => {
 
   const projects = [
     {
@@ -33,16 +33,16 @@ const ProjectBoardRows = () => {
 
     return projects.map((project) => {
       return(
-        <ProjectBoardRow key={project.id} project={project} />
+        <ProjectTableRow key={project.id} project={project} />
       )
     })
   }
 
   return (
-    <div id="project-board-rows">
+    <div id="project-table-rows">
       { renderProjectRows(projects) }
     </div>
   )
 }
 
-export default ProjectBoardRows
+export default ProjectTableRows

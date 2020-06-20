@@ -1,11 +1,11 @@
-#project-board-tools {
+#project-table-tools {
   width: 100%;
   height: 1.5rem;
   margin-bottom: 1rem;
   background-color: #fff;
 }
 
-#project-board {
+#project-table {
   width: 100%;
   box-sizing: border-box;
   padding: 1rem;
@@ -20,7 +20,7 @@
   grid-template-columns: 1fr 1fr 1fr;
 } 
 
-#project-board-headers {
+#project-table-headers {
   height: 0.8rem;
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -30,7 +30,7 @@
   color: var(--brand-color-2);
 }
 
-.project-board-row {
+.project-table-row {
   margin: 0.75rem 0;
   box-sizing: border-box;
   padding: 0 0.75rem;

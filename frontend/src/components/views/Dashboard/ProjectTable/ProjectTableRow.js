@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ProjectBoardRow = ({ project }) => {
+const ProjectTableRow = ({ project }) => {
   return(
-    <div className="project-row-columns project-board-row">
+    <div className="project-row-columns project-table-row">
       <div>
         { project.title }
       </div>
@@ -18,4 +18,4 @@ const ProjectBoardRow = ({ project }) => {
   )
 }
 
-export default ProjectBoardRow
+export default ProjectTableRow

@@ -1,9 +1,8 @@
 import './Dashboard.css'
 import React from 'react'
 import DashGreeting from './DashGreeting'
-import SidebarLineBreak from '../../decorators/SidebarLineBreak'
-import ProjectBoardTools from './ProjectBoard/ProjectBoardTools'
-import ProjectBoard from './ProjectBoard/ProjectBoard'
+import ProjectTableTools from './ProjectTable/ProjectTableTools'
+import ProjectTable from './ProjectTable/ProjectTable'
 
 
 const Dashboard = (props) => {
@@ -14,8 +13,8 @@ const Dashboard = (props) => {
         <DashGreeting currentUser={props.currentUser}/>
       </div>
       <div id="dashboard-main">
-        <ProjectBoardTools />
-        <ProjectBoard />
+        <ProjectTableTools />
+        <ProjectTable />
       </div>
     </div>
   )
