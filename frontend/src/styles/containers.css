@@ -1,6 +1,10 @@
+.main {
+  background-color: var(--light-bg-2);
+}
+
 .main-container {
   max-width: 1050px;
-  min-height: 24rem;
+  min-height: 30rem;
   padding: 0 1rem;
   margin: 0 auto;
 }

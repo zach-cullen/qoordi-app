@@ -19,11 +19,12 @@
 
   --light-bg-1: #FFFFFF;
   --light-bg-2: #F7F9FD;
-  --light-bg-3: #E3E6ED;
+  --light-bg-3: #E3E6ED; 
   --light-gray-1: #E3E6ED;
   --med-gray-1: #6C6C6C;
 
   --brand-color-1: #34ADF1;
+  --brand-color-light: #B7DCF1;
 
   --lrg-border-radius: 0.5rem;
   --med-border-radius: 0.3rem;
@@ -31,6 +32,7 @@
 
   --sm-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   --med-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+  --lrg-brand-shadow: 0px 5px 100px rgba(46, 100, 249, 0.1);
 
 }
 

@@ -1,6 +1,7 @@
 import './styles/containers.css'
 import './styles/forms.css'
 import './styles/buttons.css'
+import './styles/spacers.css'
 
 import React from 'react';
 import Routes from './routes'
