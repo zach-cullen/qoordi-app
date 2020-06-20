@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { logInUser } from '../services/authService'
 import NavBar from '../components/views/NavBar'
-import Login from '../components/views/Login/Login'
+import Login from '../components/views/Login'
 
 class LoginContainer extends Component {
 
