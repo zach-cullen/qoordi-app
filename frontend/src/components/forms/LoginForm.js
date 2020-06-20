@@ -19,7 +19,7 @@ class LoginForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.propFunction(this.state)
+    this.props.submitLogin(this.state)
   }
 
   render(){

@@ -1,10 +1,10 @@
 import React from 'react'
 import LoginForm from '../../forms/LoginForm'
 
-const Login = () => {
+const Login = (props) => {
   return(
     <div className="main-container" id="login-view">
-      <LoginForm />
+      <LoginForm submitLogin={props.submitLogin}/>
     </div>
   )
 }
