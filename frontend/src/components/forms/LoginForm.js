@@ -28,11 +28,19 @@ class LoginForm extends Component {
         <div className="user-info-form-header">Log in</div>
         <form id="login-form" onSubmit={this.handleSubmit}>
           <label>
-            <input type="text" name="email" onChange={this.handleChange} value={this.state.email} placeholder="Email"/>
+            <input 
+              type="text" name="email" placeholder="Email"
+              onChange={this.handleChange} 
+              value={this.state.email} 
+            />
           </label>
           <br/>
           <label>
-            <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password"/>
+            <input 
+              type="password" name="password" placeholder="Password"
+              onChange={this.handleChange} 
+              value={this.state.password} 
+            />
           </label>
           <br/>
           <button className="form-btn" type="submit">Submit</button>
