@@ -13,7 +13,7 @@ class LoginContainer extends Component {
     return(
       <div id="login-container">
         <NavBar />
-        <div className="main-container">
+        <div className="main">
           <Login submitLogin={this.submitLogin}/>
         </div>
       </div>

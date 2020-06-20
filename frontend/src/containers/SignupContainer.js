@@ -29,7 +29,7 @@ class SignupContainer extends Component {
     return(
       <div id="signup-container">
         <NavBar />
-        <div className="main-container" id="signup">
+        <div className="main" id="signup">
           <Signup submitSignup={this.submitSignup} errorsFromApi={this.state.errorsFromApi} />
         </div>
       </div>

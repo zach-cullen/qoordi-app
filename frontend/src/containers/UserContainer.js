@@ -21,7 +21,7 @@ class UserContainer extends Component {
 
   render() {
     return(
-      <div className="main-container">
+      <div className="main">
         <Dashboard currentUser={this.currentUser()} />
       </div>
     )

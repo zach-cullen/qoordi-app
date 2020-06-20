@@ -8,7 +8,7 @@ import ProjectTable from './ProjectTable/ProjectTable'
 const Dashboard = (props) => {
 
   return(
-    <div id="dashboard-grid">
+    <div className="main-container" id="dashboard-grid">
       <div id="dashboard-tools">
         <DashGreeting currentUser={props.currentUser}/>
       </div>
