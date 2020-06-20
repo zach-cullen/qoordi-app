@@ -12,7 +12,6 @@ const Dashboard = (props) => {
     <div id="dashboard-grid">
       <div id="dashboard-tools">
         <DashGreeting currentUser={props.currentUser}/>
-        <SidebarLineBreak />
       </div>
       <div id="dashboard-main">
         <ProjectBoardTools />
