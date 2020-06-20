@@ -1,5 +1,5 @@
 import './NavBar.css'
-import { ReactComponent as Logo } from './logo/qoordi-logo-bright-purple.svg'
+import { ReactComponent as Logo } from '../../logo/qoordi-logo.svg'
 import React from 'react'
 import { connect} from 'react-redux'
 import { NavLink } from 'react-router-dom'
