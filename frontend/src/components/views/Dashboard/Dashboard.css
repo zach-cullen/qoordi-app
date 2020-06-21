@@ -5,7 +5,7 @@
   grid-template-areas: "left main right"
 }
 
-#left-space {
+#dash-left-space {
   grid-area: left;
   background-color: var(--light-bg-1);
 }
@@ -20,10 +20,7 @@
   grid-area: main;
   background-color: var(--light-bg-2);
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 15rem 1fr;
   grid-template-areas: "sidebar content";
 }
 
-#dash-sidebar {
-  background-color: var(--light-bg-1);
-}

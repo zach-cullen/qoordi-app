@@ -1,21 +1,20 @@
 import './Dashboard.css'
 import React from 'react'
+import DashSideBar from './DashSideBar/DashSideBar'
 
 
 const Dashboard = (props) => {
 
   return(
     <div id="dashboard">
-      <div id="left-space"></div>
+      <div id="dash-left-space"></div>
       <div id="dash-main">
-        <div id="dash-sidebar">
-          SIDEBAR
-        </div>
+        <DashSideBar />
         <div id="dash-content">
           CONTENT
         </div>
       </div>
-      <div id="right-space"></div>
+      <div id="dash-right-space"></div>
     </div>
   )
 }

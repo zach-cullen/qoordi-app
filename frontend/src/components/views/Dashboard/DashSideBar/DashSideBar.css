@@ -1,0 +1,9 @@
+#dash-sidebar {
+  background-color: var(--light-bg-1);
+}
+
+#dash-sidebar-container {
+  width: 12rem;
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
