@@ -7,14 +7,10 @@ const Dashboard = (props) => {
 
   return(
     <div id="dashboard">
-      <div id="dash-left-space"></div>
-      <div id="dash-main">
-        <DashSideBar />
-        <div id="dash-content">
+      <DashSideBar />
+      <div id="dash-content">
           CONTENT
-        </div>
       </div>
-      <div id="dash-right-space"></div>
     </div>
   )
 }

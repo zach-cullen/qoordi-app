@@ -1,26 +1,6 @@
 #dashboard {
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr minmax(600px, 1080px) 1fr;
-  grid-template-areas: "left main right"
+  grid-template-columns: 16rem 1fr;
+  grid-template-areas: "sidebar content"
 }
-
-#dash-left-space {
-  grid-area: left;
-  background-color: var(--light-bg-1);
-}
-
-#dash-right-space {
-  grid-area: right;
-  background-color: var(--light-bg-2);
-}
-
-
-#dash-main {
-  grid-area: main;
-  background-color: var(--light-bg-2);
-  display: grid;
-  grid-template-columns: 15rem 1fr;
-  grid-template-areas: "sidebar content";
-}
-
