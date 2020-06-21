@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import HomeContainer from '../containers/HomeContainer'
 import LoginContainer from '../containers/LoginContainer'
 import SignupContainer from '../containers/SignupContainer'
-import UserContainer from '../containers/UserContainer'
+import UserContainer from '../containers/DashboardContainer'
 import LogoutContainer from '../containers/LogoutContainer'
 
 const Routes = ({ session }) => {
