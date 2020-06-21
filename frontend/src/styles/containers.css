@@ -1,5 +1,6 @@
 .main {
   background-color: var(--light-bg-2);
+  height: 100%;
 }
 
 .main-container {
