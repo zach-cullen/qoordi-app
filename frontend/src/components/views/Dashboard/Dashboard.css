@@ -1,5 +1,4 @@
 #dashboard-grid {
-  margin-top: 1.5rem;
   min-height: 10rem;
   display: grid;
   grid-template-columns: 12rem 1fr;
