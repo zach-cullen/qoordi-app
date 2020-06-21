@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions/usersActions'
-import Dashboard from '../components/views/Dashboard/Dashboard'
+import Dashboard from '../components/views/Dashboard'
 
 class UserContainer extends Component {
 
@@ -13,10 +13,6 @@ class UserContainer extends Component {
   // returns user in entities corresponding to the session user, returns undefined if not found
   currentUser = () => {
     return this.props.entities.users.byId[this.props.session.user.id]
-  }
-
-  todayDate = () => {
-    
   }
 
   render() {
