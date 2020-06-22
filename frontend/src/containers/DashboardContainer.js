@@ -15,6 +15,7 @@ class DashboardContainer extends Component {
     return this.props.entities.users.byId[this.props.session.user.id]
   }
 
+  // transforms projects object normalized for redux to an array of objects
   mapUserProjects = () => {
     const projects = this.props.entities.projects
     return projects.allIds.map((id) => projects.byId[id])
