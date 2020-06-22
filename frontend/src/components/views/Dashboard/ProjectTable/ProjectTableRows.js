@@ -1,30 +1,14 @@
 import React from 'react'
 import ProjectTableRow from './ProjectTableRow'
 
-const ProjectTableRows = () => {
+const ProjectTableRows = (props) => {
 
-  const projects = [
-    {
-      id: 1,
-      title: "First Project",
-      date: "06/14/2020",
-      category: "Corporate",
-    },
-    {
-      id: 2,
-      title: "Second Project",
-      date: "07/28/2020",
-      category: "Wedding",
-    },
-    {
-      id: 3,
-      title: "Another One",
-      date: "08/05/2020",
-      category: "Music Video",
-    },
-  ]
+  const projects = props.projects
 
+
+  // renders a project tableRow for each project loaded, or a message if no projects exist
   const renderProjectRows = (projects) => {
+    console.log(projects)
     if (projects.length === 0) {
       return(
         <p>You don't have any projects yet.</p>
@@ -33,7 +17,12 @@ const ProjectTableRows = () => {
 
     return projects.map((project) => {
       return(
-        <ProjectTableRow key={project.id} project={project} />
+        <ProjectTableRow 
+          key={project.id} 
+          project={project} 
+          // pass the category object referenced by category_id in project object
+          category={props.categories.byId[project.category_id]} 
+        />
       )
     })
   }
