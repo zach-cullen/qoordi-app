@@ -1,6 +1,7 @@
 import './DashSideBar.css'
 import React from 'react'
 import NavSide from '../../NavSide'
+import CategoryFilters from '../CategoryFilters/CategoryFilters'
 
 const DashSideBar = () => {
 
@@ -10,7 +11,7 @@ const DashSideBar = () => {
         <NavSide />
         <div className="line-spacer-4"></div>
         <div id="project-filters">
-          Categories:
+          <CategoryFilters />
         </div>
       </div>
     </div>
