@@ -14,7 +14,6 @@ export const fetchUser = (user = {id: 0}) => {
   return (dispatch) => requestFromApi(`/users/${user.id}`)
     .then(res => res.json())
     .then(json => {
-      console.log("fetchUser response", json)
 
       // add only the user requested in fetch response to redux store
       dispatch({
