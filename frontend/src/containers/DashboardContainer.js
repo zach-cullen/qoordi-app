@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchUser } from '../actions/usersActions'
 import Dashboard from '../components/views/Dashboard'
 
-class UserContainer extends Component {
+class DashboardContainer extends Component {
 
   // after first first render asks api to load user data for the logged in user
   componentDidMount() {
@@ -15,10 +15,24 @@ class UserContainer extends Component {
     return this.props.entities.users.byId[this.props.session.user.id]
   }
 
+  mapUserCategories = () => {
+    const categories = this.props.entities.categories
+    return categories.allIds.map((id) => categories.byId[id])
+  }
+
+  mapUserProjects = () => {
+    const projects = this.props.entities.projects
+    return projects.allIds.map((id) => projects.byId[id])
+  }
+
   render() {
     return(
       <div className="main">
-        <Dashboard currentUser={this.currentUser()} />
+        <Dashboard 
+          currentUser={this.currentUser()}
+          categories={this.mapUserCategories()}
+          projects={this.mapUserProjects()}
+        />
       </div>
     )
   }
@@ -40,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps )(UserContainer)
+export default connect(mapStateToProps, mapDispatchToProps )(DashboardContainer)
