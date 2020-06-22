@@ -31,7 +31,8 @@ class Api::UsersController < Api::ApiController
     if @user
       render json: {
         user: @user.as_json(only: [:id, :given_name, :family_name]),
-        projects: [],
+        projects: @user.projects,
+        categories: @user.categories,
       }
     else 
       render json: invalid_request
