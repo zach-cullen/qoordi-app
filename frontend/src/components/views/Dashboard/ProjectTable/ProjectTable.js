@@ -3,11 +3,11 @@ import React from 'react'
 import ProjectTableHeaders from './ProjectTableHeaders'
 import ProjectTableRows from './ProjectTableRows'
 
-const ProjectTable = () => {
+const ProjectTable = (props) => {
   return (
     <div id="project-table">
       <ProjectTableHeaders />
-      <ProjectTableRows />
+      <ProjectTableRows projects={props.projects} categories={props.categories}/>
     </div>
   )
 }
