@@ -1,0 +1,26 @@
+#project-search {
+  grid-area: search;
+  width: 12rem;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  border: 1px solid var(--light-bg-3);
+  background-color: var(--light-bg-1);
+}
+
+#project-datalist {
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  height: 100%;
+  font-family: 'Source Sans pro', sans-serif;
+  font-size: var(--h5-size);
+  line-height: 100%;
+  color: var(--med-gray-1);
+}
+
+#project-search input::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
