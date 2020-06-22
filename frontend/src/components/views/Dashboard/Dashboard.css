@@ -4,3 +4,10 @@
   grid-template-columns: 16rem 1fr;
   grid-template-areas: "sidebar content"
 }
+
+#dash-content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+}
+

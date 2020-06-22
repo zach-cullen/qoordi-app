@@ -1,6 +1,7 @@
 import './Dashboard.css'
 import React from 'react'
 import DashSideBar from './DashSideBar/DashSideBar'
+import ProjectTable from './ProjectTable/ProjectTable'
 
 
 const Dashboard = (props) => {
@@ -9,7 +10,10 @@ const Dashboard = (props) => {
     <div id="dashboard">
       <DashSideBar />
       <div id="dash-content">
-          CONTENT
+          <div id="dash-content-tools">
+
+          </div>
+          <ProjectTable />
       </div>
     </div>
   )
