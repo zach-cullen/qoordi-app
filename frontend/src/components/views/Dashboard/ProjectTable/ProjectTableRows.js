@@ -8,7 +8,6 @@ const ProjectTableRows = (props) => {
 
   // renders a project tableRow for each project loaded, or a message if no projects exist
   const renderProjectRows = (projects) => {
-    console.log(projects)
     if (projects.length === 0) {
       return(
         <p>You don't have any projects yet.</p>
