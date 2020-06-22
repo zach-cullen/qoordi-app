@@ -12,17 +12,17 @@ const NavSide = () => {
       <div className="nav-side-links">
 
         <NavLink className="nav-side-link" exact to="/app">
-          <span class="nav-side-link-icon">
+          <span className="nav-side-link-icon">
             <MaterialIcon icon="calendar_today" size={20} color="inherit"/>
           </span>
-          <span class="nav-side-link-text">Dashboard</span>
+          <span className="nav-side-link-text">Dashboard</span>
         </NavLink>
 
         <NavLink className="nav-side-link" exact to="/logout">
-          <span class="nav-side-link-icon">
+          <span className="nav-side-link-icon">
             <MaterialIcon icon="exit_to_app" size={20} color="inherit"/>
           </span>
-          <span class="nav-side-link-text">Log out</span>
+          <span className="nav-side-link-text">Log out</span>
         </NavLink>
         
       </div>
