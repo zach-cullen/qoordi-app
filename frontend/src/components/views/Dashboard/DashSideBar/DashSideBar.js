@@ -8,7 +8,6 @@ const DashSideBar = () => {
     <div id="dash-sidebar">
       <div id="dash-sidebar-container">
         <NavSide />
-        SIDEBAR
       </div>
     </div>
   )

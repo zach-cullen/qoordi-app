@@ -1,0 +1,19 @@
+.nav-side-links {
+  margin-top: 1.5rem;
+}
+
+.nav-side-link {
+  display: block;
+  height: 1.2rem; 
+  line-height: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  color: var(--dark-text);
+}
+
+.nav-side-links .active {
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+
