@@ -7,3 +7,11 @@
   width: 100%;
   height: 3rem;
 }
+
+.line-spacer-4 {
+  width: 100%;
+  height: 1px;
+  margin-top: 2rem;
+  margin-bottom: 39px;
+  background-color: var(--light-bg-3);
+}
