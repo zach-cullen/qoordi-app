@@ -31,8 +31,8 @@ class Api::UsersController < Api::ApiController
     if @user
       render json: {
         user: @user.as_json(only: [:id, :given_name, :family_name]),
-        projects: @user.projects,
-        categories: @user.categories,
+        projects: @user.projects.as_json(except: [:created_at, :updated_at]),
+        categories: @user.categories.as_json(except: [:created_at, :updated_at]),
       }
     else 
       render json: invalid_request

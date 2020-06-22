@@ -15,11 +15,24 @@ export const fetchUser = (user = {id: 0}) => {
     .then(res => res.json())
     .then(json => {
       console.log("fetchUser response", json)
+
+      // add only the user requested in fetch response to redux store
       dispatch({
         type: 'ADD_USER',
         payload: {
           user: json.user
         }
       })
+
+      //dispatch an action for adding each project returned with user
+      json.projects.forEach((project) => {
+        console.log("project: ", project)
+      })
+
+      //dispatch an action for adding each category returned with user
+      json.categories.forEach((category) => {
+        console.log("category: ", category)
+      })
+
     })
 }
