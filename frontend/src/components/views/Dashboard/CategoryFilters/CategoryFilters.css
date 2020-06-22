@@ -1,9 +1,29 @@
 .category-filter-heading {
-  height: 1.5rem;
-  margin-bottom: 0.2rem;
+  height: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .category-filter {
+  cursor: pointer;
   height: 1.5rem;
-  margin-bottom: 0.2rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
 }
+
+.category-filter:hover {
+  background-color: var(--light-bg-2);
+}
+
+
+.category-filter-icon i {
+  display: inline-block;
+  margin-left: 0.25rem;
+  vertical-align: -50%;
+}
+
+.category-filter-text {
+  display: inline-block;
+  vertical-align: -25%;
+  margin-left: 1rem;
+}
+
