@@ -26,7 +26,12 @@ export const fetchUser = (user = {id: 0}) => {
 
       //dispatch an action for adding each project returned with user
       json.projects.forEach((project) => {
-        console.log("project: ", project)
+        dispatch({
+          type: 'ADD_PROJECT',
+          payload: {
+            project: project
+          }
+        })
       })
 
       //dispatch an action for adding each category returned with user
