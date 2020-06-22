@@ -36,7 +36,12 @@ export const fetchUser = (user = {id: 0}) => {
 
       //dispatch an action for adding each category returned with user
       json.categories.forEach((category) => {
-        console.log("category: ", category)
+        dispatch({
+          type: 'ADD_CATEGORY',
+          payload: {
+            category: category
+          }
+        })
       })
 
     })
