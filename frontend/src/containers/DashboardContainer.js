@@ -15,11 +15,6 @@ class DashboardContainer extends Component {
     return this.props.entities.users.byId[this.props.session.user.id]
   }
 
-  mapUserCategories = () => {
-    const categories = this.props.entities.categories
-    return categories.allIds.map((id) => categories.byId[id])
-  }
-
   mapUserProjects = () => {
     const projects = this.props.entities.projects
     return projects.allIds.map((id) => projects.byId[id])
@@ -30,7 +25,7 @@ class DashboardContainer extends Component {
       <div className="main">
         <Dashboard 
           currentUser={this.currentUser()}
-          categories={this.mapUserCategories()}
+          categories={this.props.entities.categories}
           projects={this.mapUserProjects()}
         />
       </div>
