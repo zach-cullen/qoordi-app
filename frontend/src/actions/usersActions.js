@@ -14,10 +14,11 @@ export const fetchUser = (user = {id: 0}) => {
   return (dispatch) => requestFromApi(`/users/${user.id}`)
     .then(res => res.json())
     .then(json => {
+      console.log("fetchUser response", json)
       dispatch({
         type: 'ADD_USER',
         payload: {
-          user: json
+          user: json.user
         }
       })
     })

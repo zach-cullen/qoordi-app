@@ -29,7 +29,10 @@ class Api::UsersController < Api::ApiController
   def show
     @user = User.find_by(id: params[:id])
     if @user
-      render json: @user.as_json(only: [:id, :given_name, :family_name])
+      render json: {
+        user: @user.as_json(only: [:id, :given_name, :family_name]),
+        projects: [],
+      }
     else 
       render json: invalid_request
     end
