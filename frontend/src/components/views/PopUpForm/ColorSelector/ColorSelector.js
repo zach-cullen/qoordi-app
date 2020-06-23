@@ -5,7 +5,6 @@ const ColorSelector = (props) => {
 
   const colorOptions = ["blue", "green", "yellow", "orange", "pink", "purple"]
 
-
   const handleColorClick = (event) => {
     const color = event.target.getAttribute("data-value")
     props.setColor(color)
@@ -31,14 +30,12 @@ const ColorSelector = (props) => {
     <div className="color-selector">
 
       <div className="selected-color-option" onClick={props.openColorOptions}>
-  <span className={`color-option-spot option-bg-${props.selectedColor}`}></span>{props.selectedColor}<span></span>
+        <span className={`color-option-spot option-bg-${props.selectedColor}`}></span>{props.selectedColor}<span></span>
       </div>
 
       { renderOptions() }
     </div>
   )
-
-
 }
 
 export default ColorSelector
