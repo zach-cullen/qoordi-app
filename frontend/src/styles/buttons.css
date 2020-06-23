@@ -29,8 +29,6 @@ button:focus {
   border: none;
   font-size: var(--h5-size);
   border-radius: var(--med-border-radius);
-  background-color: var(--brand-color-1);
-  color: var(--light-bg-1);
 }
 
 .form-btn:focus {
@@ -38,10 +36,12 @@ button:focus {
 }
 
 .form-btn-enabled {
-  opacity: 1.0;
+  background-color: var(--brand-color-1);
+  color: var(--light-bg-1);
 }
 
 .form-btn-disabled {
-  opacity: 0.3;
+  background-color: var(--brand-color-light);
+  color: var(--light-bg-1);
 }
 
