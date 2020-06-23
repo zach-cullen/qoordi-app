@@ -28,12 +28,20 @@ button:focus {
   margin: 0.5rem 0;
   border: none;
   font-size: var(--h5-size);
-  color: #fff;
   border-radius: var(--med-border-radius);
-  background: var(--brand-color-1);
 }
 
 .form-btn:focus {
   outline: none;
+}
+
+.form-btn-enabled {
+  background-color: var(--brand-color-1);
+  color: var(--light-bg-1);
+}
+
+.form-btn-disabled {
+  background-color: var(--med-gray-2);
+  color: var(--med-gray-1);
 }
 
