@@ -4,7 +4,7 @@
 
 .project-row-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr 5rem;
+  grid-template-columns: 1fr 1fr 7rem;
   box-sizing: border-box;
   padding: 0 1.5rem;
 } 
@@ -30,5 +30,13 @@
   border: solid 1px var(--brand-color-1);
   background-color: var(--light-bg-1);
   box-shadow: var(--lrg-brand-shadow);
+}
+
+.category-color-spot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+  margin-right: 1rem;
 }
 

@@ -4,6 +4,15 @@ const ProjectTableRow = (props) => {
 
   const categoryLoaded = !!props.category
 
+  const renderCategory = (category) => {
+    return(
+      <div>
+        <span className={`category-color-spot option-bg-${category.color}`}></span>
+        <span>{category.title}</span>
+      </div>
+    )
+  }
+
   return(
     <div className="project-row-columns project-table-row">
       <div>
@@ -13,7 +22,7 @@ const ProjectTableRow = (props) => {
         { props.project.date }
       </div>
       <div>
-        { categoryLoaded ? props.category.title : ""}
+        { categoryLoaded ? renderCategory(props.category) : ""}
       </div>
       <div>
       </div>
