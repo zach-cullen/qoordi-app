@@ -46,10 +46,12 @@ class NewCategoryForm extends Component {
     })
   }
 
+  // returns boolean whether user has filled in title. Used for rendering button and preventing submit of incomplete form
   checkForTitle = () => {
     return !!this.state.title
   }
 
+  // renders button with enabled / disabled css class dependent on checkForTitle function
   renderButtonMode = () => {
     return(
       <button className={`form-btn ${this.checkForTitle() ? "form-btn-enabled" : "form-btn-disabled"}`} type="submit">Save</button>
