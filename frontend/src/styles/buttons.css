@@ -1,3 +1,9 @@
+/* reset for browser default style  */
+button:focus {
+  outline: none;
+  border: none;
+}
+
 .med-btn {
   cursor: pointer;
   height: 1.5rem;
