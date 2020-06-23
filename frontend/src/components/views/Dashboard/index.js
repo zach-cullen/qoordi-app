@@ -10,13 +10,20 @@ const Dashboard = (props) => {
 
   return(
     <div id="dashboard">
-      <DashSideBar categories={props.categories}/>
+      <DashSideBar 
+        categories={props.categories}
+        setActivePopup={props.setActivePopup}
+      />
       <div id="dash-content">
           <div id="dash-content-tools">
             <ProjectSearch />
-            <NewProjectButton setActivePopup={props.setActivePopup}/>
+            <NewProjectButton 
+              setActivePopup={props.setActivePopup}
+            />
           </div>
-          <ProjectTable projects={props.projects} categories={props.categories}/>
+          <ProjectTable
+             projects={props.projects} 
+             categories={props.categories}/>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import './CategoryFilters.css'
 import React from 'react'
-import MaterialIcon from 'material-icons-react'
 import CategoryFilter from './CategoryFilter'
+import CategoryFilterNew from './CategoryFilterNew'
 
 const CategoryFilters = (props) => {
 
@@ -23,11 +23,9 @@ const CategoryFilters = (props) => {
 
       {renderCategoryFilters()}
 
-      <div className="category-filter">
-        <span className="category-filter-icon" style={{color: "gray"}}><MaterialIcon icon="add" size={20} color="inherit"/></span>
-        <span className="category-filter-text">New Category</span>
-        <span className="category-filter-options"></span>
-      </div>
+      <CategoryFilterNew 
+        setActivePopup={props.setActivePopup}
+      />
     </div>
   )
 }

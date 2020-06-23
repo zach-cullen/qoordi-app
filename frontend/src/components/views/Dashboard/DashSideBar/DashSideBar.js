@@ -11,7 +11,10 @@ const DashSideBar = (props) => {
         <NavSide />
         <div className="line-spacer-4"></div>
         <div id="project-filters">
-          <CategoryFilters categories={props.categories}/>
+          <CategoryFilters 
+            categories={props.categories}
+            setActivePopup={props.setActivePopup}
+          />
         </div>
       </div>
     </div>
