@@ -27,6 +27,14 @@
   --brand-color-1: #34ADF1;
   --brand-color-light: #B7DCF1;
 
+  --option-blue: #34ADF1;
+  --option-green: #79CB53;
+  --option-yellow: #F2BC30;
+  --option-orange: #FA945C;
+  --option-pink: #E774BF;
+  --option-purple: #AB7AE9;
+  --option-default: var(--med-gray-1);
+
   --lrg-border-radius: 0.5rem;
   --med-border-radius: 0.3rem;
   --sm-border-radius: 0.15rem;
