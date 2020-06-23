@@ -30,10 +30,10 @@ class DashboardContainer extends Component {
     return projects.allIds.map((id) => projects.byId[id])
   }
 
-  setActivePopup = (popupTitle) => {
+  setActivePopup = (popUpTitle) => {
     this.setState({
       ...this.state,
-      activePopup: popupTitle,
+      activePopup: popUpTitle,
     })
   } 
 
