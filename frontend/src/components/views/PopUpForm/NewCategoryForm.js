@@ -11,6 +11,8 @@ class NewCategoryForm extends Component {
     }
   }
 
+
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -44,6 +46,17 @@ class NewCategoryForm extends Component {
     })
   }
 
+  checkForTitle = () => {
+    return !!this.state.title
+  }
+
+  renderButtonMode = () => {
+    return(
+      <button className={`form-btn ${this.checkForTitle() ? "form-btn-enabled" : "form-btn-disabled"}`} type="submit">Save</button>
+    )
+  }
+
+
   render() {
     return(
       <div 
@@ -71,7 +84,7 @@ class NewCategoryForm extends Component {
             />
           </label>
           <br/>
-          <button className="form-btn" type="submit">Save</button>
+          { this.renderButtonMode() }
         </form>
       </div>
     )
