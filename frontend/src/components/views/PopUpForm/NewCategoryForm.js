@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createCategory } from '../../../actions/categoriesActions'
 import ColorSelector from './ColorSelector/ColorSelector'
 
 class NewCategoryForm extends Component {
@@ -11,8 +13,6 @@ class NewCategoryForm extends Component {
     }
   }
 
-
-
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -21,7 +21,13 @@ class NewCategoryForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log("submit form!")
+    if (this.checkForTitle() === true) {
+      const category = {
+        title: this.state.title,
+        color: this.state.color,
+      }
+      createCategory(category)
+    }
   }
 
   setColor = (color) => {
@@ -93,4 +99,6 @@ class NewCategoryForm extends Component {
   }
 }
 
-export default NewCategoryForm
+
+
+export default connect()(NewCategoryForm)
