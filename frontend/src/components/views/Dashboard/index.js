@@ -14,7 +14,7 @@ const Dashboard = (props) => {
       <div id="dash-content">
           <div id="dash-content-tools">
             <ProjectSearch />
-            <NewProjectButton />
+            <NewProjectButton setActivePopup={props.setActivePopup}/>
           </div>
           <ProjectTable projects={props.projects} categories={props.categories}/>
       </div>

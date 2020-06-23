@@ -5,6 +5,14 @@ import Dashboard from '../components/views/Dashboard'
 
 class DashboardContainer extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      activePopup: "",
+    }
+  }
+
+
   // after first first render asks api to load user data for the logged in user
   componentDidMount() {
     this.props.fetchUser(this.props.session.user)
@@ -21,13 +29,38 @@ class DashboardContainer extends Component {
     return projects.allIds.map((id) => projects.byId[id])
   }
 
+  renderPopupIfActive = (activePopup) => {
+    if (!!activePopup) {
+      return(
+        <div className="popup-container">
+          <div className="popup-form-lightbox">
+          </div>
+          <div className="large-form popup-form">
+          </div>
+        </div>
+      )
+    }
+  }
+
+  setActivePopup = (popupTitle) => {
+    this.setState({
+      ...this.state,
+      activePopup: popupTitle,
+    })
+  } 
+
+
+
   render() {
     return(
       <div className="main">
+        {this.renderPopupIfActive(this.state.activePopup)}
+
         <Dashboard 
           currentUser={this.currentUser()}
           categories={this.props.entities.categories}
           projects={this.mapUserProjects()}
+          setActivePopup={this.setActivePopup}
         />
       </div>
     )
