@@ -3,7 +3,7 @@ import React from 'react'
 import NavSide from '../../NavSide'
 import CategoryFilters from '../CategoryFilters/CategoryFilters'
 
-const DashSideBar = () => {
+const DashSideBar = (props) => {
 
   return(
     <div id="dash-sidebar">
@@ -11,7 +11,7 @@ const DashSideBar = () => {
         <NavSide />
         <div className="line-spacer-4"></div>
         <div id="project-filters">
-          <CategoryFilters />
+          <CategoryFilters categories={props.categories}/>
         </div>
       </div>
     </div>
