@@ -1,21 +1,17 @@
 import React, { Component } from 'react'
 
-class PopUpForm extends Component {
+const PopUpForm = (props) => {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      activePopup: props.activePopup,
-    }
-  }
+  const thisProps = props
 
   // resets activePopup when click outside of form and makes popup disappear
-  handleLightBoxClick = () => {
-    this.props.setActivePopup("")
+  const handleLightBoxClick = () => {
+    thisProps.setActivePopup("")
   }
 
-  renderFormFromProps = () => {
-    switch(this.state.activePopup) {
+  // displays the correct form using props
+  const renderFormFromProps = () => {
+    switch(thisProps.activePopup) {
       case "new-project":
         return(<p>New Project</p>)
 
@@ -24,20 +20,18 @@ class PopUpForm extends Component {
     }
   }
 
-  render() {
-    return(
-      <div className="popup-container">
-        <div 
-          className="popup-form-lightbox"
-          onClick={this.handleLightBoxClick}
-        >
-        </div>
-        <div className="large-form popup-form">
-          {this.renderFormFromProps()}
-        </div>
+  return(
+    <div className="popup-container">
+      <div 
+        className="popup-form-lightbox"
+        onClick={handleLightBoxClick}
+      >
       </div>
-    )
-  }
+      <div className="large-form popup-form">
+        {renderFormFromProps()}
+      </div>
+    </div>
+  )
 }
 
 export default PopUpForm
