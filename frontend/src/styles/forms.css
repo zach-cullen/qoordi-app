@@ -14,7 +14,7 @@
   box-sizing: border-box;
   border: solid 1px var(--light-gray-1);
   border-radius: var(--med-border-radius);
-  padding: 0 0.25rem;
+  padding: 0 0.5rem;
   font-size: var(--h5-size);
   background-color: var(--light-bg-2);
 }
@@ -32,8 +32,6 @@
   font-weight: var(--h2-weight);
 }
 
-
-
 .popup-form-lightbox {
   position: fixed;
   width: 100%;
@@ -46,12 +44,10 @@
 .popup-form {
   position: fixed;
   z-index: 2000;
-  top: 50%;
+  top: 5rem;
   left: 50%;
-  margin-left: -7.5rem;
-  margin-top: -10rem;
-  width: 15rem;
-  height: 20rem;
+  margin-left: -6.5rem;
+  width: 13rem;
 }
 
 
@@ -59,7 +55,6 @@
 .user-info-form {
   width: 13rem;
   margin: 0 auto;
-
 }
 
 

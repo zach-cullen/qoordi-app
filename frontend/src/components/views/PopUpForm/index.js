@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import NewCategoryForm from './NewCategoryForm'
 
 const PopUpForm = (props) => {
 
@@ -16,7 +17,12 @@ const PopUpForm = (props) => {
         return(<p>New Project</p>)
 
       case "new-category":
-        return(<p>New Category</p>)
+        return(
+          <NewCategoryForm />
+        )
+
+      default:
+        console.log("invalid form key")
     }
   }
 
@@ -27,9 +33,7 @@ const PopUpForm = (props) => {
         onClick={handleLightBoxClick}
       >
       </div>
-      <div className="large-form popup-form">
-        {renderFormFromProps()}
-      </div>
+      {renderFormFromProps()}
     </div>
   )
 }
