@@ -85,8 +85,8 @@ class SignupForm extends Component {
   // returns html form when render is called
   render(){
     return(
-      <div className="user-info-form">
-      <div className="user-info-form-header">Sign up</div>
+      <div className="large-form user-info-form">
+      <div className="large-form-header">Sign up</div>
       <form id="signup-form" onSubmit={this.handleSubmit}>
 
         <div className="name-inputs-container">

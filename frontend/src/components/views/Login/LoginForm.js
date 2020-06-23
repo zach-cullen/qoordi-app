@@ -23,8 +23,8 @@ class LoginForm extends Component {
 
   render(){
     return(
-      <div className="user-info-form">
-        <div className="user-info-form-header">Log in</div>
+      <div className="large-form user-info-form">
+        <div className="large-form-header">Log in</div>
         <form id="login-form" onSubmit={this.handleSubmit}>
           <label>
             <input 
