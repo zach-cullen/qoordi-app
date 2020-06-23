@@ -1,4 +1,4 @@
-class Api::UsersController < Api::ApiController
+class Api::CategoriesController < Api::ApiController
 
   def create
     byebug
