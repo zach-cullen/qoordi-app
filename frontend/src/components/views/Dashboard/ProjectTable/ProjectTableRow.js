@@ -1,16 +1,19 @@
 import React from 'react'
 
-const ProjectTableRow = ({ project }) => {
+const ProjectTableRow = (props) => {
+
+  const categoryLoaded = !!props.category
+
   return(
     <div className="project-row-columns project-table-row">
       <div>
-        { project.title }
+        { props.project.title }
       </div>
       <div>
-        { project.date }
+        { props.project.date }
       </div>
       <div>
-        { project.category }
+        { categoryLoaded ? props.category.title : ""}
       </div>
       <div>
       </div>
