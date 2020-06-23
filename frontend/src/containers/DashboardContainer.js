@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions/usersActions'
 import Dashboard from '../components/views/Dashboard'
+import PopUpForm from '../components/views/PopUpForm'
 
 class DashboardContainer extends Component {
 
@@ -29,25 +30,23 @@ class DashboardContainer extends Component {
     return projects.allIds.map((id) => projects.byId[id])
   }
 
-  renderPopupIfActive = (activePopup) => {
-    if (!!activePopup) {
-      return(
-        <div className="popup-container">
-          <div className="popup-form-lightbox">
-          </div>
-          <div className="large-form popup-form">
-          </div>
-        </div>
-      )
-    }
-  }
-
   setActivePopup = (popupTitle) => {
     this.setState({
       ...this.state,
       activePopup: popupTitle,
     })
   } 
+
+  renderPopupIfActive = (activePopup) => {
+    if (!!activePopup) {
+      return(
+        <PopUpForm 
+          activePopup={this.state.activePopup} 
+          setActivePopup={this.setActivePopup}
+        />
+      )
+    }
+  }
 
 
 
