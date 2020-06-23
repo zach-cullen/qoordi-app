@@ -1,0 +1,51 @@
+.option-bg-blue {
+  background-color: var(--option-blue);
+}
+
+.option-bg-green {
+  background-color: var(--option-green);
+}
+
+.option-bg-yellow {
+  background-color: var(--option-yellow);
+}
+
+.option-bg-orange {
+  background-color: var(--option-orange);
+}
+
+.option-bg-pink {
+  background-color: var(--option-pink);
+}
+
+.option-bg-purple {
+  background-color: var(--option-purple);
+}
+
+
+.option-font-blue {
+  color: var(--option-blue);
+}
+
+.option-font-green {
+  color: var(--option-green);
+}
+
+.option-font-yellow {
+  color: var(--option-yellow);
+}
+
+.option-font-orange {
+  color: var(--option-orange);
+}
+
+.option-font-pink {
+  color: var(--option-pink);
+}
+
+.option-font-purple {
+  color: var(--option-purple);
+}
+
+
+
