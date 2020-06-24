@@ -28,6 +28,7 @@ class NewCategoryForm extends Component {
       }
       this.props.createCategory(category)
     }
+    this.props.setActivePopup("")
   }
 
   setColor = (color) => {
