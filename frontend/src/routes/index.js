@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import HomeContainer from '../containers/HomeContainer'
 import LoginContainer from '../containers/LoginContainer'
 import SignupContainer from '../containers/SignupContainer'
-import UserContainer from '../containers/DashboardContainer'
+import DashboardContainer from '../containers/DashboardContainer'
 import LogoutContainer from '../containers/LogoutContainer'
 
 const Routes = ({ session }) => {
@@ -19,7 +19,7 @@ const Routes = ({ session }) => {
     <Switch>
       <Route exact path="/" component={ HomeContainer } />
 
-      <Route exact path="/app" component={ loggedIn() ? UserContainer : HomeContainer } />
+      <Route exact path="/app" component={ loggedIn() ? DashboardContainer : HomeContainer } />
 
       <Route exact path="/login">
         { loggedIn() ? <Redirect to="/app" /> : <LoginContainer /> }
@@ -33,7 +33,7 @@ const Routes = ({ session }) => {
         { loggedIn() ? <LogoutContainer /> : <Redirect to="/" />}
       </Route>
 
-      <Route path="/" component={ loggedIn() ? UserContainer : HomeContainer } />
+      <Route path="/" component={ loggedIn() ? DashboardContainer : HomeContainer } />
 
     </Switch>
   )
