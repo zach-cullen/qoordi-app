@@ -16,9 +16,17 @@ const postToApi = (params = {}, url = '') => {
 
 export const createCategory = (categoryData) => {
 
-  console.log("createCategory!", categoryData)
-
-  return postToApi(categoryData, "/categories")
+  return (dispatch) => postToApi(categoryData, "/categories")
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => {
+      if (json.category_created) {
+        console.log("json response is:", json)
+        dispatch({
+          type: 'ADD_CATEGORY', 
+          payload: {
+            category: json.category, 
+          }
+        })
+      }
+    })
 }
