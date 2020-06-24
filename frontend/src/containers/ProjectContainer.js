@@ -26,7 +26,7 @@ class ProjectContainer extends Component {
         return(
           <Redirect exact to="/" />
         )
-      default: 
+      case "complete":
         return(
           <div className="main">
             <h1>Project</h1>
