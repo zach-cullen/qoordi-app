@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchProject } from '../actions/projectsActions'
+import LoadingScreen from '../components/views/LoadingScreen'
 
 class ProjectContainer extends Component {
 
@@ -13,10 +14,24 @@ class ProjectContainer extends Component {
     // 
   }
 
+  renderView = () => {
+    if (this.props.projects.loading) {
+      return(
+        <LoadingScreen />
+      )
+    }
+
+    return(
+      <div className="main">
+        <h1>Project</h1>
+      </div>
+    )
+  }
+
   render() {
     return(
       <div className="main">
-        ProjectContainer
+        { this.renderView() }
       </div>
     )
   }
