@@ -3,22 +3,20 @@ import NewCategoryForm from './NewCategoryForm'
 
 const PopUpForm = (props) => {
 
-  const thisProps = props
-
   // resets activePopup when click outside of form and makes popup disappear
   const handleLightBoxClick = () => {
-    thisProps.setActivePopup("")
+    props.setActivePopup("")
   }
 
   // displays the correct form using props
   const renderFormFromProps = () => {
-    switch(thisProps.activePopup) {
+    switch(props.activePopup) {
       case "new-project":
         return(<p>New Project</p>)
 
       case "new-category":
         return(
-          <NewCategoryForm />
+          <NewCategoryForm setActivePopup={props.setActivePopup}/>
         )
 
       default:
