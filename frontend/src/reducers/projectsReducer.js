@@ -1,6 +1,6 @@
 
 const projectsReducer = (state = { 
-  loading: false,
+  loadStatus: "complete", // valid options: "complete", "failed", or "loading"
   byId: {},
   allIds: [],
 }, action) => {
@@ -10,7 +10,13 @@ const projectsReducer = (state = {
     case "LOADING_PROJECT":
       return {
         ...state,
-        loading: true
+        loadStatus: "loading",
+      }
+
+    case "FAILED_PROJECT_LOAD":
+      return {
+        ...state,
+        loadStatus: "failed",
       }
 
     case "ADD_PROJECT":
