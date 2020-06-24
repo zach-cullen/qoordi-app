@@ -100,6 +100,8 @@ class NewProjectForm extends Component {
             Date:
             <input 
               type="date" name="date" className="date-picker"
+              min={this.todayDateString}
+              max="2099-12-31"
               onChange={this.handleChange}
               value={this.state.date}>
             </input>
