@@ -19,6 +19,12 @@ const projectsReducer = (state = {
         loadStatus: "failed",
       }
 
+    case "LOAD_PROJECT_COMPLETE":
+      return {
+        ...state,
+        loadStatus: "complete",
+      }
+
     case "ADD_PROJECT":
       const projectData = action.payload.project
 
