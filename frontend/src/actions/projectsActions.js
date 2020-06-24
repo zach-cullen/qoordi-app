@@ -42,15 +42,23 @@ const requestFromApi = (url = '') => {
 export const fetchProject = (project = {id: 0}) => {
   return (dispatch) => {
 
-    dispatch({
-      type: 'LOADING_PROJECT',
-    })
+    dispatch({ type: 'LOADING_PROJECT' })
   
     requestFromApi(`/projects/${project.id}`)
     .then(res => res.json())
     .then(json => {
+      if (json.request_successful) {
+        console.log("json response: ", json)
+        dispatch({
+          type: 'ADD_PROJECT',
+          payload: {
+            project: json.project
+          }
+        })
 
-      console.log("json response: ", json)
+      } else {
+        dispatch({ type: 'FAILED_PROJECT_LOAD' })
+      }
 
     })
   }
