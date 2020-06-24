@@ -20,7 +20,6 @@ export const createCategory = (categoryData) => {
     .then(res => res.json())
     .then(json => {
       if (json.category_created) {
-        console.log("json response is:", json)
         dispatch({
           type: 'ADD_CATEGORY', 
           payload: {
