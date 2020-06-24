@@ -28,3 +28,24 @@ export const createProject = (projectData) => {
       }
     })
 }
+
+const requestFromApi = (url = '') => {
+  let payload = {
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
+    credentials: "include",
+    method: "GET",
+  }
+
+  return fetch(`${API_URL}${url}`, payload)
+}
+
+export const fetchProject = (project = {id: 0}) => {
+  // return (dispatch) => 
+  requestFromApi(`/projects/${project.id}`)
+    .then(res => res.json())
+    .then(json => {
+
+      console.log("json response: ", json)
+
+    })
+}
