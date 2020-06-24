@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchProject } from '../actions/projectsActions'
 import LoadingScreen from '../components/views/LoadingScreen'
+import { Redirect } from 'react-router-dom'
 
 class ProjectContainer extends Component {
 
@@ -15,17 +16,23 @@ class ProjectContainer extends Component {
   }
 
   renderView = () => {
-    if (this.props.projects.loading) {
-      return(
-        <LoadingScreen />
-      )
-    }
+    switch(this.props.projects.loadStatus) {
 
-    return(
-      <div className="main">
-        <h1>Project</h1>
-      </div>
-    )
+      case "loading":
+        return(
+          <LoadingScreen />
+        )
+      case "failed":
+        return(
+          <Redirect exact to="/" />
+        )
+      default: 
+        return(
+          <div className="main">
+            <h1>Project</h1>
+          </div>
+        )
+    }
   }
 
   render() {
