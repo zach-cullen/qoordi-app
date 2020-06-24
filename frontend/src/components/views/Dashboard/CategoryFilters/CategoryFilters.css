@@ -7,13 +7,12 @@
   cursor: pointer;
   height: 1.5rem;
   border-radius: 0.25rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .category-filter:hover {
   background-color: var(--light-bg-2);
 }
-
 
 .category-filter-icon i {
   display: inline-block;
