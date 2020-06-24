@@ -6,6 +6,7 @@ import LoginContainer from '../containers/LoginContainer'
 import SignupContainer from '../containers/SignupContainer'
 import DashboardContainer from '../containers/DashboardContainer'
 import LogoutContainer from '../containers/LogoutContainer'
+import ProjectContainer from '../containers/ProjectContainer'
 
 const Routes = ({ session }) => {
 
@@ -20,6 +21,8 @@ const Routes = ({ session }) => {
       <Route exact path="/" component={ HomeContainer } />
 
       <Route exact path="/app" component={ loggedIn() ? DashboardContainer : HomeContainer } />
+
+      <Route exact path="/projects/:id" component={ loggedIn() ? ProjectContainer : HomeContainer } />
 
       <Route exact path="/login">
         { loggedIn() ? <Redirect to="/app" /> : <LoginContainer /> }
