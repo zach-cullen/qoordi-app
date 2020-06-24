@@ -20,7 +20,7 @@ const Routes = ({ session }) => {
     <Switch>
       <Route exact path="/" component={ HomeContainer } />
 
-      <Route exact path="/app" component={ loggedIn() ? DashboardContainer : HomeContainer } />
+      <Route exact path="/app/:id" component={ loggedIn() ? DashboardContainer : HomeContainer } />
 
       <Route exact path="/projects/:id" component={ loggedIn() ? ProjectContainer : HomeContainer } />
 
