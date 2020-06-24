@@ -57,11 +57,13 @@
   margin: 0 auto;
 }
 
-
-
 .name-inputs-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0.8rem;
   width: 100%;
+}
+
+.date-picker {
+  font-family: var(--root-font);
 }
