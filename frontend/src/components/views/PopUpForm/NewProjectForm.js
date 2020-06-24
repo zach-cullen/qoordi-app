@@ -66,15 +66,15 @@ class NewProjectForm extends Component {
     })
   }
 
-  // returns boolean whether user has filled in title. Used for rendering button and preventing submit of incomplete form
-  checkForTitle = () => {
-    return !!this.state.title
+  // returns boolean whether user has filled in title and date. Used for rendering button and preventing submit of incomplete form
+  formDataIsValid = () => {
+    return !!this.state.title && !!this.state.date
   }
 
-  // renders button with enabled / disabled css class dependent on checkForTitle function
+  // renders button with enabled / disabled css class dependent on checkForTitleAndDate function
   renderButtonMode = () => {
     return(
-      <button className={`form-btn ${this.checkForTitle() ? "form-btn-enabled" : "form-btn-disabled"}`} type="submit">Save</button>
+      <button className={`form-btn ${this.formDataIsValid() ? "form-btn-enabled" : "form-btn-disabled"}`} type="submit">Save</button>
     )
   }
 
