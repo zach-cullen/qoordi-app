@@ -1,4 +1,5 @@
 import React from 'react'
+import NewProjectForm from './NewProjectForm'
 import NewCategoryForm from './NewCategoryForm'
 
 const PopUpForm = (props) => {
@@ -12,11 +13,13 @@ const PopUpForm = (props) => {
   const renderFormFromProps = () => {
     switch(props.activePopup) {
       case "new-project":
-        return(<p>New Project</p>)
+        return(
+          <NewProjectForm setActivePopup={props.setActivePopup} />
+        )
 
       case "new-category":
         return(
-          <NewCategoryForm setActivePopup={props.setActivePopup}/>
+          <NewCategoryForm setActivePopup={props.setActivePopup} />
         )
 
       default:
