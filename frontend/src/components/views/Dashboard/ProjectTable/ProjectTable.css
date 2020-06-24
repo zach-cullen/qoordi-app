@@ -4,7 +4,7 @@
 
 .project-row-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr 7rem;
+  grid-template-columns: minmax(8rem, 1fr) minmax(6rem, 1fr) 6rem;
   box-sizing: border-box;
   padding: 0 1.5rem;
 } 
