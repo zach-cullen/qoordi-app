@@ -1,10 +1,18 @@
 
 const projectsReducer = (state = { 
+  loading: false,
   byId: {},
-  allIds: []
+  allIds: [],
 }, action) => {
 
   switch(action.type) {
+
+    case "LOADING_PROJECT":
+      return {
+        ...state,
+        loading: true
+      }
+
     case "ADD_PROJECT":
       const projectData = action.payload.project
 

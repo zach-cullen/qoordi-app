@@ -40,12 +40,18 @@ const requestFromApi = (url = '') => {
 }
 
 export const fetchProject = (project = {id: 0}) => {
-  // return (dispatch) => 
-  requestFromApi(`/projects/${project.id}`)
+  return (dispatch) => {
+
+    dispatch({
+      type: 'LOADING_PROJECT',
+    })
+  
+    requestFromApi(`/projects/${project.id}`)
     .then(res => res.json())
     .then(json => {
 
       console.log("json response: ", json)
 
     })
+  }
 }
