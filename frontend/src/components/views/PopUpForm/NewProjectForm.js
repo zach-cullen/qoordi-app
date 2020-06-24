@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import CategorySelector from './CategorySelector/CategorySelector'
 import { connect } from 'react-redux'
+import { createProject } from '../../../actions/projectsActions'
+import CategorySelector from './CategorySelector/CategorySelector'
+
 
 class NewProjectForm extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class NewProjectForm extends Component {
         date: this.state.date,
         category_id: this.state.category.id,
       }
-      console.log("save project, ", project)
+      this.props.createProject(project)
     }
     
   }
@@ -141,4 +143,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(NewProjectForm)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createProject: (project) => {
+      dispatch(createProject(project))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewProjectForm)
