@@ -26,7 +26,7 @@ class NewCategoryForm extends Component {
         title: this.state.title,
         color: this.state.color,
       }
-      createCategory(category)
+      this.props.createCategory(category)
     }
   }
 
@@ -99,6 +99,13 @@ class NewCategoryForm extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createCategory: (category) => {
+      dispatch(createCategory(category))
+    }
+  }
+}
 
 
-export default connect()(NewCategoryForm)
+export default connect(null, mapDispatchToProps)(NewCategoryForm)
