@@ -27,7 +27,7 @@ class NewProjectForm extends Component {
       }
       this.props.createProject(project)
     }
-    
+    this.props.setActivePopup("")
   }
 
   // sets state attributes using event target attributes when called
