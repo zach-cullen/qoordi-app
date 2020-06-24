@@ -1,22 +1,69 @@
 import React, { Component } from 'react'
+import CategorySelector from './CategorySelector/CategorySelector'
+import { connect } from 'react-redux'
 
 class NewProjectForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       title: "",
+      date: this.todayDateString(),
+      category: this.mapCategories()[0],
+      showCategoryOptions: false,
     }
   }
 
+
+  // dispatches action using form data stored in this state
+  handleSubmit = (event) => {
+    event.preventDefault()
+    console.log("submit new project!")
+    
+  }
+
+  // sets state attributes using event target attributes when called
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    console.log("submit new project!")
+  // returns today's date in ISO string format 
+  todayDateString = () => {
+    const date = new Date()
+    const todayFormatted = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (date.getMonth()+1) : (date.getMonth()+1)}-${date.getDate()}`
+    return todayFormatted
+  }
+
+  // hides ColorSelector options only if click target is not the selected category option div (which opens category options)
+  closeCategoryOptions = (event) => {
+    if (!event.target.classList.contains("selected-category-option")) {
+      this.setState({ showCategoryOptions: false})
+    }
+  }
+
+  // alters state passed as prop to ColorSelector so that it reveals color options
+  openCategoryOptions = () => {
+    this.setState({ 
+      ...this.state,
+      showCategoryOptions: true,
+    })
+  }
+
+  // creates an array of categories from props categories object
+  mapCategories = () => {
+    return this.props.categories.allIds.map((id) => {
+      return this.props.categories.byId[id]
+    })
+  }
+
+  // receives a id and sets state category to the category with that id
+  setCategory = (id) => {
+    const category = this.props.categories.byId[id]
+    this.setState({
+      ...this.state,
+      category: category,
+    })
   }
 
   // returns boolean whether user has filled in title. Used for rendering button and preventing submit of incomplete form
@@ -36,11 +83,12 @@ class NewProjectForm extends Component {
     return(
       <div 
         className="large-form popup-form"
+        onClick={this.closeCategoryOptions}
       >
         <div className="large-form-header">New Project</div>
         <form id="new-project-form" onSubmit={this.handleSubmit}>
           <label>
-            Name:
+            Title:
             <input 
               type="text" name="title"
               onChange={this.handleChange} 
@@ -48,6 +96,28 @@ class NewProjectForm extends Component {
             />
           </label>
           <br/>
+          <label>
+            Date:
+            <input 
+              type="date" name="date" className="date-picker"
+              onChange={this.handleChange}
+              value={this.state.date}>
+            </input>
+          </label>
+          <br/>
+
+          <label>
+            Category:
+            <CategorySelector 
+              selectedCategory={this.state.category}
+              categories={this.mapCategories()}
+              showCategoryOptions={this.state.showCategoryOptions}
+              openCategoryOptions={this.openCategoryOptions}
+              setCategory={this.setCategory}
+            />
+          </label>
+          <br />
+
           { this.renderButtonMode() }
         </form>
       </div>
@@ -55,4 +125,11 @@ class NewProjectForm extends Component {
   }
 }
 
-export default NewProjectForm
+
+const mapStateToProps = (state) => {
+  return {
+    categories: state.entities.categories
+  }
+}
+
+export default connect(mapStateToProps)(NewProjectForm)
