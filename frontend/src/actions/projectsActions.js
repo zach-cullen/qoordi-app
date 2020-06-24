@@ -55,6 +55,7 @@ export const fetchProject = (project = {id: 0}) => {
             project: json.project
           }
         })
+        dispatch({ type: 'LOAD_PROJECT_COMPLETE'})
 
       } else {
         dispatch({ type: 'FAILED_PROJECT_LOAD' })
