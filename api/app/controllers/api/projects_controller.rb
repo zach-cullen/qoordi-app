@@ -1,5 +1,20 @@
 class Api::ProjectsController < Api::ApiController
 
+  def show
+    @project = @current_user.projects.find_by(id: params[:id])
+    if @project
+      render json: {
+        valid_request: true,
+        project: @project.as_json
+      }
+    else
+      render json: {
+        valid_request: false
+      }
+    end
+
+  end
+
   def create
     @project = @current_user.projects.build(
       title: project_params[:title], 
