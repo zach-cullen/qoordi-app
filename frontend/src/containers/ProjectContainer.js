@@ -8,11 +8,8 @@ class ProjectContainer extends Component {
 
   componentDidMount() {
     const projectId = this.props.match.params.id
+    // request project data for project using url params, depending on status of subsequent actions the view this component renders will change
     this.props.fetchProject({ id: projectId })
-    // set state of this component to loading: true
-    // display loading screen until redux store contains project with id that matches
-    // then => dispatch action getProject that fetches project data from api and adds to redux store
-    // 
   }
 
   renderView = () => {
