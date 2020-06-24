@@ -17,7 +17,14 @@ class NewProjectForm extends Component {
   // dispatches action using form data stored in this state
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log("submit new project!")
+    if (this.formDataIsValid) {
+      const project = {
+        title: this.state.title,
+        date: this.state.date,
+        category_id: this.state.category.id,
+      }
+      console.log("save project, ", project)
+    }
     
   }
 
@@ -100,7 +107,7 @@ class NewProjectForm extends Component {
             Date:
             <input 
               type="date" name="date" className="date-picker"
-              min={this.todayDateString}
+              min={this.todayDateString()}
               max="2099-12-31"
               onChange={this.handleChange}
               value={this.state.date}>
