@@ -1,13 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { ReactComponent as Logo } from '../../../logo/qoordi-logo.svg'
+import NavSideHome from '../../NavSide/NavSideHome'
 
 const ProjectSideBar = () => {
 
   return (
     <div id="project-view-sidebar">
       <div id="project-view-sidebar-container">
-        <NavLink className="nav-side-home" exact to="/"><Logo /></NavLink>
+        <NavSideHome />
       </div>
     </div>
   )
