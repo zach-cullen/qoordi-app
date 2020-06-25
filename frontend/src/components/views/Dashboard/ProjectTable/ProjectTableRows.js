@@ -1,5 +1,6 @@
 import React from 'react'
 import ProjectTableRow from './ProjectTableRow'
+import { Link } from 'react-router-dom'
 
 const ProjectTableRows = (props) => {
 
@@ -16,12 +17,14 @@ const ProjectTableRows = (props) => {
 
     return projects.map((project) => {
       return(
-        <ProjectTableRow 
-          key={project.id} 
-          project={project} 
-          // pass the category object referenced by category_id in project object
-          category={props.categories.byId[project.category_id]} 
-        />
+        <Link exact to={`/projects/${project.id}`}>
+          <ProjectTableRow 
+            key={project.id} 
+            project={project} 
+            // pass the category object referenced by category_id in project object
+            category={props.categories.byId[project.category_id]} 
+          />
+        </Link>
       )
     })
   }
