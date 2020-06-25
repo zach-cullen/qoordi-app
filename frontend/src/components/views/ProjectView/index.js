@@ -6,7 +6,7 @@ const ProjectView = (props) => {
 
   return(
     <div id="project-view">
-      <ProjectSideBar />
+      <ProjectSideBar project={props.project}/>
       <div id="project-view-content">
       </div>
     </div>
