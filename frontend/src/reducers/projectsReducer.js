@@ -1,6 +1,6 @@
 
 const projectsReducer = (state = { 
-  loadStatus: "complete", // valid options: "complete", "failed", or "loading"
+  loadStatus: "loading", // valid options: "complete", "failed", or "loading"
   byId: {},
   allIds: [],
 }, action) => {
