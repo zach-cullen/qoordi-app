@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { fetchProject } from '../actions/projectsActions'
 import LoadingScreen from '../components/views/LoadingScreen'
-import { Redirect } from 'react-router-dom'
+import ProjectView from '../components/views/ProjectView'
+
 
 class ProjectContainer extends Component {
 
@@ -24,10 +26,14 @@ class ProjectContainer extends Component {
           <Redirect exact to="/" />
         )
       case "complete":
+        // use url match prop to pull the project that was just loaded and pass to view
+        const thisProject = this.props.projects.byId[this.props.match.params.id]
         return(
-          <div className="main">
-            <h1>Project</h1>
-          </div>
+          <ProjectView project={thisProject} />
+        )
+      default:
+        return(
+          <Redirect exact to="/" />
         )
     }
   }
