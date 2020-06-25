@@ -1,0 +1,27 @@
+#project-view {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  grid-template-areas: "sidebar content"
+}
+
+#project-view-sidebar {
+  background-color: var(--light-bg-1);
+}
+
+#project-view-sidebar-container {
+  width: 12rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+
+#project-view-content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+
