@@ -1,14 +1,12 @@
 import './ProjectView.css'
 import React from 'react'
+import ProjectSideBar from './ProjectSideBar/ProjectSideBar'
 
 const ProjectView = (props) => {
 
   return(
     <div id="project-view">
-      <div id="project-view-sidebar">
-        <div id="project-view-sidebar-container">
-        </div>
-      </div>
+      <ProjectSideBar />
       <div id="project-view-content">
       </div>
     </div>
