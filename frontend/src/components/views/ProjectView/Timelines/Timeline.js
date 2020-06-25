@@ -1,4 +1,5 @@
 import React from 'react'
+import TimeBlock from './TimeBlock'
 
 const Timeline = () => {
 
@@ -23,11 +24,19 @@ const Timeline = () => {
     allIds: [1, 2, 3]
   }
 
+  const mapTimeBlocks = (timeBlocks) => {
+    return timeBlocks.allIds.map((i) => {
+      return(
+        <TimeBlock timeBlock={timeBlocks.byId[i]} />
+      )
+    })
+  }
+
 
 
   return(
     <div className="timeline">
-
+      { mapTimeBlocks(timeBlocks) }
     </div>
   )
 }
