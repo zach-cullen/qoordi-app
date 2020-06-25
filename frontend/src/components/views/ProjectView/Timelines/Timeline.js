@@ -9,16 +9,19 @@ const Timeline = () => {
         id: 1,
         start: 950,
         end: 1050,
+        color: "pink"
       },
       2: {
         id: 2,
         start: 1100,
         end: 1150,
+        color: "blue",
       },
       3: {
         id: 3,
         start: 1300,
         end: 1450,
+        color: "green",
       }
     },
     allIds: [1, 2, 3]

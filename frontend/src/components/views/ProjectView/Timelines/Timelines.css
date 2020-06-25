@@ -10,16 +10,12 @@
 
 .timeline {
   cursor: pointer;
-
+  position: relative;
 }
 
 .time-block {
+  position: absolute;
   width: 100%;
   height: 2rem;
-  background-color: orange;
   border-radius: var(--med-border-radius);
-}
-
-.time-block:hover {
-  background-color: yellow;
 }
