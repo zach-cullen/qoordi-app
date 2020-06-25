@@ -37,19 +37,9 @@
 }
 
 .hr-label {
-  height: 20px;
+  height: 1rem;
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 3rem;
   font-size: var(--h6-size);
 }
-
-#timelines {
-  margin-top: 3rem;
-  grid-area: timelines;
-  background-image: linear-gradient(0deg, var(--light-bg-2) 49.38%, var(--med-gray-2) 49.38%, var(--med-gray-2) 50%, var(--light-bg-2)  50%, var(--light-bg-2)  99.38%, var(--med-gray-2) 99.38%, var(--med-gray-2) 100%);
-  background-size: 160.00px 160.00px;
-}
-
-
-
 
