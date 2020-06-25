@@ -27,7 +27,7 @@ const Timeline = () => {
   const mapTimeBlocks = (timeBlocks) => {
     return timeBlocks.allIds.map((i) => {
       return(
-        <TimeBlock timeBlock={timeBlocks.byId[i]} />
+        <TimeBlock key={i} timeBlock={timeBlocks.byId[i]} />
       )
     })
   }
