@@ -1,16 +1,19 @@
 import './ProjectView.css'
 import React from 'react'
 import ProjectSideBar from './ProjectSideBar/ProjectSideBar'
+import HourLabels from './HourLabels/HourLabels'
 
 const ProjectView = (props) => {
+
+  const startTime = 900
+  const endTime = 2300
 
   return(
     <div id="project-view">
       <ProjectSideBar project={props.project}/>
       <div id="project-view-content">
         <div id="planner">
-          <div id="hr-labels">
-          </div>
+          <HourLabels startTime={startTime} endTime={endTime} />
           <div id="timelines">
           </div>
         </div>
