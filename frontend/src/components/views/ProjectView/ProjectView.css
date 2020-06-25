@@ -19,9 +19,29 @@
 #project-view-content {
   margin: 0 auto;
   width: 100%;
-  max-width: 1000px;
   box-sizing: border-box;
-  padding: 0 2rem;
+  padding: 0 1rem;
+  overflow: scroll;
 }
+
+#planner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  grid-template-areas: "labels timelines";
+}
+
+#hr-labels {
+  grid-area: labels;
+}
+
+#timelines {
+  grid-area: timelines;
+  height: 50rem;
+  background-image: linear-gradient(0deg, var(--med-gray-2) 0.63%, var(--light-bg-2) 0.63%, var(--light-bg-2) 50%, var(--med-gray-2) 50%, var(--med-gray-2) 50.63%, var(--light-bg-2) 50.63%, var(--light-bg-2)100%);
+  background-size: 160.00px 160.00px;
+}
+
+
 
 

@@ -8,6 +8,12 @@ const ProjectView = (props) => {
     <div id="project-view">
       <ProjectSideBar project={props.project}/>
       <div id="project-view-content">
+        <div id="planner">
+          <div id="hr-labels">
+          </div>
+          <div id="timelines">
+          </div>
+        </div>
       </div>
     </div>
   )
