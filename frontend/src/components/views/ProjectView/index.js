@@ -2,7 +2,7 @@ import './ProjectView.css'
 import React from 'react'
 import ProjectSideBar from './ProjectSideBar/ProjectSideBar'
 import HourLabels from './HourLabels/HourLabels'
-import Timelines from './Timelines'
+import Timelines from './Timelines/Timelines'
 
 const ProjectView = (props) => {
 
