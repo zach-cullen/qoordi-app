@@ -51,6 +51,7 @@ class Timeline extends Component {
     })
   }
 
+  // moves child element according to mouse movement if it has been selected
   handleMouseMove = (event) => {
     let block = this.state.controlBlock.block
 
@@ -71,6 +72,7 @@ class Timeline extends Component {
     }
   }
 
+  // stops handleMouseMove from controlling a block by resetting to inital state value
   resetControlBlock = () => {
     this.setState({
       controlBlock: {
@@ -81,7 +83,7 @@ class Timeline extends Component {
     })
   }
 
-
+  // maps TimeBlock components from data
   mapTimeBlocks = (timeBlocks) => {
     return timeBlocks.allIds.map((i) => {
       return(
