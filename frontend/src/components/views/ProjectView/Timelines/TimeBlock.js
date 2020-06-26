@@ -7,6 +7,7 @@ class Timeblock extends Component {
     this.state = {
       topPosition: this.initTopPosition(),
       blockHeight: this.initBlockHeight(),
+      isMoving: false,
     }
   }
 
@@ -41,10 +42,14 @@ class Timeblock extends Component {
     this.props.setControlBlock(this, event)
   }
 
+  addClassIfMoving = () => {
+    return this.state.isMoving ? "moving-block" : ""
+  }
+
   render() {
     return(
       <div 
-        className="time-block" 
+        className={`time-block ${this.addClassIfMoving()}`} 
         style={this.injectStyles()}
         onClick={this.handleClick}
         onMouseDown={this.handleMouseDown}
