@@ -1,7 +1,7 @@
 import React from 'react'
 import TimeBlock from './TimeBlock'
 
-const Timeline = () => {
+const Timeline = (props) => {
 
   const timeBlocks = {
     byId: {
@@ -21,7 +21,7 @@ const Timeline = () => {
         id: 3,
         start: 1300,
         end: 1450,
-        color: "green",
+        color: "orange",
       }
     },
     allIds: [1, 2, 3]
@@ -30,7 +30,11 @@ const Timeline = () => {
   const mapTimeBlocks = (timeBlocks) => {
     return timeBlocks.allIds.map((i) => {
       return(
-        <TimeBlock key={i} timeBlock={timeBlocks.byId[i]} />
+        <TimeBlock key={i} 
+          projectStart={props.startTime}
+          projectEnd={props.endTime}
+          timeBlock={timeBlocks.byId[i]} 
+        />
       )
     })
   }
