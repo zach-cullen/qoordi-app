@@ -64,11 +64,19 @@ class Timeline extends Component {
       const verticalDistance = mouseEnd - mouseStart
       const increments = Math.floor(verticalDistance / 20)
       const endTop = blockStart + increments * 20
+
+      // calculate distance in px from top of timeline to last hour
+      const timelineEnd = (this.props.endTime - this.props.startTime) * 0.8
+
+      // calculate potential bottom offset of timeblock at end of movement
+      const blockBottom = endTop + block.state.blockHeight
       
-      // sets state of child component, changing the block's position on screen
-      block.setState({
-        topPosition: endTop,
-      })
+      // sets state of child component, changing the block's position on screen if new position is in bounds
+      if (endTop >= 0 && timelineEnd >= blockBottom) {
+        block.setState({
+          topPosition: endTop,
+        })
+      }
     }
   }
 
