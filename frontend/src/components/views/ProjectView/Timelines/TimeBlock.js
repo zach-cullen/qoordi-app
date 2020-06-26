@@ -6,11 +6,6 @@ class Timeblock extends Component {
     super(props)
     this.state = {
       topPosition: this.initTopPosition(),
-      // mouse: {
-      //   mouseIsDown: false,
-      //   mouseStart: null,
-      //   blockStart: null,
-      // }
     }
   }
 
@@ -39,66 +34,17 @@ class Timeblock extends Component {
     }
   }
 
-  // handleMouseDown = (event) => {
-  //   this.setState({
-  //     mouse: {
-  //       ...this.state.mouse,
-  //       mouseIsDown: true,
-  //       mouseStart: event.clientY,
-  //       blockStart: event.target.offsetTop
-  //     }
-  //   })
-  // }
-
-  // handleMouseMove = (event) => {
-  //   if (this.state.mouse.mouseIsDown) {
-  //     const blockStart = this.state.mouse.blockStart
-  //     const mouseStart = this.state.mouse.mouseStart
-  //     const mouseEnd = event.clientY
-  //     const verticalDistance = mouseEnd - mouseStart
-
-  //     // calculate distance moved as multiple of 15 to move by chunks
-  //     let quarterHours = Math.floor(verticalDistance / 20) + 1
-  //     let endTop = blockStart + quarterHours * 20
-      
-  //     // move by multiple of 15 within bounds of parent element
-  //     if (Math.abs(verticalDistance) > 0) {
-  //       console.log(quarterHours)
-  //       this.setState({
-  //         topPosition: endTop,
-  //       })
-  //     } 
-  //   }
-  // }
-
-
-  // handleMouseUp = (event) => {
-  //   this.resetMouseAttributes()
-  // }
-
-  // handleMouseOut = (event) => {
-  //   this.resetMouseAttributes()
-  // }
-
-  // resetMouseAttributes = () => {
-  //   this.setState({
-  //     mouse: {
-  //       ...this.state.mouse,
-  //       mouseIsDown: false,
-  //       mouseStart: null,
-  //     }
-  //   })
-  // }
+  handleMouseDown = (event) => {
+    this.props.setControlBlock(this, event)
+  }
 
   render() {
     return(
       <div 
         className="time-block" 
         style={this.injectStyles()}
-        // onMouseDown={this.handleMouseDown}
-        // onMouseUp={this.handleMouseUp}
-        // onMouseMove={this.handleMouseMove}
-        // onMouseOut={this.handleMouseOut}
+        onClick={this.handleClick}
+        onMouseDown={this.handleMouseDown}
       >
       </div>
     )
