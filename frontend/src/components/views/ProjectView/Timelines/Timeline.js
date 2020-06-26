@@ -70,6 +70,11 @@ class Timeline extends Component {
 
       // calculate potential bottom offset of timeblock at end of movement
       const blockBottom = endTop + block.state.blockHeight
+
+      // set state of block to isMoving true so block can apply css class
+      block.setState({
+        isMoving: true,
+      })
       
       // sets state of child component, changing the block's position on screen if new position is in bounds
       if (endTop >= 0 && timelineEnd >= blockBottom) {
@@ -82,13 +87,23 @@ class Timeline extends Component {
 
   // stops handleMouseMove from controlling a block by resetting to inital state value
   resetControlBlock = () => {
-    this.setState({
-      controlBlock: {
-        block: null,
-        initialBlockPosition: null,
-        initialMousePosition: null,
-      }
-    })
+
+    const block = this.state.controlBlock.block
+
+    if (!!block) {
+      // set state of block to isMoving false so block can remove css class
+      block.setState({
+        isMoving: false,
+      })
+
+      this.setState({
+        controlBlock: {
+          block: null,
+          initialBlockPosition: null,
+          initialMousePosition: null,
+        }
+      })
+    }
   }
 
   // maps TimeBlock components from data
