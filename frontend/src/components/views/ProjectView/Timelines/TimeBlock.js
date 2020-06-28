@@ -49,6 +49,7 @@ class Timeblock extends Component {
     this.props.setControlBlock(this, event)
   }
 
+  // returns name of css class containing styles for moving block if state of block is that it is moving
   addClassIfMoving = () => {
     return this.state.isMoving ? "moving-block" : ""
   }
