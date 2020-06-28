@@ -43,9 +43,12 @@ class Timeline extends Component {
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
   setControlBlock = (block, event) => {
 
+    const blockAction = event.target.classList.contains("time-block-resize-handle") ? "resize" : "move"
+
     this.setState({
       controlBlock: {
         block: block,
+        blockAction: blockAction,
         initialBlockPosition: block.state.topPosition,
         initialMousePosition: event.clientY,
         initialBlockHeight: block.state.blockHeight,
