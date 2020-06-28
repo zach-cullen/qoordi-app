@@ -9,6 +9,7 @@ class Timeblock extends Component {
       topPosition: this.initTopPosition(),
       blockHeight: this.initBlockHeight(),
       isMoving: false,
+      zIndex: this.initZIndex(),
     }
   }
 
@@ -27,6 +28,10 @@ class Timeblock extends Component {
     return this.scaleHrsToPx(this.props.timeBlock.end - this.props.timeBlock.start)
   }
 
+  // multiply topPosition by 100 to calculate initial z-index setting. This will make sure blocks lower in the screen are not overlapped by those higher
+  initZIndex = () => {
+    return this.initTopPosition() * 100
+  }
 
   // returns style object for injection as inline styles
   injectStyles = () => {
@@ -34,6 +39,7 @@ class Timeblock extends Component {
       top: `${this.state.topPosition}px`,
       height: `${this.state.blockHeight}px`,
       backgroundColor: `var(--option-${this.props.timeBlock.color})`,
+      zIndex: `${this.state.zIndex}`
     }
   }
 
