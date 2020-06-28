@@ -1,0 +1,2 @@
+class ProjectTimeline < ApplicationRecord
+end
