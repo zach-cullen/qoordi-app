@@ -87,6 +87,7 @@ class Timeline extends Component {
         if (endTop >= 0 && timelineEnd >= blockBottom) {
           block.setState({
             topPosition: endTop,
+            zIndex: endTop * 100,
           })
         }
       } 
