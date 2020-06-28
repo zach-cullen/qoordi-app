@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { fetchProject } from '../actions/projectsActions'
 import LoadingScreen from '../components/views/LoadingScreen'
 import ProjectView from '../components/views/ProjectView'
+import { selectProjectTimelines } from  '../reducers/timelinesFilters'
 
 
 class ProjectContainer extends Component {
@@ -28,8 +29,10 @@ class ProjectContainer extends Component {
       case "complete":
         // use url match prop to pull the project that was just loaded and pass to view
         const thisProject = this.props.projects.byId[this.props.match.params.id]
+        const projectTimelines = selectProjectTimelines(this.props.timelines, thisProject.id)
+
         return(
-          <ProjectView project={thisProject} />
+          <ProjectView project={thisProject} timelines={projectTimelines} />
         )
       default:
         return(
@@ -49,7 +52,8 @@ class ProjectContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    projects: state.entities.projects
+    projects: state.entities.projects,
+    timelines: state.entities.timelines,
   }
 }
 
