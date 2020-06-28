@@ -1,3 +1,4 @@
+import './TimeBlock.css'
 import React, { Component } from 'react'
 
 class Timeblock extends Component {
