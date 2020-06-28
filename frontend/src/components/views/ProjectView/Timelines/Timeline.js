@@ -89,7 +89,24 @@ class Timeline extends Component {
             topPosition: endTop,
           })
         }
-      }      
+      } 
+      
+      // sets state of child component, changing the height of the block if new height does not place block out of bounds
+      if (this.state.controlBlock.blockAction === "resize") {
+        // calculate new block height from initial blox height + movement increments * 20
+        const endBlockHeight = blockHeight + increments * 20
+        // make sure that new block height is not less than 20
+        if (endBlockHeight >= 20) {
+          // calculate ending block bottom from initial blockTop + new block height
+          const newBlockBottom = blockStart + endBlockHeight
+          // if new block bottom is in bounds, set state of child component so that it changes the height of the block
+          if (newBlockBottom <= timelineEnd) {
+            block.setState({
+              blockHeight: endBlockHeight,
+            })
+          }
+        }
+      }
 
     }
   }
