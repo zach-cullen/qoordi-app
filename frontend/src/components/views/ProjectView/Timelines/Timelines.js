@@ -3,10 +3,18 @@ import React from 'react'
 import Timeline from './Timeline'
 
 const Timelines = (props) => {
+
+  const renderTimelines = (props) => {
+    return props.timelines.map((timeline) => {
+      return(
+        <Timeline key={timeline.id} startTime={props.startTime} endTime={props.endTime} />
+      )
+    })
+  }
+
   return(
     <div id="timelines">
-      <Timeline key={1} startTime={props.startTime} endTime={props.endTime} />
-      <Timeline key={2} startTime={props.startTime} endTime={props.endTime} />
+      { renderTimelines(props) }
     </div>
   )
 }
