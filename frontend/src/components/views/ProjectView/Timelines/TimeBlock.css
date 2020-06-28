@@ -22,5 +22,5 @@
 
 .moving-block {
   opacity: 0.6;
-  z-index: 1000;
+  z-index: 999999;
 }
