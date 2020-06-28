@@ -42,11 +42,13 @@ class Timeline extends Component {
 
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
   setControlBlock = (block, event) => {
+
     this.setState({
       controlBlock: {
         block: block,
         initialBlockPosition: block.state.topPosition,
-        initialMousePosition: event.clientY
+        initialMousePosition: event.clientY,
+        initialBlockHeight: block.state.blockHeight,
       }
     })
   }
@@ -59,6 +61,7 @@ class Timeline extends Component {
       const blockStart = this.state.controlBlock.initialBlockPosition
       const mouseStart = this.state.controlBlock.initialMousePosition
       const mouseEnd = event.clientY
+      const blockHeight = this.state.controlBlock.initialBlockHeight
 
       // calculate distance moved as multiple of 20 to move in increments
       const verticalDistance = mouseEnd - mouseStart
@@ -69,7 +72,7 @@ class Timeline extends Component {
       const timelineEnd = (this.props.endTime - this.props.startTime) * 0.8
 
       // calculate potential bottom offset of timeblock at end of movement
-      const blockBottom = endTop + block.state.blockHeight
+      const blockBottom = endTop + blockHeight
 
       // set state of block to isMoving true so block can apply css class
       block.setState({
