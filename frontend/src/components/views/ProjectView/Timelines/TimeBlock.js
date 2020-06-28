@@ -55,6 +55,8 @@ class Timeblock extends Component {
         onClick={this.handleClick}
         onMouseDown={this.handleMouseDown}
       >
+        <div className="time-block-top"></div>
+        <div className="time-block-resize-handle"></div>
       </div>
     )
   }

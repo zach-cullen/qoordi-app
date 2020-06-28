@@ -3,6 +3,21 @@
   width: 100%;
   height: 2rem;
   border-radius: var(--med-border-radius);
+  display: grid;
+  grid-template-rows: 1fr 0.25rem;
+  grid-template-areas: 
+  "top"
+  "baseline"
+}
+
+.time-block-top {
+  cursor: move;
+  grid-area: top;
+}
+
+.time-block-resize-handle {
+  cursor: ns-resize;
+  grid-area: baseline;
 }
 
 .moving-block {
