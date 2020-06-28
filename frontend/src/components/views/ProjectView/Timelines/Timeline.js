@@ -81,13 +81,16 @@ class Timeline extends Component {
       block.setState({
         isMoving: true,
       })
-      
+
       // sets state of child component, changing the block's position on screen if new position is in bounds
-      if (endTop >= 0 && timelineEnd >= blockBottom) {
-        block.setState({
-          topPosition: endTop,
-        })
-      }
+      if (this.state.controlBlock.blockAction === "move") {
+        if (endTop >= 0 && timelineEnd >= blockBottom) {
+          block.setState({
+            topPosition: endTop,
+          })
+        }
+      }      
+
     }
   }
 
