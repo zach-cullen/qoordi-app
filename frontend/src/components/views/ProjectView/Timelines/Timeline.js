@@ -83,11 +83,12 @@ class Timeline extends Component {
       })
 
       // sets state of child component, changing the block's position on screen if new position is in bounds
+      // set zIndex to topMost visually while being moved (resets on mouse up)
       if (this.state.controlBlock.blockAction === "move") {
         if (endTop >= 0 && timelineEnd >= blockBottom) {
           block.setState({
             topPosition: endTop,
-            zIndex: endTop * 100,
+            zIndex: 999999,
           })
         }
       } 
@@ -119,8 +120,10 @@ class Timeline extends Component {
 
     if (!!block) {
       // set state of block to isMoving false so block can remove css class
+      // recalculate block's zIndex based on its final position
       block.setState({
         isMoving: false,
+        zIndex: block.state.topPosition * 100,
       })
 
       this.setState({
