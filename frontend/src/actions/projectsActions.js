@@ -54,6 +54,16 @@ export const fetchProject = (project = {id: 0}) => {
             project: json.project
           }
         })
+
+        json.timelines.forEach((timeline) => {
+          dispatch({
+            type: 'ADD_TIMELINE',
+            payload: {
+              timeline: timeline,
+            }
+          })
+        })
+
         dispatch({ type: 'LOAD_PROJECT_COMPLETE'})
 
       } else {
