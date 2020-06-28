@@ -5,7 +5,8 @@ class Api::ProjectsController < Api::ApiController
     if @project
       render json: {
         request_successful: true,
-        project: @project.as_json
+        project: @project.as_json,
+        timelines: @project.timelines.as_json(except: [:created_at, :updated_at])
       }
     else
       render json: {
@@ -26,7 +27,8 @@ class Api::ProjectsController < Api::ApiController
     if @current_user.save && @current_user.projects.find_by(id: @project.id)
       render json: {
         project_created: true,
-        project: @project.as_json(except: [:created_at, :updated_at])
+        project: @project.as_json(except: [:created_at, :updated_at]),
+        timelines: @project.timelines.as_json(except: [:created_at, :updated_at])
       }
     else
       render json: {
