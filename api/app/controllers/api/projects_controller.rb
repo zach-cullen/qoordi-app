@@ -21,6 +21,7 @@ class Api::ProjectsController < Api::ApiController
       date: parse_date_from_project_params
     )
     @project.category = valid_category
+    @project.build_initial_timelines
     
     if @current_user.save && @current_user.projects.find_by(id: @project.id)
       render json: {
