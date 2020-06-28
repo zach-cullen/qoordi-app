@@ -15,7 +15,7 @@ const ProjectView = (props) => {
       <div id="project-view-content">
         <div id="planner">
           <HourLabels startTime={startTime} endTime={endTime} />
-          <Timelines startTime={startTime} endTime={endTime} />
+          <Timelines startTime={startTime} endTime={endTime} timelines={props.timelines}/>
         </div>
       </div>
     </div>
