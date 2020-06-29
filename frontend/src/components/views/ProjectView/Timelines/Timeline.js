@@ -167,27 +167,17 @@ class Timeline extends Component {
     })
   }
 
-  handleMouseDown = () => {
-    // allow click event
-    this.setState({
-      preventClick: false,
-    })
-  }
+  handleMouseDown = (event) => {
+    if (event.target.classList.contains("timeline")) {
+      //capture distance in pixels vertically from top of timeline div
+      const distanceFromTimelineStart = event.clientY - event.target.offsetTop
+      // round to nearest previous increment of 20
+      const nearestIncrement = distanceFromTimelineStart - distanceFromTimelineStart % 20
+      // convert nearest increment to a time based on project start 
+      // 1.25 represents the conversion from 80px scale to 100 scale
+      const timeBlockStart = this.props.startTime + nearestIncrement * 1.25
+      this.createTimeBlock(timeBlockStart)
 
-  // listen for event click and call create timeBlock if event target is empty timeline space
-  handleClick = (event) => {
-    console.log(this.state)
-    if (!this.state.preventClick) {
-      if (event.target.classList.contains("timeline")) {
-        // capture distance in pixels vertically from top of timeline div
-        const distanceFromTimelineStart = event.clientY - event.target.offsetTop
-        // round to nearest previous increment of 20
-        const nearestIncrement = distanceFromTimelineStart - distanceFromTimelineStart % 20
-        // convert nearest increment to a time based on project start 
-        // 1.25 represents the conversion from 80px scale to 100 scale
-        const timeBlockStart = this.props.startTime + nearestIncrement * 1.25
-        this.createTimeBlock(timeBlockStart)
-      }
     }
   }
 
