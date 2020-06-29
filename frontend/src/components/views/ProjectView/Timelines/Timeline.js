@@ -150,8 +150,10 @@ class Timeline extends Component {
 
   handleMouseDown = (event) => {
     if (event.target.classList.contains("timeline")) {
+      // capture the amount the timeline container element has been scrolled
+      const scrollAmount = document.querySelector("#project-view-content").scrollTop
       //capture distance in pixels vertically from top of timeline div
-      const distanceFromTimelineStart = event.clientY - event.target.offsetTop
+      const distanceFromTimelineStart = scrollAmount + event.clientY - event.target.offsetTop
       // round to nearest previous increment of 20
       const nearestIncrement = distanceFromTimelineStart - distanceFromTimelineStart % 20
       // convert nearest increment to a time based on project start 
