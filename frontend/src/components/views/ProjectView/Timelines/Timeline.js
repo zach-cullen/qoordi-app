@@ -6,6 +6,7 @@ class Timeline extends Component {
   constructor() {
     super()
     this.state = {
+      allTimeBlocks: this.mapTimeBlocks(this.timeBlocks()),
       controlBlock: {
         block: null,
         initialBlockPosition: null,
@@ -14,31 +15,32 @@ class Timeline extends Component {
     }
   }
 
-  // timeBlocks = () => {
-  //   return {
-  //     byId: {
-  //       1: {
-  //         id: 1,
-  //         start: 950,
-  //         end: 1050,
-  //         color: "pink"
-  //       },
-  //       2: {
-  //         id: 2,
-  //         start: 1100,
-  //         end: 1150,
-  //         color: "blue",
-  //       },
-  //       3: {
-  //         id: 3,
-  //         start: 1300,
-  //         end: 1450,
-  //         color: "orange",
-  //       }
-  //     },
-  //     allIds: [1, 2, 3]
-  //   }
-  // }
+  // dummy timeBlock data in normalized redux format
+  timeBlocks = () => {
+    return {
+      byId: {
+        1: {
+          id: 1,
+          start: 950,
+          end: 1050,
+          color: "pink"
+        },
+        2: {
+          id: 2,
+          start: 1100,
+          end: 1150,
+          color: "blue",
+        },
+        3: {
+          id: 3,
+          start: 1300,
+          end: 1450,
+          color: "orange",
+        }
+      },
+      allIds: [1, 2, 3]
+    }
+  }
 
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
   setControlBlock = (block, event) => {
@@ -136,20 +138,25 @@ class Timeline extends Component {
     }
   }
 
-  // maps TimeBlock components from data
-  // mapTimeBlocks = (timeBlocks) => {
-  //   return timeBlocks.allIds.map((i) => {
-  //     return(
-  //       <TimeBlock key={i} 
-  //         setControlBlock={this.setControlBlock}
-  //         handleClick={this.handleClick}
-  //         projectStart={this.props.startTime}
-  //         projectEnd={this.props.endTime}
-  //         timeBlock={this.timeBlocks().byId[i]} 
-  //       />
-  //     )
-  //   })
-  // }
+  // maps TimeBlock components from normalized object to array of objects
+  mapTimeBlocks = (timeBlocks) => {
+    return timeBlocks.allIds.map((i) => timeBlocks.byId[i])
+  }
+
+  // renders TimeBlock components from array of timeblocks in state
+  renderTimeBlocks = () => {
+    return this.state.allTimeBlocks.map((timeBlock) => {
+      return(
+        <TimeBlock key={timeBlock.id} 
+          setControlBlock={this.setControlBlock}
+          handleClick={this.handleClick}
+          projectStart={this.props.startTime}
+          projectEnd={this.props.endTime}
+          timeBlock={timeBlock} 
+        />
+      )
+    })
+  }
 
   render() {
     return(
@@ -159,7 +166,7 @@ class Timeline extends Component {
         onMouseLeave={this.resetControlBlock}
         onMouseUp={this.resetControlBlock}
       >
-        {/* { this.mapTimeBlocks(this.timeBlocks()) } */}
+        { this.renderTimeBlocks() }
       </div>
     )
   }
