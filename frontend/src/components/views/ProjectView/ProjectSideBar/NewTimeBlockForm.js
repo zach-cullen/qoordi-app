@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 
 class NewTimeBlockForm extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       title: "",
       description: "",
+      color: "blue",
+      showColorOptions: false,
     }
   }
 
@@ -16,9 +19,33 @@ class NewTimeBlockForm extends Component {
     })
   }
 
+  setColor = (color) => {
+    this.setState({
+      color: color,
+    })
+  }
+
+  // hides ColorSelector options only if click target is not a color-option div
+  closeColorOptions = (event) => {
+    if (!event.target.classList.contains("selected-color-option")) {
+      this.setState({ showColorOptions: false})
+    }
+  }
+
+  // alters state passed as prop to ColorSelector so that it reveals color options
+  openColorOptions = () => {
+    this.setState({ 
+      ...this.state,
+      showColorOptions: true,
+    })
+  }
+
   render() {
     return(
-      <div className="sidebar-form" id="new-time-block-form">
+      <div 
+        className="sidebar-form" id="new-time-block-form"
+        onClick={this.closeColorOptions}
+      >
         <div className="sidebar-form-header">
           New Event
         </div>
@@ -41,6 +68,15 @@ class NewTimeBlockForm extends Component {
               onChange={this.handleChange} 
               value={this.state.description} 
               placeholder="Add Description"
+            />
+          </label>
+          <label>
+            COLOR
+            <ColorSelector 
+              selectedColor={this.state.color}
+              showColorOptions={this.state.showColorOptions}
+              openColorOptions={this.openColorOptions}
+              setColor={this.setColor}
             />
           </label>
           <button type="submit" className="form-btn form-btn-disabled">
