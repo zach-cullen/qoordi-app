@@ -9,7 +9,7 @@ class ProjectView extends Component {
   constructor() {
     super()
     this.state = {
-      sideBarBlockId: "new",
+      sideBarBlockId: 1,
       startTime: 900,
       endTime: 2300,
     }
