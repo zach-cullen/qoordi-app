@@ -1,4 +1,5 @@
 import React from 'react'
+import NewTimeBlockForm from './NewTimeBlockForm'
 
 const TimeBlockInfo = (props) => {
 
@@ -11,9 +12,7 @@ const TimeBlockInfo = (props) => {
   const renderBlockDetailsOrForm = () => {
     if (fakeBlock.id === "new") {
       return(
-        <div>
-          form
-        </div>
+        <NewTimeBlockForm />
       )
     }
     return(
