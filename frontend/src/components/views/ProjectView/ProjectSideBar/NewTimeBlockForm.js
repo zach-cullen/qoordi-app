@@ -10,6 +10,12 @@ class NewTimeBlockForm extends Component {
     }
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   render() {
     return(
       <div className="sidebar-form" id="new-time-block-form">
