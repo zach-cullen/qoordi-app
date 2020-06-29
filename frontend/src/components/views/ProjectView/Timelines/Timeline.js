@@ -197,6 +197,15 @@ class Timeline extends Component {
     })
   }
 
+  // maintain cursor resize while dragging and cursor moves off edge of block
+  injectStyles = () => {
+    if (!!this.state.controlBlock.block) {
+      return {
+        cursor: "ns-resize",
+      }
+    }
+
+  }
 
   render() {
     return(
@@ -207,6 +216,7 @@ class Timeline extends Component {
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.resetControlBlock}
         onMouseUp={this.resetControlBlock}
+        style={this.injectStyles()}
       >
         { this.renderTimeBlocks() }
       </div>
