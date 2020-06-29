@@ -11,7 +11,8 @@ class Timeline extends Component {
         block: null,
         initialBlockPosition: null,
         initialMousePosition: null,
-      }
+      },
+      preventClick: false,
     }
   }
 
@@ -63,6 +64,12 @@ class Timeline extends Component {
     let block = this.state.controlBlock.block
 
     if (!!block) {
+
+      // prevents handleMouseUp from also triggering click event
+      this.setState({
+        preventClick: true,
+      })
+
       const blockStart = this.state.controlBlock.initialBlockPosition
       const mouseStart = this.state.controlBlock.initialMousePosition
       const mouseEnd = event.clientY
@@ -70,7 +77,9 @@ class Timeline extends Component {
 
       // calculate distance moved as multiple of 20 to move in increments
       const verticalDistance = mouseEnd - mouseStart
-      const increments = Math.floor(verticalDistance / 20)
+      // keep increments advancing ahead of cursor by one increment by rounding down if moving up or rounding up if moving down
+      const increments = verticalDistance < 0 ? Math.floor(verticalDistance / 20 ) : Math.ceil(verticalDistance / 20)
+      // calculate the new location of top of block
       const endTop = blockStart + increments * 20
 
       // calculate distance in px from top of timeline to last hour
@@ -117,7 +126,6 @@ class Timeline extends Component {
 
   // stops handleMouseMove from controlling a block by resetting to inital state value
   resetControlBlock = () => {
-
     const block = this.state.controlBlock.block
 
     if (!!block) {
@@ -158,17 +166,27 @@ class Timeline extends Component {
     })
   }
 
+  handleMouseDown = () => {
+    // allow click event
+    this.setState({
+      preventClick: false,
+    })
+  }
+
   // listen for event click and call create timeBlock if event target is empty timeline space
   handleClick = (event) => {
-    if (event.target.classList.contains("timeline")) {
-      // capture distance in pixels vertically from top of timeline div
-      const distanceFromTimelineStart = event.clientY - event.target.offsetTop
-      // round to nearest previous increment of 20
-      const nearestIncrement = distanceFromTimelineStart - distanceFromTimelineStart % 20
-      // convert nearest increment to a time based on project start 
-      // 1.25 represents the conversion from 80px scale to 100 scale
-      const timeBlockStart = this.props.startTime + nearestIncrement * 1.25
-      this.createTimeBlock(timeBlockStart)
+    console.log(this.state)
+    if (!this.state.preventClick) {
+      if (event.target.classList.contains("timeline")) {
+        // capture distance in pixels vertically from top of timeline div
+        const distanceFromTimelineStart = event.clientY - event.target.offsetTop
+        // round to nearest previous increment of 20
+        const nearestIncrement = distanceFromTimelineStart - distanceFromTimelineStart % 20
+        // convert nearest increment to a time based on project start 
+        // 1.25 represents the conversion from 80px scale to 100 scale
+        const timeBlockStart = this.props.startTime + nearestIncrement * 1.25
+        this.createTimeBlock(timeBlockStart)
+      }
     }
   }
 
@@ -187,10 +205,13 @@ class Timeline extends Component {
     })
   }
 
+
+
   render() {
     return(
       <div 
         className="timeline"
+        onMouseDown={this.handleMouseDown}
         onClick={this.handleClick}
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.resetControlBlock}
