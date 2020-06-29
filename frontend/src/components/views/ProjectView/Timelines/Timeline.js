@@ -117,6 +117,7 @@ class Timeline extends Component {
           if (newBlockBottom <= timelineEnd) {
             block.setState({
               blockHeight: endBlockHeight,
+              zIndex: 999999,
             })
           }
         }
