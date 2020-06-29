@@ -160,7 +160,6 @@ class Timeline extends Component {
       // 1.25 represents the conversion from 80px scale to 100 scale
       const timeBlockStart = this.props.startTime + nearestIncrement * 1.25
       this.createTimeBlock(timeBlockStart)
-
     }
   }
 
@@ -177,6 +176,9 @@ class Timeline extends Component {
     this.setState({
       allTimeBlocks: this.state.allTimeBlocks.concat(newTimeBlock)
     })
+
+    // calling prop this function with argument of "new" makes side bar display form
+    this.props.setSideBarBlockId(newTimeBlock.id)
   }
 
   // maps TimeBlock components from normalized object to array of objects
