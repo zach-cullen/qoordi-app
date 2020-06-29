@@ -15,6 +15,12 @@ class ProjectView extends Component {
     }
   }
 
+  setSideBarBlockId = (blockId) => {
+    this.setState({
+      sideBarBlockId: blockId,
+    })
+  }
+
   render() {
     return(
       <div id="project-view">
@@ -22,7 +28,12 @@ class ProjectView extends Component {
         <div id="project-view-content">
           <div id="planner">
             <HourLabels startTime={this.state.startTime} endTime={this.state.endTime} />
-            <Timelines startTime={this.state.startTime} endTime={this.state.endTime} timelines={this.props.timelines}/>
+            <Timelines 
+              startTime={this.state.startTime} 
+              endTime={this.state.endTime} 
+              timelines={this.props.timelines}
+              setSideBarBlockId={this.setSideBarBlockId}
+            />
           </div>
         </div>
       </div>
