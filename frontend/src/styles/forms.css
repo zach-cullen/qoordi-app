@@ -71,15 +71,11 @@ input:focus {
 
 .sidebar-form {
   width: 100%;
-  box-sizing: border-box;
-  border: solid 1px var(--brand-color-light);
-  border-radius: var(--lrg-border-radius);
-  box-shadow: var(--med-box-shadow);
 }
 
 .sidebar-form-header {
-  text-align: center;
   font-size: var(--h4-size);
+  margin-bottom: 0.5rem;
 }
 
 .sidebar-form label {
@@ -114,8 +110,6 @@ input:focus {
 .sidebar-form textarea:focus {
   height: 4rem;
   background-color: var(--light-bg-2);
+  border-bottom: solid 1px var(--brand-color-1);
 }
 
-.sidebar-form-container {
-  margin: 1rem;
-}

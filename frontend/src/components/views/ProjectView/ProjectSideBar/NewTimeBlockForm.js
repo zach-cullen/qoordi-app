@@ -13,9 +13,12 @@ class NewTimeBlockForm extends Component {
   render() {
     return(
       <div className="sidebar-form" id="new-time-block-form">
+        <div className="sidebar-form-header">
+          New Event
+        </div>
         <form className="sidebar-form-container">
           <label>
-            NEW EVENT
+            TITLE
             <input 
               type="text" name="title"
               onChange={this.handleChange} 
