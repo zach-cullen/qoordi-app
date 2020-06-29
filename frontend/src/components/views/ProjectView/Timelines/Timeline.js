@@ -158,10 +158,40 @@ class Timeline extends Component {
     })
   }
 
+  // listen for event click and call create timeBlock if event target is empty timeline space
+  handleClick = (event) => {
+    if (event.target.classList.contains("timeline")) {
+      // capture distance in pixels vertically from top of timeline div
+      const distanceFromTimelineStart = event.clientY - event.target.offsetTop
+      // round to nearest previous increment of 20
+      const nearestIncrement = distanceFromTimelineStart - distanceFromTimelineStart % 20
+      // convert nearest increment to a time based on project start 
+      // 1.25 represents the conversion from 80px scale to 100 scale
+      const timeBlockStart = this.props.startTime + nearestIncrement * 1.25
+      this.createTimeBlock(timeBlockStart)
+    }
+  }
+
+  createTimeBlock = (startTime) => {
+    // creates newTimeBlock object as proxy for future persisted timeBlock
+    // creates as 15 min block by default
+    const newTimeBlock = {
+      id: "new",
+      start: startTime,
+      end: startTime + 25,
+      color: "blue",
+    }
+    // add newTimeBlock to state to render in timeline
+    this.setState({
+      allTimeBlocks: this.state.allTimeBlocks.concat(newTimeBlock)
+    })
+  }
+
   render() {
     return(
       <div 
         className="timeline"
+        onClick={this.handleClick}
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.resetControlBlock}
         onMouseUp={this.resetControlBlock}
