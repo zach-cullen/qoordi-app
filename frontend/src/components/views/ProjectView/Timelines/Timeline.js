@@ -70,6 +70,7 @@ class Timeline extends Component {
         preventClick: true,
       })
 
+      // grab variables from state and event for easier readability
       const blockStart = this.state.controlBlock.initialBlockPosition
       const mouseStart = this.state.controlBlock.initialMousePosition
       const mouseEnd = event.clientY
@@ -77,8 +78,8 @@ class Timeline extends Component {
 
       // calculate distance moved as multiple of 20 to move in increments
       const verticalDistance = mouseEnd - mouseStart
-      // keep increments advancing ahead of cursor by one increment by rounding down if moving up or rounding up if moving down
-      const increments = verticalDistance < 0 ? Math.floor(verticalDistance / 20 ) : Math.ceil(verticalDistance / 20)
+      // calculate number of increments by rounding vertical distance down to nearest multiple of 20
+      const increments = Math.floor(verticalDistance / 20)
       // calculate the new location of top of block
       const endTop = blockStart + increments * 20
 
