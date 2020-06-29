@@ -7,7 +7,12 @@ const Timelines = (props) => {
   const renderTimelines = (props) => {
     return props.timelines.map((timeline) => {
       return(
-        <Timeline key={timeline.id} startTime={props.startTime} endTime={props.endTime} />
+        <Timeline 
+          key={timeline.id} 
+          startTime={props.startTime} 
+          endTime={props.endTime} 
+          setSideBarBlockId={props.setSideBarBlockId}
+        />
       )
     })
   }
