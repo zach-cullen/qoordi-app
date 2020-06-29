@@ -9,7 +9,7 @@ class ProjectView extends Component {
   constructor() {
     super()
     this.state = {
-      sideBarBlockId: null,
+      sideBarBlockId: "new",
       startTime: 900,
       endTime: 2300,
     }
@@ -18,7 +18,7 @@ class ProjectView extends Component {
   render() {
     return(
       <div id="project-view">
-        <ProjectSideBar project={this.props.project}/>
+        <ProjectSideBar project={this.props.project} blockId={this.state.sideBarBlockId}/>
         <div id="project-view-content">
           <div id="planner">
             <HourLabels startTime={this.state.startTime} endTime={this.state.endTime} />
