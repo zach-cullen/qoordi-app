@@ -37,6 +37,9 @@ class NewTimeBlockForm extends Component {
               placeholder="Add Description"
             />
           </label>
+          <button type="submit" className="form-btn form-btn-disabled">
+            Save Event
+          </button>
         </form>
       </div>
     )
