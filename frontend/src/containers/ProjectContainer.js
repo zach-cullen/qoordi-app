@@ -5,36 +5,9 @@ import { fetchProject } from '../actions/projectsActions'
 import LoadingScreen from '../components/views/LoadingScreen'
 import ProjectView from '../components/views/ProjectView'
 import { selectProjectTimelines } from  '../reducers/timelinesFilters'
-import PopUpForm from '../components/views/PopUpForm'
 
 
 class ProjectContainer extends Component {
-
-  constructor() {
-    super()
-    this.state = {
-      activePopup: "",
-    }
-  }
-
-  setActivePopup = (popUpTitle) => {
-    this.setState({
-      ...this.state,
-      activePopup: popUpTitle,
-    })
-  } 
-
-  renderPopupIfActive = (activePopup) => {
-    if (!!this.state.activePopup) {
-      return(
-        <PopUpForm 
-          activePopup={this.state.activePopup} 
-          setActivePopup={this.setActivePopup}
-        />
-      )
-    }
-  }
-
 
   componentDidMount() {
     const projectId = this.props.match.params.id
@@ -71,7 +44,6 @@ class ProjectContainer extends Component {
   render() {
     return(
       <div className="main">
-        { this.renderPopupIfActive() }
         { this.renderView() }
       </div>
     )
