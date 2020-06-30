@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
+import TimeDataList from './TimeDataList'
 
 class NewTimeBlockForm extends Component {
 
@@ -60,16 +61,14 @@ class NewTimeBlockForm extends Component {
               autofocus="true"
             />
           </label>
+
           <br />
           <label>
-            DESCRIPTION
-            <textarea 
-              type="text-area" name="description"
-              onChange={this.handleChange} 
-              value={this.state.description} 
-              placeholder="Add Description"
-            />
+            START
+            <input list="times" />
+              <TimeDataList start={this.props.project.st}/>
           </label>
+          <br />
           <label>
             COLOR
             <ColorSelector 
@@ -77,6 +76,15 @@ class NewTimeBlockForm extends Component {
               showColorOptions={this.state.showColorOptions}
               openColorOptions={this.openColorOptions}
               setColor={this.setColor}
+            />
+          </label>
+          <label>
+            DESCRIPTION
+            <textarea 
+              type="text-area" name="description"
+              onChange={this.handleChange} 
+              value={this.state.description} 
+              placeholder="Add Description"
             />
           </label>
           <button type="submit" className="form-btn form-btn-disabled">
