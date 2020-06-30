@@ -53,7 +53,7 @@ class NewTimeBlockForm extends Component {
           <label>
             NEW EVENT
             <input 
-              type="text" name="title" id="time-block-title-input"
+              type="text" name="title" id="sidebar-form-title-input"
               onChange={this.handleChange} 
               value={this.state.title} 
               placeholder="Add Title"
