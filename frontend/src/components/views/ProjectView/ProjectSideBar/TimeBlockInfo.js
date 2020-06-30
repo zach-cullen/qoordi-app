@@ -1,23 +1,31 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import NewTimeBlockForm from './NewTimeBlockForm'
 
 const TimeBlockInfo = (props) => {
 
-  const fakeBlock = {
-    id: props.blockId,
-    color: "blue",
-    title: "b-roll"
-  }
+  const thisBlock = props.timeBlocks.byId[props.blockId]
 
   const renderBlockDetailsOrForm = () => {
-    if (fakeBlock.id === "new") {
+
+    if (props.blockId === null) {
+      console.log("no block Id")
       return(
-        <NewTimeBlockForm project={props.project}/>
+        <div>
+          Project
+        </div>
       )
     }
+
+    if (props.blockId === 0) {
+      return(
+        <NewTimeBlockForm project={props.project} timeblock={thisBlock}/>
+      )
+    }
+
     return(
       <div>
-        {fakeBlock.title}
+        {thisBlock.title}
       </div>
     )
   }
@@ -29,4 +37,10 @@ const TimeBlockInfo = (props) => {
   )
 }
 
-export default TimeBlockInfo
+const MapStateToProps = (state) => {
+  return {
+    timeBlocks: state.entities.timeblocks
+  }
+}
+
+export default connect(MapStateToProps)(TimeBlockInfo)
