@@ -1,5 +1,4 @@
 import React from 'react'
-import HourLabels from '../HourLabels/HourLabels'
 
 const TimeDataList = (props) => {
 
