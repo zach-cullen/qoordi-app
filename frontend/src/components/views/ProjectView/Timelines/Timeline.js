@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TimeBlock from './TimeBlock'
+import { addNewTimeBlock } from '../../../../actions/timeblocksActions'
 
 class Timeline extends Component {
 
@@ -137,6 +138,7 @@ class Timeline extends Component {
       const endTimeInPx = startTimeInPx + 20
       // passes time string to createTimeBlock, adding new timeblock to timeline at click location
       this.createTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx))
+      this.props.dispatch(addNewTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx)))
     }
   }
 
