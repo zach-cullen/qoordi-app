@@ -61,9 +61,30 @@ class NewTimeBlockForm extends Component {
 
           <br />
           <label>
-            START
-            <input list="times" />
-              <TimeDataList start={this.props.project.st}/>
+            START TIME
+            <input list="times" name="startTime" placeholder="9:30 AM" />
+              <TimeDataList start={this.props.project.st} />
+          </label>
+          <br />
+          <label>
+            DURATION
+            <br />
+            <select name="duration-hrs" >
+              <option value="00">00</option>
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+            </select>
+            <span>HRS </span>
+            <select name="duration-mins" >
+              <option value="00">00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            <span>MIN </span>
           </label>
           <br />
           <label>
