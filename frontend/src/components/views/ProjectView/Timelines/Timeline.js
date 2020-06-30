@@ -138,7 +138,7 @@ class Timeline extends Component {
       // passes time string to createTimeBlock, adding new timeblock to timeline at click location
       // this.createTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx))
       this.props.dispatch(addNewTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx)))
-      this.props.setSideBarBlockId("new")
+      this.props.setSideBarBlockId(0)
     }
   }
 
