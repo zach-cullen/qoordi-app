@@ -48,6 +48,9 @@ export const fetchProject = (project = {id: 0}) => {
     .then(res => res.json())
     .then(json => {
       if (json.request_successful) {
+
+        console.log("fetch project: ", json)
+
         dispatch({
           type: 'ADD_PROJECT',
           payload: {
@@ -60,6 +63,15 @@ export const fetchProject = (project = {id: 0}) => {
             type: 'ADD_TIMELINE',
             payload: {
               timeline: timeline,
+            }
+          })
+        })
+
+        json.timeblocks.forEach((timeblock) => {
+          dispatch({
+            type: 'ADD_TIMEBLOCK',
+            payload: {
+              timeblock: timeblock,
             }
           })
         })
