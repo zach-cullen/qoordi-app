@@ -13,19 +13,25 @@ class Timeblock extends Component {
     }
   }
 
-  // scales hours (100) to pixels (80px / hr)
-  scaleHrsToPx = (int) => {
-    return int * 0.8
+  convertTimeStringToPx = (timeString) => {
+    const [hrs, min] = timeString.split(":").map((s) => parseInt(s))
+    const quarterHrs = min / 15
+    return hrs * 80 + quarterHrs * 20
   }
+
 
   // find difference in hours between project start and timeblock start and scale to px
   initTopPosition = () => {
-    return this.scaleHrsToPx(this.props.timeBlock.start - this.props.projectStart)
+    const blockStart = this.convertTimeStringToPx(this.props.timeBlock.start_time)
+    const projectStart = this.props.projectStart * 0.8
+    return blockStart - projectStart
   }
 
   // find difference between block start and end and scale to px
   initBlockHeight = () => {
-    return this.scaleHrsToPx(this.props.timeBlock.end - this.props.timeBlock.start)
+    const blockStart = this.convertTimeStringToPx(this.props.timeBlock.start_time)
+    const blockEnd = this.convertTimeStringToPx(this.props.timeBlock.end_time)
+    return blockEnd - blockStart
   }
 
   // multiply topPosition by 100 to calculate initial z-index setting. This will make sure blocks lower in the screen are not overlapped by those higher
