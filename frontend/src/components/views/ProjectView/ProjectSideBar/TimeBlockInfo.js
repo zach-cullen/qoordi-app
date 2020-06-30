@@ -12,7 +12,7 @@ const TimeBlockInfo = (props) => {
   const renderBlockDetailsOrForm = () => {
     if (fakeBlock.id === "new") {
       return(
-        <NewTimeBlockForm />
+        <NewTimeBlockForm project={props.project}/>
       )
     }
     return(
