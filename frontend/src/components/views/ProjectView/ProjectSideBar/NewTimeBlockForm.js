@@ -47,12 +47,9 @@ class NewTimeBlockForm extends Component {
         className="sidebar-form" id="new-time-block-form"
         onClick={this.closeColorOptions}
       >
-        <div className="sidebar-form-header">
-          New Event
-        </div>
         <form className="sidebar-form-container">
           <label>
-            TITLE
+            NEW EVENT
             <input 
               type="text" name="title"
               onChange={this.handleChange} 
