@@ -8,7 +8,6 @@ class Timeline extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // allTimeBlocks: this.props.timeBlocks,
       controlBlock: {
         block: null,
         initialBlockPosition: null,
@@ -139,6 +138,7 @@ class Timeline extends Component {
       // passes time string to createTimeBlock, adding new timeblock to timeline at click location
       // this.createTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx))
       this.props.dispatch(addNewTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx)))
+      this.props.setSideBarBlockId("new")
     }
   }
 
@@ -147,24 +147,6 @@ class Timeline extends Component {
     const quarterHrs = (px / 80 - hrs) / 0.25 
     const zeroPadHrs = hrs < 10 ? `0${hrs}` : hrs
     return `${zeroPadHrs}:${quarterHrs * 15}`
-  }
-
-  // creates newTimeBlock object as proxy for future persisted timeBlock
-  createTimeBlock = (startTime, endTime) => {
-    // creates as 15 min block by default
-    const newTimeBlock = {
-      id: "new",
-      start_time: startTime,
-      end_time: endTime,
-      color: "blue",
-    }
-    // add newTimeBlock to state to render in timeline
-    this.setState({
-      allTimeBlocks: this.state.allTimeBlocks.concat(newTimeBlock)
-    })
-
-    // calling prop this function with argument of "new" makes side bar display form
-    this.props.setSideBarBlockId(newTimeBlock.id)
   }
 
   // maps TimeBlock components from normalized object to array of objects
