@@ -85,8 +85,8 @@ input:focus {
 .sidebar-form input {
   width: 100%;
   font-size: var(--h5-size);
-  box-sizing: border-box;
   border: none;
+  border-bottom: solid 1px var(--light-bg-1);
   height: 1rem;
   margin: 0.4rem auto;
 }
@@ -125,10 +125,6 @@ input:focus {
 
 .sidebar-form span {
   margin: 0 0.25rem;
-}
-
-#sidebar-form-title-input {
-  font-size: var(--h4-size);
 }
 
 
