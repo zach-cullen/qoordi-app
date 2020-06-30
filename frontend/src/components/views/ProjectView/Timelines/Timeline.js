@@ -127,24 +127,33 @@ class Timeline extends Component {
     if (event.target.classList.contains("timeline")) {
       // capture the amount the timeline container element has been scrolled
       const scrollAmount = document.querySelector("#project-view-content").scrollTop
-      //capture distance in pixels vertically from top of timeline div
+      //capture vertical distance of click event from top of timeline div
       const distanceFromTimelineStart = scrollAmount + event.clientY - event.target.offsetTop
       // round to nearest previous increment of 20
       const nearestIncrement = distanceFromTimelineStart - distanceFromTimelineStart % 20
-      // convert nearest increment to a time based on project start 
-      // 1.25 represents the conversion from 80px scale to 100 scale
-      const timeBlockStart = this.props.startTime + nearestIncrement * 1.25
-      this.createTimeBlock(timeBlockStart)
+      // converts startTime from 100 to 80px scale and adds click offset from startTime
+      const startTimeInPx = (this.props.startTime * 0.8) + nearestIncrement
+      // default make endTime 15 min after start
+      const endTimeInPx = startTimeInPx + 20
+      // passes time string to createTimeBlock, adding new timeblock to timeline at click location
+      this.createTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx))
     }
   }
 
+  convertPxToTimeString = (px) => {
+    const hrs = Math.floor(px / 80)
+    const quarterHrs = (px / 80 - hrs) / 0.25 
+    const zeroPadHrs = hrs < 10 ? `0${hrs}` : hrs
+    return `${zeroPadHrs}:${quarterHrs * 15}`
+  }
+
   // creates newTimeBlock object as proxy for future persisted timeBlock
-  createTimeBlock = (startTime) => {
+  createTimeBlock = (startTime, endTime) => {
     // creates as 15 min block by default
     const newTimeBlock = {
       id: "new",
-      start: startTime,
-      end: startTime + 25,
+      start_time: startTime,
+      end_time: endTime,
       color: "blue",
     }
     // add newTimeBlock to state to render in timeline
