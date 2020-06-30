@@ -62,12 +62,20 @@ class NewTimeBlockForm extends Component {
           </label>
           <br />
 
-          <label>
-            START TIME
-            <br />
-            <TimeSelector start={this.props.project.st} />
-          </label>
-          <br />
+          <div className="sidebar-split-even">
+            <label>
+              START TIME
+              <br />
+              <TimeSelector start={this.props.project.st} />
+            </label>
+
+            <label>
+              END TIME
+              <br />
+              <TimeSelector start={this.props.project.st} />
+            </label>
+          </div>
+
 
           <label>
             DURATION

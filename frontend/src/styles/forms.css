@@ -117,7 +117,6 @@ input:focus {
 .sidebar-form select {
   height: 1rem;
   margin: 0.4rem 0;
-  appearance: none;
   border: none;
   outline: none;
   font-size: var(--h5-size);
@@ -125,6 +124,11 @@ input:focus {
 
 .sidebar-form span {
   margin: 0 0.25rem;
+}
+
+.sidebar-split-even {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 
