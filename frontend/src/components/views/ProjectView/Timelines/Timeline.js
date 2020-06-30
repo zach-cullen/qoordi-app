@@ -8,7 +8,7 @@ class Timeline extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      allTimeBlocks: this.mapTimeBlocks(props.timeBlocks),
+      // allTimeBlocks: this.props.timeBlocks,
       controlBlock: {
         block: null,
         initialBlockPosition: null,
@@ -137,7 +137,7 @@ class Timeline extends Component {
       // default make endTime 15 min after start
       const endTimeInPx = startTimeInPx + 20
       // passes time string to createTimeBlock, adding new timeblock to timeline at click location
-      this.createTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx))
+      // this.createTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx))
       this.props.dispatch(addNewTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx)))
     }
   }
@@ -174,7 +174,7 @@ class Timeline extends Component {
 
   // renders TimeBlock components from array of timeblocks in state
   renderTimeBlocks = () => {
-    return this.state.allTimeBlocks.map((timeBlock) => {
+    return this.mapTimeBlocks(this.props.timeBlocks).map((timeBlock) => {
       return(
         <TimeBlock key={timeBlock.id} 
           setControlBlock={this.setControlBlock}
