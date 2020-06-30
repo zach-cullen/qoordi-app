@@ -76,37 +76,6 @@ class NewTimeBlockForm extends Component {
             </label>
           </div>
 
-
-          <label>
-            DURATION
-            <br />
-            <select 
-              name="durationHrs" 
-              onChange={this.handleChange}
-              value={this.state.durationHrs}
-            >
-              <option value="00">00</option>
-              <option value="01">01</option>
-              <option value="02">02</option>
-              <option value="03">03</option>
-              <option value="04">04</option>
-              <option value="05">05</option>
-            </select>
-            <span>HRS </span>
-            <select 
-              name="durationMins" 
-              onChange={this.handleChange}
-              value={this.state.durationMins}
-            >
-              <option value="00">00</option>
-              <option value="15">15</option>
-              <option value="30">30</option>
-              <option value="45">45</option>
-            </select>
-            <span>MIN </span>
-          </label>
-          <br />
-
           <label>
             COLOR
             <ColorSelector 
