@@ -10,8 +10,8 @@ class NewTimeBlockForm extends Component {
       title: "",
       description: "",
       color: "blue",
-      durationHrs: "00",
-      durationMins: "15",
+      startTime: "",
+      endTime: "",
       showColorOptions: false,
     }
   }
@@ -66,13 +66,19 @@ class NewTimeBlockForm extends Component {
             <label>
               START TIME
               <br />
-              <TimeSelector start={this.props.project.st} />
+              <TimeSelector start={this.props.project.st} 
+                name={"startTime"}
+                handleChange={this.handleChange}
+              />
             </label>
 
             <label>
               END TIME
               <br />
-              <TimeSelector start={this.props.project.st} />
+              <TimeSelector 
+                name={"endTime"}
+                handleChange={this.handleChange}
+              />
             </label>
           </div>
 

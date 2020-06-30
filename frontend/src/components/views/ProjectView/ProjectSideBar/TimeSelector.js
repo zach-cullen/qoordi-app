@@ -54,8 +54,13 @@ const TimeSelector = (props) => {
     })
   }
 
+
+  const handleChange = (event) => {
+    props.handleChange(event)
+  }
+
   return(
-    <select className="time-select" name="startTime" placeholder="9:30 AM">
+    <select onChange={handleChange} className="time-select" name={props.name} placeholder="9:30 AM">
       { renderOptions() }
     </select>
   )
