@@ -13,7 +13,10 @@ const ProjectSideBar = (props) => {
           <h4>{props.project.title}</h4>
         </div>
         <div className="line-spacer-4"></div>
-        <TimeBlockInfo blockId={props.blockId}/>
+        <TimeBlockInfo 
+          blockId={props.blockId}
+          project={props.project}
+        />
       </div>
     </div>
   )
