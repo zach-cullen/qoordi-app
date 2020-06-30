@@ -6,7 +6,8 @@ class Api::ProjectsController < Api::ApiController
       render json: {
         request_successful: true,
         project: @project.as_json,
-        timelines: @project.timelines.as_json(except: [:created_at, :updated_at])
+        timelines: @project.timelines.as_json(except: [:created_at, :updated_at]),
+        timeblocks: @project.timeblocks.as_json(except: [:created_at, :updated_at])
       }
     else
       render json: {
