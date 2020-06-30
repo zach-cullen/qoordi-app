@@ -8,6 +8,7 @@ const Timelines = (props) => {
     return props.timelines.map((timeline) => {
       return(
         <Timeline 
+          timeline={timeline}
           key={timeline.id} 
           startTime={props.startTime} 
           endTime={props.endTime} 
