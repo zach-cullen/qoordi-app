@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import TimeBlock from './TimeBlock'
 
 class Timeline extends Component {
@@ -228,4 +229,10 @@ class Timeline extends Component {
   }
 }
 
-export default Timeline
+const mapStateToProps = (state) => {
+  return {
+    timeblocks: state.entities.timeblocks,
+  }
+}
+
+export default connect(mapStateToProps)(Timeline)
