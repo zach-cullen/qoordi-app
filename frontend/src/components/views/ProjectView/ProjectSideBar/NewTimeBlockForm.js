@@ -50,20 +50,25 @@ class NewTimeBlockForm extends Component {
         onClick={this.closeColorOptions}
       >
         <form className="sidebar-form-container">
-          <label>NEW EVENT</label>
-          <input 
-            type="text" name="title" id="time-block-title-input"
-            onChange={this.handleChange} 
-            value={this.state.title} 
-            placeholder="Add Title"
-            autoFocus
-          />
+          <label>
+            NEW EVENT
+            <input 
+              type="text" name="title" id="time-block-title-input"
+              onChange={this.handleChange} 
+              value={this.state.title} 
+              placeholder="Add Title"
+              autoFocus
+            />
+          </label>
+          <br />
 
+          <label>
+            START TIME
+            <br />
+            <TimeSelector start={this.props.project.st} />
+          </label>
           <br />
-          <label>START TIME</label>
-          <br />
-          <TimeSelector start={this.props.project.st} />
-          <br />
+
           <label>
             DURATION
             <br />
@@ -93,6 +98,7 @@ class NewTimeBlockForm extends Component {
             <span>MIN </span>
           </label>
           <br />
+
           <label>
             COLOR
             <ColorSelector 
@@ -102,6 +108,7 @@ class NewTimeBlockForm extends Component {
               setColor={this.setColor}
             />
           </label>
+
           <label>
             DESCRIPTION
             <textarea 
@@ -111,9 +118,11 @@ class NewTimeBlockForm extends Component {
               placeholder="Add Description"
             />
           </label>
+
           <button type="submit" className="form-btn form-btn-disabled">
             Save Event
           </button>
+
         </form>
       </div>
     )
