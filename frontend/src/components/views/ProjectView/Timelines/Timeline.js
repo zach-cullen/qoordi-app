@@ -17,32 +17,6 @@ class Timeline extends Component {
     }
   }
 
-  // dummy timeBlock data in normalized redux format
-  // timeBlocks = () => {
-  //   return {
-  //     byId: {
-  //       1: {
-  //         id: 1,
-  //         start: 950,
-  //         end: 1050,
-  //         color: "pink"
-  //       },
-  //       2: {
-  //         id: 2,
-  //         start: 1100,
-  //         end: 1150,
-  //         color: "blue",
-  //       },
-  //       3: {
-  //         id: 3,
-  //         start: 1300,
-  //         end: 1450,
-  //         color: "orange",
-  //       }
-  //     },
-  //     allIds: [1, 2, 3]
-  //   }
-  // }
 
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
   setControlBlock = (block, event) => {
