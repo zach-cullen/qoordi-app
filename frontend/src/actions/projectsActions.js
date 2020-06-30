@@ -49,8 +49,6 @@ export const fetchProject = (project = {id: 0}) => {
     .then(json => {
       if (json.request_successful) {
 
-        console.log("fetch project: ", json)
-
         dispatch({
           type: 'ADD_PROJECT',
           payload: {
