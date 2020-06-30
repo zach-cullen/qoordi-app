@@ -4,10 +4,10 @@ import TimeBlock from './TimeBlock'
 
 class Timeline extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      allTimeBlocks: this.mapTimeBlocks(this.timeBlocks()),
+      allTimeBlocks: this.mapTimeBlocks(props.timeBlocks),
       controlBlock: {
         block: null,
         initialBlockPosition: null,
@@ -18,31 +18,31 @@ class Timeline extends Component {
   }
 
   // dummy timeBlock data in normalized redux format
-  timeBlocks = () => {
-    return {
-      byId: {
-        1: {
-          id: 1,
-          start: 950,
-          end: 1050,
-          color: "pink"
-        },
-        2: {
-          id: 2,
-          start: 1100,
-          end: 1150,
-          color: "blue",
-        },
-        3: {
-          id: 3,
-          start: 1300,
-          end: 1450,
-          color: "orange",
-        }
-      },
-      allIds: [1, 2, 3]
-    }
-  }
+  // timeBlocks = () => {
+  //   return {
+  //     byId: {
+  //       1: {
+  //         id: 1,
+  //         start: 950,
+  //         end: 1050,
+  //         color: "pink"
+  //       },
+  //       2: {
+  //         id: 2,
+  //         start: 1100,
+  //         end: 1150,
+  //         color: "blue",
+  //       },
+  //       3: {
+  //         id: 3,
+  //         start: 1300,
+  //         end: 1450,
+  //         color: "orange",
+  //       }
+  //     },
+  //     allIds: [1, 2, 3]
+  //   }
+  // }
 
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
   setControlBlock = (block, event) => {
@@ -231,7 +231,7 @@ class Timeline extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    timeblocks: state.entities.timeblocks,
+    timeBlocks: state.entities.timeblocks,
   }
 }
 
