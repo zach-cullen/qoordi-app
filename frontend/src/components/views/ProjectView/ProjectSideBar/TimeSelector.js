@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TimeDataList = (props) => {
+const TimeSelector = (props) => {
 
   // fake props from project
   const startTime = "09:00"
@@ -49,16 +49,16 @@ const TimeDataList = (props) => {
 
     return hrsToTimes().map((time, i) => {
       return(
-        <option key={i} value={time} />
+      <option key={i} value={time}>{time}</option>
       )
     })
   }
 
   return(
-    <datalist id="times">
+    <select className="time-select" name="startTime" placeholder="9:30 AM">
       { renderOptions() }
-    </datalist>
+    </select>
   )
 }
 
-export default TimeDataList
+export default TimeSelector

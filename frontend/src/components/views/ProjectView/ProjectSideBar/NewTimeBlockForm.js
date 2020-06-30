@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
-import TimeDataList from './TimeDataList'
+import TimeSelector from './TimeSelector'
 
 class NewTimeBlockForm extends Component {
 
@@ -10,6 +10,8 @@ class NewTimeBlockForm extends Component {
       title: "",
       description: "",
       color: "blue",
+      durationHrs: "00",
+      durationMins: "15",
       showColorOptions: false,
     }
   }
@@ -48,28 +50,28 @@ class NewTimeBlockForm extends Component {
         onClick={this.closeColorOptions}
       >
         <form className="sidebar-form-container">
-          <label>
-            NEW EVENT
-            <input 
-              type="text" name="title"
-              onChange={this.handleChange} 
-              value={this.state.title} 
-              placeholder="Add Title"
-              autofocus="true"
-            />
-          </label>
+          <label>NEW EVENT</label>
+          <input 
+            type="text" name="title" id="time-block-title-input"
+            onChange={this.handleChange} 
+            value={this.state.title} 
+            placeholder="Add Title"
+            autoFocus
+          />
 
           <br />
-          <label>
-            START TIME
-            <input list="times" name="startTime" placeholder="9:30 AM" />
-              <TimeDataList start={this.props.project.st} />
-          </label>
+          <label>START TIME</label>
+          <br />
+          <TimeSelector start={this.props.project.st} />
           <br />
           <label>
             DURATION
             <br />
-            <select name="duration-hrs" >
+            <select 
+              name="durationHrs" 
+              onChange={this.handleChange}
+              value={this.state.durationHrs}
+            >
               <option value="00">00</option>
               <option value="01">01</option>
               <option value="02">02</option>
@@ -78,7 +80,11 @@ class NewTimeBlockForm extends Component {
               <option value="05">05</option>
             </select>
             <span>HRS </span>
-            <select name="duration-mins" >
+            <select 
+              name="durationMins" 
+              onChange={this.handleChange}
+              value={this.state.durationMins}
+            >
               <option value="00">00</option>
               <option value="15">15</option>
               <option value="30">30</option>
