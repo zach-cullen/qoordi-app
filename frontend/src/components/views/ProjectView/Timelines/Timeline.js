@@ -146,7 +146,8 @@ class Timeline extends Component {
     const hrs = Math.floor(px / 80)
     const quarterHrs = (px / 80 - hrs) / 0.25 
     const zeroPadHrs = hrs < 10 ? `0${hrs}` : hrs
-    return `${zeroPadHrs}:${quarterHrs * 15}`
+    const mins = quarterHrs * 15 === 0 ? "00" : `${quarterHrs * 15}`
+    return `${zeroPadHrs}:${mins}`
   }
 
   // maps TimeBlock components from normalized object to array of objects
