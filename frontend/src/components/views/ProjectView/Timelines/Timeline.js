@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TimeBlock from './TimeBlock'
 import { addNewTimeBlock } from '../../../../actions/timeblocksActions'
-import { updateNewTimeBlockTimes } from '../../../../actions/timeblocksActions'
+import { proxyUpdateTimeBlockTimes } from '../../../../actions/timeblocksActions'
 
 class Timeline extends Component {
 
@@ -74,10 +74,13 @@ class Timeline extends Component {
       // set zIndex to topMost visually while being moved (resets on mouse up)
       if (this.state.controlBlock.blockAction === "move") {
         if (endTop >= 0 && timelineEnd >= blockBottom) {
-          block.setState({
-            topPosition: endTop,
-            zIndex: 999999,
-          })
+        const projectStartOffset = this.props.startTime * 0.8
+        // calculate time strings from top position of block and block height
+        const currentStartTime = this.convertPxToTimeString(projectStartOffset + endTop)
+        const currentEndTime = this.convertPxToTimeString(projectStartOffset + endTop + block.state.blockHeight)
+        // dispatch update to new block times
+        console.log(currentStartTime, currentEndTime)
+        this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
         }
       } 
       
@@ -133,7 +136,7 @@ class Timeline extends Component {
         const currentStartTime = this.convertPxToTimeString(projectStartOffset + block.state.topPosition)
         const currentEndTime = this.convertPxToTimeString(projectStartOffset + block.state.topPosition + block.state.blockHeight)
         // dispatch update to new block times
-        this.props.dispatch(updateNewTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
+        this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
       }
 
       // removes block from state and resets moving css styles
