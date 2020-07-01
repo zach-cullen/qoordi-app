@@ -11,6 +11,7 @@ class Timeline extends Component {
     this.state = {
       controlBlock: {
         block: null,
+        blockId: null,
         initialBlockPosition: null,
         initialMousePosition: null,
       },
@@ -20,12 +21,12 @@ class Timeline extends Component {
 
 
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
-  setControlBlock = (block, event) => {
+  setControlBlock = (block, blockId, event) => {
     const controlType = event.target.classList.contains("time-block-resize-handle") ? "resize" : "move"
-
     this.setState({
       controlBlock: {
         block: block,
+        blockId: blockId,
         controlType: controlType,
         initialMousePosition: event.clientY,
         initialBlockPosition: event.target.parentElement.offsetTop,
@@ -39,7 +40,6 @@ class Timeline extends Component {
     let block = this.state.controlBlock.block
 
     if (!!block) {
-
       // prevents handleMouseUp from also triggering click event
       this.setState({
         preventClick: true,
