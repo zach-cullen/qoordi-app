@@ -16,7 +16,7 @@ const timeblocksReducer = (state = {
         allIds: state.allIds.includes(timeblockData.id) ? state.allIds : state.allIds.concat(timeblockData.id)
       }
 
-    case "UPDATE_NEW_TIMEBLOCK_TIMES":
+    case "PROXY_UPDATE_TIMEBLOCK_TIMES":
       const block = action.payload.timeblock
       return {
         ...state,
