@@ -30,6 +30,18 @@ const timeblocksReducer = (state = {
         }
       }
 
+    case "UPDATE_NEW_TIMEBLOCK_COLOR":
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          0: {
+            ...state.byId[0],
+            color: action.payload.color
+          }
+        }
+      }
+
     case "DELETE_NEW_TIMEBLOCK":
       const filteredAllIds = state.allIds.filter((id) => id !== 0)
       const newById = filteredAllIds.reduce((newObj, id) => {
@@ -38,7 +50,7 @@ const timeblocksReducer = (state = {
           [id]: state.byId[id]
         }
       }, {})
-      
+
       return {
         ...state,
         byId: newById,
