@@ -14,3 +14,17 @@ export const addNewTimeBlock = (startTime, endTime) => {
     }
   }
 }
+
+// specific to new timeblock because this action does not save change to database
+export const updateNewTimeBlockTimes = (id, startTime, endTime) => {
+  return {
+    type: "UPDATE_NEW_TIMEBLOCK_TIMES",
+    payload: {
+      timeblock: {
+        id: id,
+        start_time: startTime,
+        end_time: endTime,
+      }
+    }
+  }
+}
