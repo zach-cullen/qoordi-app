@@ -45,11 +45,11 @@ class Timeline extends Component {
         preventClick: true,
       })
 
-      // grab variables from state and event for easier readability
+      // cache variables from state and event for easier readability
       const blockStart = this.state.controlBlock.initialBlockPosition
+      const blockHeight = this.state.controlBlock.initialBlockHeight
       const mouseStart = this.state.controlBlock.initialMousePosition
       const mouseEnd = event.clientY
-      const blockHeight = this.state.controlBlock.initialBlockHeight
 
       // calculate distance moved as multiple of 20 to move in increments
       const verticalDistance = mouseEnd - mouseStart
@@ -57,10 +57,8 @@ class Timeline extends Component {
       const increments = Math.floor(verticalDistance / 20)
       // calculate the new location of top of block
       const endTop = blockStart + increments * 20
-
       // calculate distance in px from top of timeline to last hour
       const timelineEnd = (this.props.endTime - this.props.startTime) * 0.8
-
       // calculate potential bottom offset of timeblock at end of movement
       const blockBottom = endTop + blockHeight
 
@@ -127,16 +125,6 @@ class Timeline extends Component {
   handleMoveEnd = () => {
     const block = this.state.controlBlock.block
     if (!!block) {
-
-      if (block.state.id === 0) {
-        const projectStartOffset = this.props.startTime * 0.8
-        // calculate time strings from top position of block and block height
-        const currentStartTime = this.convertPxToTimeString(projectStartOffset + block.state.topPosition)
-        const currentEndTime = this.convertPxToTimeString(projectStartOffset + block.state.topPosition + block.state.blockHeight)
-        // dispatch update to new block times
-        this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
-      }
-
       // removes block from state and resets moving css styles
       this.resetControlBlock(block)
     }
