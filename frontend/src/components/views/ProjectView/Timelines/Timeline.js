@@ -101,27 +101,7 @@ class Timeline extends Component {
     }
   }
 
-  // stops handleMouseMove from controlling a block by resetting to inital state value
-  resetControlBlock = () => {
-    const block = this.state.controlBlock.block
 
-    if (!!block) {
-      // set state of block to isMoving false so block can remove css class
-      // recalculate block's zIndex based on its final position
-      block.setState({
-        isMoving: false,
-        zIndex: block.state.topPosition * 100,
-      })
-
-      this.setState({
-        controlBlock: {
-          block: null,
-          initialBlockPosition: null,
-          initialMousePosition: null,
-        }
-      })
-    }
-  }
 
   handleMouseDown = (event) => {
     if (event.target.classList.contains("timeline")) {
@@ -140,6 +120,34 @@ class Timeline extends Component {
       this.props.dispatch(addNewTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx)))
       this.props.setSideBarBlockId(0)
     }
+  }
+
+  handleMoveEnd = () => {
+    const block = this.state.controlBlock.block
+    if (!!block) {
+      this.resetControlBlock(block)
+    }
+
+  }
+
+  // stops handleMouseMove from controlling a block by resetting to inital state value
+  resetControlBlock = (block) => {
+    // set state of block to isMoving false so block can remove css class
+    // recalculate block's zIndex based on its final position
+    block.setState({
+      isMoving: false,
+      zIndex: block.state.topPosition * 100,
+    })
+
+    // reset state so that no block is being controlled
+    this.setState({
+      controlBlock: {
+        block: null,
+        initialBlockPosition: null,
+        initialMousePosition: null,
+      }
+    })
+
   }
 
   convertPxToTimeString = (px) => {
@@ -187,8 +195,8 @@ class Timeline extends Component {
         onMouseDown={this.handleMouseDown}
         onClick={this.handleClick}
         onMouseMove={this.handleMouseMove}
-        onMouseLeave={this.resetControlBlock}
-        onMouseUp={this.resetControlBlock}
+        onMouseLeave={this.handleMoveEnd}
+        onMouseUp={this.handleMoveEnd}
         style={this.injectStyles()}
       >
         { this.renderTimeBlocks() }
