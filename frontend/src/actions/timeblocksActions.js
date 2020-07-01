@@ -28,3 +28,9 @@ export const proxyUpdateTimeBlockTimes = (id, startTime, endTime) => {
     }
   }
 }
+
+export const deleteNewTimeBlock = () => {
+  return {
+    type: "DELETE_NEW_TIMEBLOCK",
+  }
+}
