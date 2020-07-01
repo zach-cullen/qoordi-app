@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TimeBlock from './TimeBlock'
 import { addNewTimeBlock } from '../../../../actions/timeblocksActions'
+import { updateNewTimeBlockTimes } from '../../../../actions/timeblocksActions'
 
 class Timeline extends Component {
 
@@ -125,9 +126,19 @@ class Timeline extends Component {
   handleMoveEnd = () => {
     const block = this.state.controlBlock.block
     if (!!block) {
+
+      if (block.state.id === 0) {
+        const projectStartOffset = this.props.startTime * 0.8
+        // calculate time strings from top position of block and block height
+        const currentStartTime = this.convertPxToTimeString(projectStartOffset + block.state.topPosition)
+        const currentEndTime = this.convertPxToTimeString(projectStartOffset + block.state.topPosition + block.state.blockHeight)
+        // dispatch update to new block times
+        this.props.dispatch(updateNewTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
+      }
+
+      // removes block from state and resets moving css styles
       this.resetControlBlock(block)
     }
-
   }
 
   // stops handleMouseMove from controlling a block by resetting to inital state value
