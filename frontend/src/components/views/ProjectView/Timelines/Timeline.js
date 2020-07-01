@@ -30,6 +30,8 @@ class Timeline extends Component {
         initialBlockHeight: event.target.parentElement.offsetHeight,
       }
     })
+    // display selected block info in side bar
+    this.props.setSideBarBlockId(blockId)
   }
 
   // moves child element according to mouse movement if it has been selected
@@ -58,7 +60,7 @@ class Timeline extends Component {
       // calculate potential bottom offset of timeblock at end of movement
       const blockBottom = endTop + blockHeight
 
-      
+
       // sets state of child component, changing the block's position on screen if new position is in bounds
       // set zIndex to topMost visually while being moved (resets on mouse up)
       if (this.state.controlBlock.controlType === "move") {
