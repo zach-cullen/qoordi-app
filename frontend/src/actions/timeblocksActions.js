@@ -32,6 +32,15 @@ export const addNewTimeBlock = (timeline_id, startTime, endTime) => {
   }
 }
 
+export const addTimeBlock = (timeBlockData) => {
+  return {
+    type: 'ADD_TIMEBLOCK',
+    payload: {
+      timeblock: timeBlockData,
+    }
+  }
+}
+
 // specific to new timeblock because this action does not save change to database
 export const proxyUpdateTimeBlockTimes = (id, startTime, endTime) => {
   return {
@@ -68,6 +77,9 @@ export const createTimeBlock = (timeBlockData) => {
   return (dispatch) => postToApi(timeBlockData, "/timeblocks")
   .then(res => res.json())
   .then(json => {
-    console.log("json: ", json)
+    if (json.timeblock_created) {
+      dispatch(deleteNewTimeBlock())
+      dispatch(addTimeBlock(json.timeblock))
+    }
   })
 }
