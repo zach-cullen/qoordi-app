@@ -18,7 +18,11 @@ const TimeBlockInfo = (props) => {
 
     if (props.blockId === 0) {
       return(
-        <NewTimeBlockForm project={props.project} timeblock={thisBlock}/>
+        <NewTimeBlockForm 
+          project={props.project} 
+          timeblock={thisBlock}
+          setSideBarBlockId={props.setSideBarBlockId}
+        />
       )
     }
 

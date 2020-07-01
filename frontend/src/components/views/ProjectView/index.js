@@ -24,7 +24,11 @@ class ProjectView extends Component {
   render() {
     return(
       <div id="project-view">
-        <ProjectSideBar project={this.props.project} blockId={this.state.sideBarBlockId}/>
+        <ProjectSideBar 
+          project={this.props.project} 
+          blockId={this.state.sideBarBlockId}
+          setSideBarBlockId={this.setSideBarBlockId}
+        />
         <div id="project-view-content">
           <div id="planner">
             <HourLabels startTime={this.state.startTime} endTime={this.state.endTime} />
