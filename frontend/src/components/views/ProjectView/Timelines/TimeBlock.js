@@ -53,7 +53,7 @@ class Timeblock extends Component {
   // passes this component and the event as values to parent component so that parent component can control this with its own mouseEvents
   // structuring this way prevents poor user experience resulting from inability to track mouse movement outside of the small amount of space block provides
   handleMouseDown = (event) => {
-    this.props.setControlBlock(this, event)
+    this.props.setControlBlock(this, this.props.timeBlock.id, event)
   }
 
   // returns name of css class containing styles for moving block if state of block is that it is moving
