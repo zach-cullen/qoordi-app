@@ -66,7 +66,9 @@ class NewTimeBlockForm extends Component {
             <label>
               START TIME
               <br />
-              <TimeSelector start={this.props.project.st} 
+              <TimeSelector
+                startTime={this.props.timeblock.start_time}
+                endTime={this.props.timeblock.end_time}
                 name={"startTime"}
                 handleChange={this.handleChange}
               />
@@ -76,6 +78,8 @@ class NewTimeBlockForm extends Component {
               END TIME
               <br />
               <TimeSelector 
+                startTime={this.props.timeblock.start_time}
+                endTime={this.props.timeblock.end_time}
                 name={"endTime"}
                 handleChange={this.handleChange}
               />
