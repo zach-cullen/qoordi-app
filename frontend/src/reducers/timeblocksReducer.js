@@ -30,6 +30,20 @@ const timeblocksReducer = (state = {
         }
       }
 
+    case "DELETE_NEW_TIMEBLOCK":
+      const filteredAllIds = state.allIds.filter((id) => id !== 0)
+      const newById = filteredAllIds.reduce((newObj, id) => {
+        return {
+          ...newObj,
+          [id]: state.byId[id]
+        }
+      }, {})
+      
+      return {
+        ...state,
+        byId: newById,
+        allIds: filteredAllIds,
+      }
 
     default:
       return state
