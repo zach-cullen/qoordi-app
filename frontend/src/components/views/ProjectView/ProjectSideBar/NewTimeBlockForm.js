@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import TimeSelector from './TimeSelector'
+import { proxyUpdateTimeBlockTimes } from '../../../../actions/timeblocksActions'
 
 class NewTimeBlockForm extends Component {
 
@@ -21,7 +23,7 @@ class NewTimeBlockForm extends Component {
       this.updateTimeBlockStart(event)
     }
 
-    if (event.target.name === "endtime") {
+    if (event.target.name === "endTime") {
       this.updateTimeBlockEnd(event)
     }
 
@@ -39,11 +41,13 @@ class NewTimeBlockForm extends Component {
   updateTimeBlockStart = (event) => {
     const newStartTime = this.timeTwelveTo24(event.target.value) 
     const newEndTime = this.calculateNewEndTime(newStartTime)
+    this.props.dispatch(proxyUpdateTimeBlockTimes(this.props.timeblock.id, newStartTime, newEndTime))
   }
 
   updateTimeBlockEnd = (event) => {
     const currentStartTime = this.props.timeblock.start_time
     const newEndTime = this.timeTwelveTo24(event.target.value)
+    this.props.dispatch(proxyUpdateTimeBlockTimes(this.props.timeblock.id, currentStartTime, newEndTime))
   }
 
   calculateNewEndTime = (startTime) => {
@@ -168,4 +172,4 @@ class NewTimeBlockForm extends Component {
 
 }
 
-export default NewTimeBlockForm
+export default connect()(NewTimeBlockForm)
