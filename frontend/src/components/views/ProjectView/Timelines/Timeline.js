@@ -29,7 +29,7 @@ class Timeline extends Component {
         blockAction: blockAction,
         initialBlockPosition: event.target.parentElement.offsetTop,
         initialMousePosition: event.clientY,
-        initialBlockHeight: block.state.blockHeight,
+        initialBlockHeight: event.target.parentElement.offsetHeight,
       }
     })
   }
