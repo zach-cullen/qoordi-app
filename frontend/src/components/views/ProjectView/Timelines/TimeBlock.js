@@ -9,7 +9,6 @@ class Timeblock extends Component {
       id: props.timeBlock.id,
       topPosition: this.initTopPosition(),
       blockHeight: this.initBlockHeight(),
-      isMoving: false,
       zIndex: this.initZIndex(),
     }
   }
@@ -46,7 +45,7 @@ class Timeblock extends Component {
       top: `${this.initTopPosition()}px`,
       height: `${this.initBlockHeight()}px`,
       backgroundColor: `var(--option-${this.props.timeBlock.color})`,
-      zIndex: `${this.state.zIndex}`
+      zIndex: `${this.initZIndex()}`
     }
   }
 
@@ -58,7 +57,7 @@ class Timeblock extends Component {
 
   // returns name of css class containing styles for moving block if state of block is that it is moving
   addClassIfMoving = () => {
-    return this.state.isMoving ? "moving-block" : ""
+    return this.props.isMoving ? "moving-block" : ""
   }
 
   render() {
