@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TimeBlock from './TimeBlock'
-import { addNewTimeBlock } from '../../../../actions/timeblocksActions'
-import { proxyUpdateTimeBlockTimes } from '../../../../actions/timeblocksActions'
+import { addNewTimeBlock, deleteNewTimeBlock, proxyUpdateTimeBlockTimes } from '../../../../actions/timeblocksActions'
 
 class Timeline extends Component {
 
@@ -32,6 +31,9 @@ class Timeline extends Component {
     })
     // display selected block info in side bar
     this.props.setSideBarBlockId(blockId)
+    if (blockId !== 0) {
+      this.props.dispatch(deleteNewTimeBlock())
+    }
   }
 
   // moves child element according to mouse movement if it has been selected
