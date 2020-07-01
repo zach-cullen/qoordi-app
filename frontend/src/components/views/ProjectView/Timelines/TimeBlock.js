@@ -1,9 +1,9 @@
 import './TimeBlock.css'
-import React, { Component } from 'react'
+import React from 'react'
 
-class Timeblock extends Component {
+const Timeblock = (props) => {
 
-  convertTimeStringToPx = (timeString) => {
+  const convertTimeStringToPx = (timeString) => {
     const [hrs, min] = timeString.split(":").map((s) => parseInt(s))
     const quarterHrs = min / 15
     return hrs * 80 + quarterHrs * 20
@@ -11,57 +11,56 @@ class Timeblock extends Component {
 
 
   // find difference in hours between project start and timeblock start and scale to px
-  initTopPosition = () => {
-    const blockStart = this.convertTimeStringToPx(this.props.timeBlock.start_time)
-    const projectStart = this.props.projectStart * 0.8
+  const initTopPosition = () => {
+    const blockStart = convertTimeStringToPx(props.timeBlock.start_time)
+    const projectStart = props.projectStart * 0.8
     return blockStart - projectStart
   }
 
   // find difference between block start and end and scale to px
-  initBlockHeight = () => {
-    const blockStart = this.convertTimeStringToPx(this.props.timeBlock.start_time)
-    const blockEnd = this.convertTimeStringToPx(this.props.timeBlock.end_time)
+  const initBlockHeight = () => {
+    const blockStart = convertTimeStringToPx(props.timeBlock.start_time)
+    const blockEnd = convertTimeStringToPx(props.timeBlock.end_time)
     return blockEnd - blockStart
   }
 
   // multiply topPosition by 100 to calculate initial z-index setting. This will make sure blocks lower in the screen are not overlapped by those higher
-  initZIndex = () => {
-    return this.props.isMoving ? 999999 : this.initTopPosition() * 100
+  const initZIndex = () => {
+    return props.isMoving ? 999999 : initTopPosition() * 100
   }
 
   // returns style object for injection as inline styles
-  injectStyles = () => {
+  const injectStyles = () => {
     return {
-      top: `${this.initTopPosition()}px`,
-      height: `${this.initBlockHeight()}px`,
-      backgroundColor: `var(--option-${this.props.timeBlock.color})`,
-      zIndex: `${this.initZIndex()}`
+      top: `${initTopPosition()}px`,
+      height: `${initBlockHeight()}px`,
+      backgroundColor: `var(--option-${props.timeBlock.color})`,
+      zIndex: `${initZIndex()}`
     }
   }
 
   // passes this component and the event as values to parent component so that parent component can control this with its own mouseEvents
   // structuring this way prevents poor user experience resulting from inability to track mouse movement outside of the small amount of space block provides
-  handleMouseDown = (event) => {
-    this.props.setControlBlock(this, this.props.timeBlock.id, event)
+  const handleMouseDown = (event) => {
+    props.setControlBlock(props.timeBlock.id, event)
   }
 
   // returns name of css class containing styles for moving block if state of block is that it is moving
-  addClassIfMoving = () => {
-    return this.props.isMoving ? "moving-block" : ""
+  const addClassIfMoving = () => {
+    return props.isMoving ? "moving-block" : ""
   }
 
-  render() {
-    return(
-      <div 
-        className={`time-block ${this.addClassIfMoving()}`} 
-        style={this.injectStyles()}
-        onMouseDown={this.handleMouseDown}
-      >
-        <div className="time-block-top"></div>
-        <div className="time-block-resize-handle"></div>
-      </div>
-    )
-  }
+
+  return(
+    <div 
+      className={`time-block ${addClassIfMoving()}`} 
+      style={injectStyles()}
+      onMouseDown={handleMouseDown}
+    >
+      <div className="time-block-top"></div>
+      <div className="time-block-resize-handle"></div>
+    </div>
+  )
 }
 
 export default Timeblock
