@@ -98,11 +98,6 @@ class Timeline extends Component {
             const currentEndTime = this.convertPxToTimeString(projectStartOffset + newBlockBottom)
 
             this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
-            // block.setState({
-            //   blockHeight: endBlockHeight,
-            //   zIndex: 999999,
-            // })
-
           }
         }
       }
