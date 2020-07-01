@@ -66,7 +66,6 @@ class Timeblock extends Component {
       <div 
         className={`time-block ${this.addClassIfMoving()}`} 
         style={this.injectStyles()}
-        onClick={this.handleClick}
         onMouseDown={this.handleMouseDown}
       >
         <div className="time-block-top"></div>
