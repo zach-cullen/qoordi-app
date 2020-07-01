@@ -36,7 +36,7 @@ class Timeblock extends Component {
 
   // multiply topPosition by 100 to calculate initial z-index setting. This will make sure blocks lower in the screen are not overlapped by those higher
   initZIndex = () => {
-    return this.initTopPosition() * 100
+    return this.props.isMoving ? 999999 : this.initTopPosition() * 100
   }
 
   // returns style object for injection as inline styles
