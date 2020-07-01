@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import TimeSelector from './TimeSelector'
-import { proxyUpdateTimeBlockTimes } from '../../../../actions/timeblocksActions'
+import { proxyUpdateTimeBlockTimes, updateNewTimeBlockColor } from '../../../../actions/timeblocksActions'
 
 class NewTimeBlockForm extends Component {
 
@@ -36,6 +36,9 @@ class NewTimeBlockForm extends Component {
     this.setState({
       color: color,
     })
+
+    this.props.dispatch(updateNewTimeBlockColor(color))
+
   }
 
   updateTimeBlockStart = (event) => {
