@@ -10,6 +10,7 @@ class Timeline extends Component {
     super(props)
     this.state = {
       controlBlock: {
+        active: false,
         blockId: null,
         initialBlockPosition: null,
         initialMousePosition: null,
@@ -24,6 +25,7 @@ class Timeline extends Component {
     const controlType = event.target.classList.contains("time-block-resize-handle") ? "resize" : "move"
     this.setState({
       controlBlock: {
+        active: true,
         blockId: blockId,
         controlType: controlType,
         initialMousePosition: event.clientY,
@@ -36,7 +38,7 @@ class Timeline extends Component {
   // moves child element according to mouse movement if it has been selected
   handleMouseMove = (event) => {
 
-    if (!!this.state.controlBlock.blockId) {
+    if (this.state.controlBlock.active) {
       // prevents handleMouseUp from also triggering click event
       this.setState({
         preventClick: true,
@@ -121,7 +123,7 @@ class Timeline extends Component {
   }
 
   handleMoveEnd = () => {
-    if (!!this.state.controlBlock.blockId) {
+    if (this.state.controlBlock.active) {
       // removes block from state and resets moving css styles
       this.resetControlBlock()
     }
@@ -134,7 +136,8 @@ class Timeline extends Component {
     // reset state so that no block is being controlled
     this.setState({
       controlBlock: {
-        block: null,
+        active: false,
+        blockId: null,
         initialBlockPosition: null,
         initialMousePosition: null,
       }
@@ -176,7 +179,7 @@ class Timeline extends Component {
 
   // maintain cursor resize while dragging and cursor moves off edge of block
   injectStyles = () => {
-    if (!!this.state.controlBlock.blockId) {
+    if (this.state.controlBlock.active) {
       return {
         cursor: "ns-resize",
       }
