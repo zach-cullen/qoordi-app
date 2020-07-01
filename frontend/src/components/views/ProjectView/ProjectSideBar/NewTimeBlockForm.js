@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import TimeSelector from './TimeSelector'
-import { proxyUpdateTimeBlockTimes, updateNewTimeBlockColor } from '../../../../actions/timeblocksActions'
+import { proxyUpdateTimeBlockTimes, updateNewTimeBlockColor, createTimeBlock} from '../../../../actions/timeblocksActions'
 
 class NewTimeBlockForm extends Component {
 
@@ -37,20 +37,20 @@ class NewTimeBlockForm extends Component {
       color: color,
     })
 
-    this.props.dispatch(updateNewTimeBlockColor(color))
+    this.props.updateNewTimeBlockColor(color)
 
   }
 
   updateTimeBlockStart = (event) => {
     const newStartTime = this.timeTwelveTo24(event.target.value) 
     const newEndTime = this.calculateNewEndTime(newStartTime)
-    this.props.dispatch(proxyUpdateTimeBlockTimes(this.props.timeblock.id, newStartTime, newEndTime))
+    this.props.proxyUpdateTimeBlockTimes(this.props.timeblock.id, newStartTime, newEndTime)
   }
 
   updateTimeBlockEnd = (event) => {
     const currentStartTime = this.props.timeblock.start_time
     const newEndTime = this.timeTwelveTo24(event.target.value)
-    this.props.dispatch(proxyUpdateTimeBlockTimes(this.props.timeblock.id, currentStartTime, newEndTime))
+    this.props.proxyUpdateTimeBlockTimes(this.props.timeblock.id, currentStartTime, newEndTime)
   }
 
   calculateNewEndTime = (startTime) => {
@@ -105,13 +105,37 @@ class NewTimeBlockForm extends Component {
     return !!this.state.title
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    if (this.submitAllowed()) {
+
+      const newTimeBlock = {
+        timeline_id: this.props.timeblock.timeline_id,
+        start_time: this.props.timeblock.start_time,
+        end_time: this.props.timeblock.end_time,
+        color: this.props.timeblock.color,
+        title: this.state.title,
+        description: this.state.description,
+      }
+      
+      this.props.setSideBarBlockId(null)
+      this.props.createTimeBlock(newTimeBlock)
+    } 
+
+    console.log("submit form!")
+  }
+
   render() {
     return(
       <div 
         className="sidebar-form" id="new-time-block-form"
         onClick={this.closeColorOptions}
       >
-        <form className="sidebar-form-container">
+        <form 
+          className="sidebar-form-container"
+          onSubmit={this.handleSubmit}
+        >
           <label>
             NEW EVENT
             <input 
@@ -183,4 +207,19 @@ class NewTimeBlockForm extends Component {
 
 }
 
-export default connect()(NewTimeBlockForm)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createTimeBlock: (timeBlockData) => {
+      dispatch(createTimeBlock(timeBlockData))
+    },
+    proxyUpdateTimeBlockTimes: (id, startTime, endTime) => {
+      dispatch(proxyUpdateTimeBlockTimes(id, startTime, endTime))
+    },
+    updateNewTimeBlockColor: (color) => {
+      dispatch(updateNewTimeBlockColor(color))
+    }
+
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewTimeBlockForm)
