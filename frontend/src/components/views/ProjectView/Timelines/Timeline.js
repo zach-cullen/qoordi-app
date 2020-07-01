@@ -90,10 +90,19 @@ class Timeline extends Component {
           const newBlockBottom = blockStart + endBlockHeight
           // if new block bottom is in bounds, set state of child component so that it changes the height of the block
           if (newBlockBottom <= timelineEnd) {
-            block.setState({
-              blockHeight: endBlockHeight,
-              zIndex: 999999,
-            })
+
+            const projectStartOffset = this.props.startTime * 0.8
+            // calculate initial start time
+            const currentStartTime = this.convertPxToTimeString(projectStartOffset + blockStart)
+            // calculate new end time and dispatch update
+            const currentEndTime = this.convertPxToTimeString(projectStartOffset + newBlockBottom)
+
+            this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
+            // block.setState({
+            //   blockHeight: endBlockHeight,
+            //   zIndex: 999999,
+            // })
+
           }
         }
       }
