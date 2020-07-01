@@ -30,12 +30,14 @@ export const proxyUpdateTimeBlockTimes = (id, startTime, endTime) => {
   }
 }
 
+// action requires no payload because reducer will specifically target index of 0, which can only be for new timeblock
 export const deleteNewTimeBlock = () => {
   return {
     type: "DELETE_NEW_TIMEBLOCK",
   }
 }
 
+// changes the color of new timeblock without persisting the change
 export const updateNewTimeBlockColor = (color) => {
   return {
     type: "UPDATE_NEW_TIMEBLOCK_COLOR",
