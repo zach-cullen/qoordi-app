@@ -162,7 +162,8 @@ class Timeline extends Component {
   renderTimeBlocks = () => {
     return this.mapTimeBlocks().map((timeBlock) => {
       return(
-        <TimeBlock key={timeBlock.id} 
+        <TimeBlock 
+          key={timeBlock.id} 
           isMoving={this.blockIsMoving(timeBlock.id)}
           setControlBlock={this.setControlBlock}
           projectStart={this.props.startTime}
