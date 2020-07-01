@@ -41,6 +41,7 @@ button:focus {
 }
 
 .form-btn-disabled {
+  cursor: default;
   background-color: var(--brand-color-light);
   color: var(--light-bg-1);
 }
