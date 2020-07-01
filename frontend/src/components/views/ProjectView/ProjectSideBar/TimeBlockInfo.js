@@ -9,7 +9,6 @@ const TimeBlockInfo = (props) => {
   const renderBlockDetailsOrForm = () => {
 
     if (props.blockId === null) {
-      console.log("no block Id")
       return(
         <div>
           Project
