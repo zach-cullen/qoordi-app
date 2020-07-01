@@ -54,13 +54,54 @@ const TimeSelector = (props) => {
     })
   }
 
+  const addAmOrPm = (timeString) => {
+    const hr = parseInt(timeString.slice(0, 2))
+    console.log("hr: ", hr)
+
+    if (hr < 12) {
+      console.log("< 12 ", `${timeString} AM`)
+      return `${timeString} AM`
+    }
+    if (hr === 24) {
+      console.log("24")
+      return `${timeString} AM`
+    }
+    if (hr === 12) {
+      console.log("12", `${timeString} PM`)
+      return `${timeString} PM`
+    }
+    if (hr > 12 && hr < 24) {
+      console.log("13 - 23", `${hr - 12}:${timeString.slice(3, 5)} PM`)
+      return `${hr - 12}:${timeString.slice(3, 5)} PM`
+    }
+  }
+
+  const setPlaceHolder = () => {
+    const removeZeroPad = (timeString) => {
+      if (timeString[0] === "0") {
+        return timeString.slice(1, 5)
+      }
+      return timeString
+    }
+
+    if (props.name === "startTime") {
+      console.log("set start")
+      return addAmOrPm(removeZeroPad(props.startTime))
+    }
+
+    if (props.name === "endTime") {
+      console.log("set end")
+      return addAmOrPm(removeZeroPad(props.endTime))
+    }
+  }
+
 
   const handleChange = (event) => {
     props.handleChange(event)
   }
 
   return(
-    <select onChange={handleChange} className="time-select" name={props.name} placeholder="9:30 AM">
+    <select onChange={handleChange} className="time-select" name={props.name} value={setPlaceHolder()}>
       { renderOptions() }
     </select>
   )
