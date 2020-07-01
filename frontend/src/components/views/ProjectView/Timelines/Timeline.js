@@ -129,11 +129,8 @@ class Timeline extends Component {
     }
   }
 
-  // stops handleMouseMove from controlling a block by resetting to inital state value
+  // reset state so that no block is being controlled by functions
   resetControlBlock = () => {
-
-
-    // reset state so that no block is being controlled
     this.setState({
       controlBlock: {
         active: false,
@@ -145,6 +142,7 @@ class Timeline extends Component {
 
   }
 
+  // takes a pixel value and converts to a time string
   convertPxToTimeString = (px) => {
     const hrs = Math.floor(px / 80)
     const quarterHrs = (px / 80 - hrs) / 0.25 
