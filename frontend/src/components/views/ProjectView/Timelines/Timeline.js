@@ -21,14 +21,14 @@ class Timeline extends Component {
 
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
   setControlBlock = (block, event) => {
-    const blockAction = event.target.classList.contains("time-block-resize-handle") ? "resize" : "move"
+    const controlType = event.target.classList.contains("time-block-resize-handle") ? "resize" : "move"
 
     this.setState({
       controlBlock: {
         block: block,
-        blockAction: blockAction,
-        initialBlockPosition: event.target.parentElement.offsetTop,
+        controlType: controlType,
         initialMousePosition: event.clientY,
+        initialBlockPosition: event.target.parentElement.offsetTop,
         initialBlockHeight: event.target.parentElement.offsetHeight,
       }
     })
@@ -71,7 +71,7 @@ class Timeline extends Component {
 
       // sets state of child component, changing the block's position on screen if new position is in bounds
       // set zIndex to topMost visually while being moved (resets on mouse up)
-      if (this.state.controlBlock.blockAction === "move") {
+      if (this.state.controlBlock.controlType === "move") {
         if (endTop >= 0 && timelineEnd >= blockBottom) {
         const projectStartOffset = this.props.startTime * 0.8
         // calculate time strings from top position of block and block height
@@ -83,7 +83,7 @@ class Timeline extends Component {
       } 
       
       // sets state of child component, changing the height of the block if new height does not place block out of bounds
-      if (this.state.controlBlock.blockAction === "resize") {
+      if (this.state.controlBlock.controlType === "resize") {
         // calculate new block height from initial blox height + movement increments * 20
         const endBlockHeight = blockHeight + increments * 20
         // make sure that new block height is not less than 20
@@ -181,7 +181,6 @@ class Timeline extends Component {
       return(
         <TimeBlock key={timeBlock.id} 
           setControlBlock={this.setControlBlock}
-          handleClick={this.handleClick}
           projectStart={this.props.startTime}
           projectEnd={this.props.endTime}
           timeBlock={timeBlock} 
@@ -205,7 +204,6 @@ class Timeline extends Component {
       <div 
         className="timeline"
         onMouseDown={this.handleMouseDown}
-        onClick={this.handleClick}
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.handleMoveEnd}
         onMouseUp={this.handleMoveEnd}
