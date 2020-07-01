@@ -76,7 +76,7 @@ class Timeline extends Component {
         const currentStartTime = this.convertPxToTimeString(projectStartOffset + endTop)
         const currentEndTime = this.convertPxToTimeString(projectStartOffset + endTop + this.state.controlBlock.initialBlockHeight)
         // dispatch update to new block times
-        this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
+        this.props.dispatch(proxyUpdateTimeBlockTimes(this.state.controlBlock.blockId, currentStartTime, currentEndTime))
         }
       } 
       
@@ -97,7 +97,7 @@ class Timeline extends Component {
             // calculate new end time and dispatch update
             const currentEndTime = this.convertPxToTimeString(projectStartOffset + newBlockBottom)
 
-            this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
+            this.props.dispatch(proxyUpdateTimeBlockTimes(this.state.controlBlock.blockId, currentStartTime, currentEndTime))
           }
         }
       }
