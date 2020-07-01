@@ -6,6 +6,7 @@ class Timeblock extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: props.timeBlock.id,
       topPosition: this.initTopPosition(),
       blockHeight: this.initBlockHeight(),
       isMoving: false,
