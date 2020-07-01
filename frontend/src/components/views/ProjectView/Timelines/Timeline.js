@@ -76,7 +76,7 @@ class Timeline extends Component {
         const projectStartOffset = this.props.startTime * 0.8
         // calculate time strings from top position of block and block height
         const currentStartTime = this.convertPxToTimeString(projectStartOffset + endTop)
-        const currentEndTime = this.convertPxToTimeString(projectStartOffset + endTop + block.state.blockHeight)
+        const currentEndTime = this.convertPxToTimeString(projectStartOffset + endTop + this.state.controlBlock.initialBlockHeight)
         // dispatch update to new block times
         this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
         }
