@@ -1,3 +1,19 @@
+import { API_URL } from '../store/constants'
+
+// configures post request payload and returns promise from fetch request to url
+// assigns passed in params to new object with key of user
+const postToApi = (params = {}, url = '') => {
+  let payload = {
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
+    credentials: "include",
+    method: "POST",
+    body: JSON.stringify({ timeblock: params })
+  }
+
+  return fetch(`${API_URL}${url}`, payload)
+}
+
+
 // specific time block dispatch for new timeblock with id of 0, used only as proxy until saved
 export const addNewTimeBlock = (timeline_id, startTime, endTime) => {
   return {
@@ -45,4 +61,13 @@ export const updateNewTimeBlockColor = (color) => {
       color: color,
     }
   }
+}
+
+// save new timeblock to the database, remove its proxy from redux store, and add persisted timeblock to redux store
+export const createTimeBlock = (timeBlockData) => {
+  return (dispatch) => postToApi(timeBlockData, "/timeblocks")
+  .then(res => res.json())
+  .then(json => {
+    console.log("json: ", json)
+  })
 }
