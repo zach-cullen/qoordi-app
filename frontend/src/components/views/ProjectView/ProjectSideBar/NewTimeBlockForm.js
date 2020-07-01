@@ -17,6 +17,14 @@ class NewTimeBlockForm extends Component {
   }
 
   handleChange = (event) => {
+    if (event.target.name === "startTime") {
+      this.updateTimeBlockStart(event)
+    }
+
+    if (event.target.name === "endtime") {
+      this.updateTimeBlockEnd(event)
+    }
+
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -26,6 +34,49 @@ class NewTimeBlockForm extends Component {
     this.setState({
       color: color,
     })
+  }
+
+  updateTimeBlockStart = (event) => {
+    const newStartTime = this.timeTwelveTo24(event.target.value) 
+    const newEndTime = this.calculateNewEndTime(newStartTime)
+  }
+
+  updateTimeBlockEnd = (event) => {
+    const currentStartTime = this.props.timeblock.start_time
+    const newEndTime = this.timeTwelveTo24(event.target.value)
+  }
+
+  calculateNewEndTime = (startTime) => {
+    return this.floatToTime(this.timeToHrsFloat(startTime) + this.calculateDurationFloat())
+  }
+
+  calculateDurationFloat = () => {
+    const [startHr, startMin] = this.props.timeblock.start_time.split(":").map((s) => parseInt(s))
+    const [endHr, endMin] = this.props.timeblock.end_time.split(":").map((s) => parseInt(s))
+    const hrDiff = endHr - startHr
+    const quarterHrsDiff = ((endMin - startMin) / 15) * 0.25
+    return hrDiff + quarterHrsDiff
+  }
+
+  timeTwelveTo24 = (timeStringWithAmPM) => {
+    const hrIn12 = parseInt(timeStringWithAmPM.slice(0, 2))
+    const min = timeStringWithAmPM.split(":")[1].slice(0, 2)
+    const isPm = () => timeStringWithAmPM.slice(-2) === "PM" && hrIn12 !== 12
+    const hrIn24 = isPm() ? hrIn12 + 12 : hrIn12
+    return `${hrIn24}:${min}`
+  }
+
+  timeToHrsFloat = (timeString) => {
+    const [hrs, min] = timeString.split(":").map((s) => parseInt(s))
+    const quarterHrs = (min / 15) * 0.25
+    return hrs + quarterHrs
+  }
+
+  floatToTime = (hrsFloat) => {
+    const totalQuarters = hrsFloat / 0.25
+    const remainQuarters = totalQuarters % 4
+    const hrs = (totalQuarters / 4) - remainQuarters * 0.25
+    return `${hrs}:${remainQuarters === 0 ? "00" : remainQuarters * 15}`
   }
 
   // hides ColorSelector options only if click target is not a color-option div
