@@ -3,16 +3,6 @@ import React, { Component } from 'react'
 
 class Timeblock extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: props.timeBlock.id,
-      topPosition: this.initTopPosition(),
-      blockHeight: this.initBlockHeight(),
-      zIndex: this.initZIndex(),
-    }
-  }
-
   convertTimeStringToPx = (timeString) => {
     const [hrs, min] = timeString.split(":").map((s) => parseInt(s))
     const quarterHrs = min / 15
