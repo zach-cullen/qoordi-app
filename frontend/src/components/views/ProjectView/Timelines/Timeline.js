@@ -11,9 +11,6 @@ class Timeline extends Component {
     this.state = {
       controlBlock: {
         active: false,
-        blockId: null,
-        initialBlockPosition: null,
-        initialMousePosition: null,
       },
       preventClick: false,
     }
@@ -134,9 +131,6 @@ class Timeline extends Component {
     this.setState({
       controlBlock: {
         active: false,
-        blockId: null,
-        initialBlockPosition: null,
-        initialMousePosition: null,
       }
     })
 
