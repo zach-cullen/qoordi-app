@@ -1,10 +1,11 @@
 // specific time block dispatch for new timeblock with id of 0, used only as proxy until saved
-export const addNewTimeBlock = (startTime, endTime) => {
+export const addNewTimeBlock = (timeline_id, startTime, endTime) => {
   return {
     type: "ADD_TIMEBLOCK",
     payload: {
       timeblock: {
         id: 0,
+        timeline_id: timeline_id,
         title: "",
         description: "",
         color: "blue",

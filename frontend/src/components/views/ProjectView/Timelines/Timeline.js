@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TimeBlock from './TimeBlock'
+import { selectTimelineTimeBlocks } from '../../../../reducers/timeblocksFilters'
 import { addNewTimeBlock, deleteNewTimeBlock, proxyUpdateTimeBlockTimes } from '../../../../actions/timeblocksActions'
 
 class Timeline extends Component {
@@ -117,7 +118,7 @@ class Timeline extends Component {
       const endTimeInPx = startTimeInPx + 20
       // passes time string to createTimeBlock, adding new timeblock to timeline at click location
       // this.createTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx))
-      this.props.dispatch(addNewTimeBlock(this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx)))
+      this.props.dispatch(addNewTimeBlock(this.props.timeline.id, this.convertPxToTimeString(startTimeInPx), this.convertPxToTimeString(endTimeInPx)))
       this.props.setSideBarBlockId(0)
     }
   }
@@ -149,8 +150,8 @@ class Timeline extends Component {
   }
 
   // maps TimeBlock components from normalized object to array of objects
-  mapTimeBlocks = (timeBlocks) => {
-    return timeBlocks.allIds.map((i) => timeBlocks.byId[i])
+  mapTimeBlocks = () => {
+    return selectTimelineTimeBlocks(this.props.timeBlocks, this.props.timeline.id)
   }
 
   blockIsMoving = (timeBlockId) => {
@@ -159,7 +160,7 @@ class Timeline extends Component {
 
   // renders TimeBlock components from array of timeblocks in state
   renderTimeBlocks = () => {
-    return this.mapTimeBlocks(this.props.timeBlocks).map((timeBlock) => {
+    return this.mapTimeBlocks().map((timeBlock) => {
       return(
         <TimeBlock key={timeBlock.id} 
           isMoving={this.blockIsMoving(timeBlock.id)}
