@@ -21,14 +21,13 @@ class Timeline extends Component {
 
   // sets controlBlock to the TimeBlock that triggered event and stores initial values for movement calculations
   setControlBlock = (block, event) => {
-
     const blockAction = event.target.classList.contains("time-block-resize-handle") ? "resize" : "move"
 
     this.setState({
       controlBlock: {
         block: block,
         blockAction: blockAction,
-        initialBlockPosition: block.state.topPosition,
+        initialBlockPosition: event.target.parentElement.offsetTop,
         initialMousePosition: event.clientY,
         initialBlockHeight: block.state.blockHeight,
       }
@@ -79,7 +78,6 @@ class Timeline extends Component {
         const currentStartTime = this.convertPxToTimeString(projectStartOffset + endTop)
         const currentEndTime = this.convertPxToTimeString(projectStartOffset + endTop + block.state.blockHeight)
         // dispatch update to new block times
-        console.log(currentStartTime, currentEndTime)
         this.props.dispatch(proxyUpdateTimeBlockTimes(block.state.id, currentStartTime, currentEndTime))
         }
       } 
