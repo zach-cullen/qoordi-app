@@ -62,10 +62,7 @@ class Timeline extends Component {
       // calculate potential bottom offset of timeblock at end of movement
       const blockBottom = endTop + blockHeight
 
-      // set state of block to isMoving true so block can apply css class
-      block.setState({
-        isMoving: true,
-      })
+
 
       // sets state of child component, changing the block's position on screen if new position is in bounds
       // set zIndex to topMost visually while being moved (resets on mouse up)
@@ -136,12 +133,7 @@ class Timeline extends Component {
 
   // stops handleMouseMove from controlling a block by resetting to inital state value
   resetControlBlock = (block) => {
-    // set state of block to isMoving false so block can remove css class
-    // recalculate block's zIndex based on its final position
-    block.setState({
-      isMoving: false,
-      zIndex: block.state.topPosition * 100,
-    })
+
 
     // reset state so that no block is being controlled
     this.setState({
@@ -167,11 +159,16 @@ class Timeline extends Component {
     return timeBlocks.allIds.map((i) => timeBlocks.byId[i])
   }
 
+  blockIsMoving = (timeBlockId) => {
+   return this.state.controlBlock.blockId === timeBlockId
+  }
+
   // renders TimeBlock components from array of timeblocks in state
   renderTimeBlocks = () => {
     return this.mapTimeBlocks(this.props.timeBlocks).map((timeBlock) => {
       return(
         <TimeBlock key={timeBlock.id} 
+          isMoving={this.blockIsMoving(timeBlock.id)}
           setControlBlock={this.setControlBlock}
           projectStart={this.props.startTime}
           projectEnd={this.props.endTime}
