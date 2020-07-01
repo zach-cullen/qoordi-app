@@ -44,7 +44,7 @@ class Timeblock extends Component {
   injectStyles = () => {
     return {
       top: `${this.initTopPosition()}px`,
-      height: `${this.state.blockHeight}px`,
+      height: `${this.initBlockHeight()}px`,
       backgroundColor: `var(--option-${this.props.timeBlock.color})`,
       zIndex: `${this.state.zIndex}`
     }
