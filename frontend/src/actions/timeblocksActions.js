@@ -34,3 +34,12 @@ export const deleteNewTimeBlock = () => {
     type: "DELETE_NEW_TIMEBLOCK",
   }
 }
+
+export const updateNewTimeBlockColor = (color) => {
+  return {
+    type: "UPDATE_NEW_TIMEBLOCK_COLOR",
+    payload: {
+      color: color,
+    }
+  }
+}
