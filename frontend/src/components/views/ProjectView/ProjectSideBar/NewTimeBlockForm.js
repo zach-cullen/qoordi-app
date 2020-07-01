@@ -101,6 +101,10 @@ class NewTimeBlockForm extends Component {
     })
   }
 
+  submitAllowed = () => {
+    return !!this.state.title
+  }
+
   render() {
     return(
       <div 
@@ -164,7 +168,11 @@ class NewTimeBlockForm extends Component {
             />
           </label>
 
-          <button type="submit" className="form-btn form-btn-disabled">
+          <button 
+            type="submit" 
+            className={`form-btn ${this.submitAllowed() ? "form-btn-enabled" : "form-btn-disabled"}`}
+            disabled={!this.submitAllowed()}
+          >
             Save Event
           </button>
 
