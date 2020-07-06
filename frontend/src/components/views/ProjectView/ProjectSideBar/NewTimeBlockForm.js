@@ -143,7 +143,6 @@ class NewTimeBlockForm extends Component {
               onChange={this.handleChange} 
               value={this.state.title} 
               placeholder="Add Title"
-              autoFocus
             />
           </label>
           <br />
