@@ -14,10 +14,10 @@ class UpdateTimeBlockForm extends Component {
     }
   }
 
-  
+
   time24to12 = (timeString) => {
     const [hr, min] = timeString.split(":").map((s) => parseInt(s))
-    
+    const zeroPadMin = min === 0 ? "00" : min    
     const hrTo12 = hr <= 12 ? hr.toString() : (hr - 12).toString()
 
     // returns string representing hour in am / pm 12 hr scale
@@ -31,7 +31,7 @@ class UpdateTimeBlockForm extends Component {
       return "PM"
     }
 
-    return `${hrTo12}:${min} ${amOrPm()}`
+    return `${hrTo12}:${zeroPadMin} ${amOrPm()}`
   }
 
 
