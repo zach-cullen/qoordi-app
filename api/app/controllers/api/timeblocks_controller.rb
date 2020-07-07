@@ -21,6 +21,10 @@ class Api::TimeblocksController < Api::ApiController
     end
   end
 
+  def update 
+    byebug
+  end
+
   private 
 
   # returns timeline if timeblock timeline belongs to current_user or false if not
@@ -30,7 +34,7 @@ class Api::TimeblocksController < Api::ApiController
   end
 
   def timeblock_params
-    params.require(:timeblock).permit(:timeline_id, :title, :description, :start_time, :end_time, :color)
+    params.require(:timeblock).permit(:timeline_id, :id, :title, :description, :start_time, :end_time, :color)
   end
 
 end
