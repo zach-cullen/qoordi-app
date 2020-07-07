@@ -17,15 +17,26 @@ const timeblocksReducer = (state = {
       }
 
     case "PROXY_UPDATE_TIMEBLOCK_TIMES":
-      const block = action.payload.timeblock
       return {
         ...state,
         byId: {
           ...state.byId,
-          [block.id]: {
-            ...state.byId[block.id],
-            start_time: block.start_time,
-            end_time: block.end_time,
+          [action.payload.timeblock.id]: {
+            ...state.byId[action.payload.timeblock.id],
+            start_time: action.payload.timeblock.start_time,
+            end_time: action.payload.timeblock.end_time,
+          }
+        }
+      }
+
+    case "PROXY_UPDATE_TIMEBLOCK_TITLE":
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.timeblock.id]: {
+            ...state.byId[action.payload.timeblock.id],
+            title: action.payload.timeblock.title,
           }
         }
       }
