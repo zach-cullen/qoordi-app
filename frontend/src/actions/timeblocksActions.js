@@ -110,10 +110,17 @@ export const createTimeBlock = (timeBlockData) => {
 
 // replace timeblock in database with new updated timeblock
 export const updateTimeBlock = (timeBlockData) => {
-  console.log("update with: ", timeBlockData)
-  putToApi(timeBlockData, `/timeblocks/${timeBlockData.id}`)
+  return (dispatch) => putToApi(timeBlockData, `/timeblocks/${timeBlockData.id}`)
     .then(res => res.json())
     .then(json => {
-      console.log(json)
+      if (json.timeblock_updated) {
+        console.log(json)
+        dispatch({
+          type: "UPDATE_TIMEBLOCK",
+          payload: {
+            timeblock: json.timeblock,
+          },
+        })
+      }
     })
 }
