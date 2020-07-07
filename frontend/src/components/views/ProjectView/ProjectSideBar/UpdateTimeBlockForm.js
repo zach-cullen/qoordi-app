@@ -165,8 +165,6 @@ class UpdateTimeBlockForm extends Component {
           onSubmit={this.handleSubmit}
         >
 
-          { this.showButtonIfUpdated() }
-
           <label>
             EVENT
             <input 
@@ -180,8 +178,9 @@ class UpdateTimeBlockForm extends Component {
 
           <div>
             <h6>TIME</h6>
-            <p>{this.time24to12(this.props.timeblock.start_time)} - {this.time24to12(this.props.timeblock.end_time)}</p>
+            {this.time24to12(this.props.timeblock.start_time)} - {this.time24to12(this.props.timeblock.end_time)}
           </div>
+          <br />
 
           <label>
             COLOR
@@ -197,6 +196,10 @@ class UpdateTimeBlockForm extends Component {
             DESCRIPTION
             {this.renderDescription(this.state.editDescription)}
           </label>
+
+
+          { this.showButtonIfUpdated() }
+
         </form>
       </div>
     )
