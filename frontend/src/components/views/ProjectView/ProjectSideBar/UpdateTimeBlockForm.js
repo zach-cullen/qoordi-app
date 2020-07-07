@@ -13,6 +13,7 @@ class UpdateTimeBlockForm extends Component {
       endTime: this.time24to12(props.timeblock.end_time),
       editDescription: false,
       formEdited: false,
+      showColorOptions: false,
     }
   }
 
@@ -92,6 +93,30 @@ class UpdateTimeBlockForm extends Component {
     })
   }
 
+  // hides ColorSelector options only if click target is not a color-option div
+  closeColorOptions = (event) => {
+    if (!event.target.classList.contains("selected-color-option")) {
+      this.setState({ showColorOptions: false})
+    }
+  }
+
+  // alters state passed as prop to ColorSelector so that it reveals color options
+  openColorOptions = () => {
+    this.setState({ 
+      showColorOptions: true,
+    })
+  }
+
+  setColor = (color) => {
+    if (this.state.formEdited === false) {
+      this.setState({
+        formEdited: true,
+      })
+    }
+    this.setState({
+      color: color,
+    })
+  }
 
 
   render() {
@@ -101,6 +126,7 @@ class UpdateTimeBlockForm extends Component {
       >
         <form 
           className="sidebar-form-container"
+          onClick={this.closeColorOptions}
         >
           <label>
             NEW EVENT
