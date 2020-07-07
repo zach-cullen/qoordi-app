@@ -31,10 +31,13 @@ class UpdateTimeBlockForm extends Component {
     }
 
     this.props.updateTimeBlock(updatedTimeBlock)
+
+    this.setState({
+      formEdited: false,
+    })
   }
 
   resetTimeBlockForm = () => {
-    console.log("discard")
     this.setState({
       title: this.props.timeblock.title,
       description: this.props.timeblock.description,
