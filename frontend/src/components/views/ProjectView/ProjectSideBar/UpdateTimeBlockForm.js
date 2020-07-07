@@ -33,6 +33,16 @@ class UpdateTimeBlockForm extends Component {
     this.props.updateTimeBlock(updatedTimeBlock)
   }
 
+  resetTimeBlockForm = () => {
+    console.log("discard")
+    this.setState({
+      title: this.props.timeblock.title,
+      description: this.props.timeblock.description,
+      color: this.props.timeblock.color,
+      formEdited: false,
+    })
+  }
+
 
   time24to12 = (timeString) => {
     const [hr, min] = timeString.split(":").map((s) => parseInt(s))
@@ -87,6 +97,7 @@ class UpdateTimeBlockForm extends Component {
         <div className="sidebar-split-even">
           <button
             className="sm-sidebar-btn"
+            onClick={this.resetTimeBlockForm}
           >
             Discard Changes
           </button>
