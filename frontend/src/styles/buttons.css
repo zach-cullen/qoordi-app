@@ -46,3 +46,14 @@ button:focus {
   color: var(--light-bg-1);
 }
 
+.sm-sidebar-btn {
+  cursor: pointer;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  width: auto;
+  font-size: var(--h6-size);
+  border-radius: var(--med-border-radius);
+}
+
