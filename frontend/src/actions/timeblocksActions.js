@@ -13,6 +13,17 @@ const postToApi = (params = {}, url = '') => {
   return fetch(`${API_URL}${url}`, payload)
 }
 
+const putToApi = (params = {}, url = '') => {
+  let payload = {
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
+    credentials: "include",
+    method: "PUT",
+    body: JSON.stringify({ timeblock: params })
+  }
+
+  return fetch(`${API_URL}${url}`, payload)
+}
+
 
 // specific time block dispatch for new timeblock with id of 0, used only as proxy until saved
 export const addNewTimeBlock = (timeline_id, startTime, endTime) => {
@@ -95,4 +106,14 @@ export const createTimeBlock = (timeBlockData) => {
       dispatch(addTimeBlock(json.timeblock))
     }
   })
+}
+
+// replace timeblock in database with new updated timeblock
+export const updateTimeBlock = (timeBlockData) => {
+  console.log("update with: ", timeBlockData)
+  putToApi(timeBlockData, `/timeblocks/${timeBlockData.id}`)
+    .then(res => res.json())
+    .then(json => {
+      console.log(json)
+    })
 }
