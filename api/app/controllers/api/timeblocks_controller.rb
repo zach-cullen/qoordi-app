@@ -22,7 +22,26 @@ class Api::TimeblocksController < Api::ApiController
   end
 
   def update 
-    byebug
+    @timeblock = valid_timeline.timeblocks.find_by(id: params[:id])
+    changeable_attributes = {
+      title: timeblock_params[:title],
+      description: timeblock_params[:description],
+      color: timeblock_params[:color],
+      start_time: timeblock_params[:start_time],
+      end_time: timeblock_params[:end_time]
+    }
+    if @timeblock.update_attributes(changeable_attributes)
+      render json: {
+        timeblock_updated: true,
+        timeblock: @timeblock.as_json(except: [:created_at, :updated_at]),
+      }
+    else
+      render json: {
+        timeblock_created: false,
+        errors: "Update was unsuccessful."
+      }
+    end
+    
   end
 
   private 
