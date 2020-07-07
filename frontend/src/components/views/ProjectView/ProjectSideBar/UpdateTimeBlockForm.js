@@ -11,8 +11,6 @@ class UpdateTimeBlockForm extends Component {
       title: props.timeblock.title,
       description: props.timeblock.description,
       color: props.timeblock.color,
-      startTime: this.time24to12(props.timeblock.start_time),
-      endTime: this.time24to12(props.timeblock.end_time),
       editDescription: false,
       formEdited: false,
       showColorOptions: false,
@@ -157,7 +155,7 @@ class UpdateTimeBlockForm extends Component {
 
           <div>
             <h6>TIME</h6>
-            <p>{this.state.startTime} - {this.state.endTime}</p>
+            <p>{this.time24to12(this.props.timeblock.start_time)} - {this.time24to12(this.props.timeblock.end_time)}</p>
           </div>
 
           <label>          
