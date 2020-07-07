@@ -17,7 +17,6 @@ const timeblocksReducer = (state = {
       }
 
     case "UPDATE_TIMEBLOCK": 
-      console.log("payload: ", action.payload)
       return {
         ...state,
         byId: {

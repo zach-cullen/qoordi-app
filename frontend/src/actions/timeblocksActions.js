@@ -114,7 +114,6 @@ export const updateTimeBlock = (timeBlockData) => {
     .then(res => res.json())
     .then(json => {
       if (json.timeblock_updated) {
-        console.log(json)
         dispatch({
           type: "UPDATE_TIMEBLOCK",
           payload: {
