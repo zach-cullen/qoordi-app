@@ -57,7 +57,9 @@ const Timeblock = (props) => {
       style={injectStyles()}
       onMouseDown={handleMouseDown}
     >
-      <div className="time-block-top"></div>
+      <div className="time-block-top">
+        {props.timeBlock.title}
+      </div>
       <div className="time-block-resize-handle"></div>
     </div>
   )
