@@ -148,22 +148,6 @@ class NewTimeBlockForm extends Component {
           onSubmit={this.handleSubmit}
         >
 
-          <div className="sidebar-split-even">
-            <button
-              className="sm-sidebar-btn"
-              onClick={ this.discardNewEvent }
-            >
-              Discard Event
-            </button>
-            <button 
-              type="submit" 
-              className={`sm-sidebar-btn ${this.submitAllowed() ? "form-btn-enabled" : "form-btn-disabled"}`}
-              disabled={!this.submitAllowed()}
-            >
-              Save Event
-            </button>
-          </div>
-
           <label>
             NEW EVENT
             <input 
@@ -218,6 +202,21 @@ class NewTimeBlockForm extends Component {
               placeholder="Add Description"
             />
           </label>
+          <div className="sidebar-split-even">
+            <button
+              className="sm-sidebar-btn"
+              onClick={ this.discardNewEvent }
+            >
+              Discard Event
+            </button>
+            <button 
+              type="submit" 
+              className={`sm-sidebar-btn ${this.submitAllowed() ? "form-btn-enabled" : "form-btn-disabled"}`}
+              disabled={!this.submitAllowed()}
+            >
+              Save Event
+            </button>
+          </div>
         </form>
       </div>
     )
