@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
+import { updateTimeBlock } from '../../../../actions/timeblocksActions'
 
 class UpdateTimeBlockForm extends Component {
 
@@ -17,9 +18,21 @@ class UpdateTimeBlockForm extends Component {
     }
   }
 
-  componentDidUpdate() {
-    console.log("updated")
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    const updatedTimeBlock = {
+      id: this.props.timeblock.id,
+      title: this.state.title,
+      description: this.state.description,
+      color: this.state.color,
+      start_time: this.props.timeblock.start_time,
+      end_time: this.props.timeblock.end_time,
+    }
+
+    updateTimeBlock(updatedTimeBlock)
   }
+
 
   time24to12 = (timeString) => {
     const [hr, min] = timeString.split(":").map((s) => parseInt(s))
@@ -127,6 +140,7 @@ class UpdateTimeBlockForm extends Component {
         <form 
           className="sidebar-form-container"
           onClick={this.closeColorOptions}
+          onSubmit={this.handleSubmit}
         >
           <label>
             NEW EVENT
