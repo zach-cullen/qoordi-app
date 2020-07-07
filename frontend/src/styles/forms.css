@@ -100,7 +100,7 @@ input:focus {
   border: none;
   outline: none;
   width: 100%;
-  height: inherit;
+  height: 5rem;
   box-sizing: border-box;
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
