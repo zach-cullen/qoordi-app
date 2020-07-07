@@ -54,6 +54,7 @@ class UpdateTimeBlockForm extends Component {
           value={this.state.description} 
           placeholder="Add Description"
           autoFocus={true}
+          onBlur={this.toggleEditDescription}
         />
       )
     }
