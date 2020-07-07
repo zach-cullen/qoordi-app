@@ -11,9 +11,13 @@ class UpdateTimeBlockForm extends Component {
       color: props.timeblock.color,
       startTime: this.time24to12(props.timeblock.start_time),
       endTime: this.time24to12(props.timeblock.end_time),
+      editDescription: false,
     }
   }
 
+  componentDidUpdate() {
+    console.log("updated")
+  }
 
   time24to12 = (timeString) => {
     const [hr, min] = timeString.split(":").map((s) => parseInt(s))
@@ -34,12 +38,41 @@ class UpdateTimeBlockForm extends Component {
     return `${hrTo12}:${zeroPadMin} ${amOrPm()}`
   }
 
+  toggleEditDescription = (event) => {
+    event.preventDefault()
+    this.setState({
+      editDescription: !this.state.editDescription,
+    })
+  } 
+
+  renderDescription = (boolean) => {
+    if (boolean === true) {
+      return (
+        <textarea 
+          type="text-area" name="description"
+          onChange={this.handleChange} 
+          value={this.state.description} 
+          placeholder="Add Description"
+          autoFocus={true}
+        />
+      )
+    }
+
+    return(
+      <p onClick={this.toggleEditDescription}>
+        {this.props.timeblock.description}
+      </p>
+    )
+  }
+
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
+
+
 
   render() {
     return(
@@ -65,6 +98,11 @@ class UpdateTimeBlockForm extends Component {
             <p>{this.state.startTime} - {this.state.endTime}</p>
           </div>
 
+          <label>          
+            DESCRIPTION
+            {this.renderDescription(this.state.editDescription)}
+          </label>
+
           <label>
             COLOR
             <ColorSelector 
@@ -72,16 +110,6 @@ class UpdateTimeBlockForm extends Component {
               showColorOptions={this.state.showColorOptions}
               openColorOptions={this.openColorOptions}
               setColor={this.setColor}
-            />
-          </label>
-
-          <label>
-            DESCRIPTION
-            <textarea 
-              type="text-area" name="description"
-              onChange={this.handleChange} 
-              value={this.state.description} 
-              placeholder="Add Description"
             />
           </label>
         </form>
