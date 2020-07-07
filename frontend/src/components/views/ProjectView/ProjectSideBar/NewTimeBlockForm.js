@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import TimeSelector from './TimeSelector'
-import { proxyUpdateTimeBlockTimes, updateNewTimeBlockColor, createTimeBlock} from '../../../../actions/timeblocksActions'
+import { proxyUpdateTimeBlockTimes, proxyUpdateTimeBlockTitle, updateNewTimeBlockColor, createTimeBlock} from '../../../../actions/timeblocksActions'
 
 class NewTimeBlockForm extends Component {
 
@@ -27,6 +27,10 @@ class NewTimeBlockForm extends Component {
       this.updateTimeBlockEnd(event)
     }
 
+    if (event.target.name === "title") {
+      this.updateTimeBlockTitle(event.target.value)
+    }
+
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -39,6 +43,10 @@ class NewTimeBlockForm extends Component {
 
     this.props.updateNewTimeBlockColor(color)
 
+  }
+
+  updateTimeBlockTitle = (title) => {
+    this.props.proxyUpdateTimeBlockTitle(this.props.timeblock.id, title)
   }
 
   updateTimeBlockStart = (event) => {
@@ -216,6 +224,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateNewTimeBlockColor: (color) => {
       dispatch(updateNewTimeBlockColor(color))
+    },
+    proxyUpdateTimeBlockTitle: (id, title) => {
+      dispatch(proxyUpdateTimeBlockTitle(id, title))
     }
 
   }
