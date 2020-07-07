@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import TimeSelector from './TimeSelector'
-import { proxyUpdateTimeBlockTimes, proxyUpdateTimeBlockTitle, updateNewTimeBlockColor, createTimeBlock} from '../../../../actions/timeblocksActions'
+import { proxyUpdateTimeBlockTimes, proxyUpdateTimeBlockTitle, updateNewTimeBlockColor, createTimeBlock, deleteNewTimeBlock} from '../../../../actions/timeblocksActions'
 
 class NewTimeBlockForm extends Component {
 
@@ -130,8 +130,11 @@ class NewTimeBlockForm extends Component {
       this.props.setSideBarBlockId(null)
       this.props.createTimeBlock(newTimeBlock)
     } 
+  }
 
-    console.log("submit form!")
+  discardNewEvent = () => {
+    this.props.setSideBarBlockId(null)
+    this.props.deleteNewTimeBlock()
   }
 
   render() {
@@ -144,6 +147,23 @@ class NewTimeBlockForm extends Component {
           className="sidebar-form-container"
           onSubmit={this.handleSubmit}
         >
+
+          <div className="sidebar-split-even">
+            <button
+              className="sm-sidebar-btn"
+              onClick={ this.discardNewEvent }
+            >
+              Discard Event
+            </button>
+            <button 
+              type="submit" 
+              className={`sm-sidebar-btn ${this.submitAllowed() ? "form-btn-enabled" : "form-btn-disabled"}`}
+              disabled={!this.submitAllowed()}
+            >
+              Save Event
+            </button>
+          </div>
+
           <label>
             NEW EVENT
             <input 
@@ -198,15 +218,6 @@ class NewTimeBlockForm extends Component {
               placeholder="Add Description"
             />
           </label>
-
-          <button 
-            type="submit" 
-            className={`form-btn ${this.submitAllowed() ? "form-btn-enabled" : "form-btn-disabled"}`}
-            disabled={!this.submitAllowed()}
-          >
-            Save Event
-          </button>
-
         </form>
       </div>
     )
@@ -227,8 +238,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     proxyUpdateTimeBlockTitle: (id, title) => {
       dispatch(proxyUpdateTimeBlockTitle(id, title))
-    }
-
+    },
+    deleteNewTimeBlock: () => {
+      dispatch(deleteNewTimeBlock())
+    },
   }
 }
 
