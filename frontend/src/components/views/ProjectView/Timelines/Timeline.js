@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TimeBlock from './TimeBlock'
 import { selectTimelineTimeBlocks } from '../../../../reducers/timeblocksFilters'
-import { addNewTimeBlock, deleteNewTimeBlock, proxyUpdateTimeBlockTimes } from '../../../../actions/timeblocksActions'
+import { addNewTimeBlock, deleteNewTimeBlock, proxyUpdateTimeBlockTimes, updateTimeBlock } from '../../../../actions/timeblocksActions'
 
 class Timeline extends Component {
 
@@ -125,6 +125,12 @@ class Timeline extends Component {
 
   handleMoveEnd = () => {
     if (this.state.controlBlock.active) {
+
+      if (this.state.controlBlock.blockId !== 0) {
+        const timeBlock = this.props.timeBlocks.byId[this.state.controlBlock.blockId]
+        this.props.dispatch(updateTimeBlock(timeBlock))
+      }
+
       // removes block from state and resets moving css styles
       this.resetControlBlock()
     }
