@@ -14,15 +14,17 @@
   background-color: var(--light-bg-2);
 }
 
-.category-filter-icon i {
+.category-filter-icon {
+  line-height: 1.5rem;
   display: inline-block;
-  margin-left: 0.25rem;
-  vertical-align: -50%;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  vertical-align: -15%;
 }
 
 .category-filter-text {
+  line-height: 1.5rem;
   display: inline-block;
-  vertical-align: -25%;
   margin-left: 1rem;
 }
 
