@@ -41,7 +41,7 @@ export const addTimeBlock = (timeBlockData) => {
   }
 }
 
-// specific to new timeblock because this action does not save change to database
+// intermediary dispatch action that does not save change to database
 export const proxyUpdateTimeBlockTimes = (id, startTime, endTime) => {
   return {
     type: "PROXY_UPDATE_TIMEBLOCK_TIMES",
@@ -55,7 +55,7 @@ export const proxyUpdateTimeBlockTimes = (id, startTime, endTime) => {
   }
 }
 
-// specific to new timeblock because this action does not save change to database
+// intermediary dispatch action that does not persist change in database
 export const proxyUpdateTimeBlockTitle = (id, title) => {
   return {
     type: "PROXY_UPDATE_TIMEBLOCK_TITLE",
