@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import { updateTimeBlock } from '../../../../actions/timeblocksActions'
 
@@ -31,7 +32,7 @@ class UpdateTimeBlockForm extends Component {
       end_time: this.props.timeblock.end_time,
     }
 
-    updateTimeBlock(updatedTimeBlock)
+    this.props.updateTimeBlock(updatedTimeBlock)
   }
 
 
@@ -182,5 +183,13 @@ class UpdateTimeBlockForm extends Component {
 
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateTimeBlock: (timeBlockData) => {
+      dispatch(updateTimeBlock(timeBlockData))
+    },
+  }
+}
 
-export default UpdateTimeBlockForm
+
+export default connect(null, mapDispatchToProps)(UpdateTimeBlockForm)
