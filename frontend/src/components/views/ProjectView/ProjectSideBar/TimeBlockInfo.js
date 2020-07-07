@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NewTimeBlockForm from './NewTimeBlockForm'
+import UpdateTimeBlockForm from './UpdateTimeBlockForm'
 
 const TimeBlockInfo = (props) => {
 
@@ -10,8 +11,7 @@ const TimeBlockInfo = (props) => {
 
     if (props.blockId === null) {
       return(
-        <div>
-          Project
+        <div id="#sidebar-project-info">
         </div>
       )
     }
@@ -27,9 +27,11 @@ const TimeBlockInfo = (props) => {
     }
 
     return(
-      <div>
-        {thisBlock.title}
-      </div>
+      <UpdateTimeBlockForm
+        project={props.project}
+        timeblock={thisBlock}
+        key={thisBlock.id}
+      />
     )
   }
 
