@@ -30,12 +30,12 @@
   --brand-color-1: #34ADF1;
   --brand-color-light: #B7DCF1;
 
-  --option-blue: #34ADF1;
-  --option-green: #79CB53;
-  --option-yellow: #F2BC30;
-  --option-orange: #FA945C;
+  --option-blue: #0F9EEE;
+  --option-green: #00B94A;
+  --option-yellow: #F2AE00;
+  --option-orange: #FF8C4B;
   --option-pink: #E774BF;
-  --option-purple: #AB7AE9;
+  --option-purple: #A463F6;
   --option-default: var(--med-gray-1);
 
   --lrg-border-radius: 0.5rem;
