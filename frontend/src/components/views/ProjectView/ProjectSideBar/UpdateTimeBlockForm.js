@@ -84,12 +84,20 @@ class UpdateTimeBlockForm extends Component {
   showButtonIfUpdated = () => {
     if (this.state.formEdited === true) {
       return(
-        <button 
-        type="submit" 
-        className="form-btn form-btn-enabled"
-      >
-        Save Changes
-      </button>
+        <div className="sidebar-split-even">
+          <button
+            className="sm-sidebar-btn"
+          >
+            Discard Changes
+          </button>
+          <button 
+          type="submit" 
+          className="sm-sidebar-btn form-btn-enabled"
+        >
+          Save Changes
+        </button>
+
+      </div>
       )
     }
   }
@@ -142,6 +150,9 @@ class UpdateTimeBlockForm extends Component {
           onClick={this.closeColorOptions}
           onSubmit={this.handleSubmit}
         >
+
+          { this.showButtonIfUpdated() }
+
           <label>
             EVENT
             <input 
@@ -172,8 +183,6 @@ class UpdateTimeBlockForm extends Component {
             DESCRIPTION
             {this.renderDescription(this.state.editDescription)}
           </label>
-
-          { this.showButtonIfUpdated() }
         </form>
       </div>
     )
