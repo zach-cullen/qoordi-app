@@ -1,5 +1,5 @@
 import React from 'react'
-import MaterialIcon from 'material-icons-react'
+import AddIcon from '@material-ui/icons/Add'
 
 const CategoryFilterNew = (props) => {
 
@@ -14,7 +14,9 @@ const CategoryFilterNew = (props) => {
       className="category-filter" id="category-filter-new"
       onClick={handleClick}
     >
-      <span className="category-filter-icon" style={{color: "gray"}}><MaterialIcon icon="add" size={20} color="inherit"/></span>
+      <span className="category-filter-icon" style={{color: "gray"}}>
+        <AddIcon fontSize="inherit" color="inherit"/>
+      </span>
       <span className="category-filter-text">New Category</span>
       <span className="category-filter-options"></span>
     </div>
