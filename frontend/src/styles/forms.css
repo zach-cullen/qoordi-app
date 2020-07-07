@@ -127,6 +127,7 @@ input:focus {
 }
 
 .sidebar-form p {
+  white-space: pre-line;
   margin: 0.25rem 0;
 }
 
