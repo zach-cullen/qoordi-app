@@ -23,6 +23,7 @@ class UpdateTimeBlockForm extends Component {
 
     const updatedTimeBlock = {
       id: this.props.timeblock.id,
+      timeline_id: this.props.timeblock.timeline_id,
       title: this.state.title,
       description: this.state.description,
       color: this.state.color,
