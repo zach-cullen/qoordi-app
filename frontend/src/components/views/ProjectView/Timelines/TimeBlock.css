@@ -14,7 +14,10 @@
 }
 
 .time-block-top {
+  user-select: none;
   grid-area: top;
+  padding: 0 0.2rem;
+  color: #fff;
 }
 
 .time-block-resize-handle {
