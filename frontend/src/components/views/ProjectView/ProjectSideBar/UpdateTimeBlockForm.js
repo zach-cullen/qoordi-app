@@ -12,6 +12,7 @@ class UpdateTimeBlockForm extends Component {
       startTime: this.time24to12(props.timeblock.start_time),
       endTime: this.time24to12(props.timeblock.end_time),
       editDescription: false,
+      formEdited: false,
     }
   }
 
@@ -66,8 +67,26 @@ class UpdateTimeBlockForm extends Component {
     )
   }
 
+  showButtonIfUpdated = () => {
+    if (this.state.formEdited === true) {
+      return(
+        <button 
+        type="submit" 
+        className="form-btn form-btn-enabled"
+      >
+        Save Changes
+      </button>
+      )
+    }
+  }
+
 
   handleChange = (event) => {
+    if (this.state.formEdited === false) {
+      this.setState({
+        formEdited: true,
+      })
+    }
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -113,6 +132,8 @@ class UpdateTimeBlockForm extends Component {
               setColor={this.setColor}
             />
           </label>
+
+          { this.showButtonIfUpdated() }
         </form>
       </div>
     )
