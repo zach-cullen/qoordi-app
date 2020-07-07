@@ -9,7 +9,7 @@ const DashSideBar = (props) => {
     <div id="dash-sidebar">
       <div id="dash-sidebar-container">
         <NavSide />
-        <div className="line-spacer-4"></div>
+        <div className="line-spacer-3"></div>
         <div id="project-filters">
           <CategoryFilters 
             categories={props.categories}

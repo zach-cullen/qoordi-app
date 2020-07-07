@@ -9,7 +9,7 @@ const ProjectSideBar = (props) => {
       <div id="project-view-sidebar-container">
         <NavSideHome />
         <NavSideLinks />
-        <div className="line-spacer-4"></div>
+        <div className="line-spacer-3"></div>
         <TimeBlockInfo 
           blockId={props.blockId}
           project={props.project}
