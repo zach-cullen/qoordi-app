@@ -76,7 +76,7 @@ class UpdateTimeBlockForm extends Component {
 
     return(
       <p onClick={this.toggleEditDescription}>
-        {this.props.timeblock.description}
+        {this.props.timeblock.description === "" ? "Add Description" : this.props.timeblock.description}
       </p>
     )
   }
@@ -143,7 +143,7 @@ class UpdateTimeBlockForm extends Component {
           onSubmit={this.handleSubmit}
         >
           <label>
-            NEW EVENT
+            EVENT
             <input 
               type="text" name="title" id="sidebar-form-title-input"
               onChange={this.handleChange} 
@@ -158,11 +158,6 @@ class UpdateTimeBlockForm extends Component {
             <p>{this.time24to12(this.props.timeblock.start_time)} - {this.time24to12(this.props.timeblock.end_time)}</p>
           </div>
 
-          <label>          
-            DESCRIPTION
-            {this.renderDescription(this.state.editDescription)}
-          </label>
-
           <label>
             COLOR
             <ColorSelector 
@@ -171,6 +166,11 @@ class UpdateTimeBlockForm extends Component {
               openColorOptions={this.openColorOptions}
               setColor={this.setColor}
             />
+          </label>
+
+          <label>          
+            DESCRIPTION
+            {this.renderDescription(this.state.editDescription)}
           </label>
 
           { this.showButtonIfUpdated() }
