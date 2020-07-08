@@ -37,6 +37,7 @@
   --option-pink: #E774BF;
   --option-purple: #A463F6;
   --option-gray: #8f8f8f;
+  --option-inactive: var(--med-gray-2);
 
   --lrg-border-radius: 0.5rem;
   --med-border-radius: 0.3rem;
