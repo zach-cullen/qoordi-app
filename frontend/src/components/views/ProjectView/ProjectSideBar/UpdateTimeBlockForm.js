@@ -174,10 +174,12 @@ class UpdateTimeBlockForm extends Component {
         >
 
           <div className="sidebar-split-even sidebar-icons">
-            <span className="sidebar-icon-left">
+            <span 
+              className="sidebar-icon-left"                 
+              onClick={this.toggleShowMoreOptions}
+            >
               <span 
                 className="sidebar-icon"
-                onClick={this.toggleShowMoreOptions}
               >
                 <MoreHorizIcon color="inherit" fontSize="inherit" />
               </span>
