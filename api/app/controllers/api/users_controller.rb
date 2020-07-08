@@ -38,12 +38,6 @@ class Api::UsersController < Api::ApiController
       render json: invalid_request
     end
   end
-
-  def update
-  end
-
-  def destroy
-  end
   
   private
 
