@@ -23,7 +23,7 @@ const CategoryFilter = (props) => {
   } 
 
   const setIconColor = () => {
-    return !props.categoryHidden ? props.category.color : "gray"
+    return !props.categoryHidden ? props.category.color : "inactive"
   }
 
   return(
