@@ -4,7 +4,7 @@ import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import CloseIcon from '@material-ui/icons/Close'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-import { updateTimeBlock } from '../../../../actions/timeblocksActions'
+import { updateTimeBlock, deleteTimeBlock } from '../../../../actions/timeblocksActions'
 
 class UpdateTimeBlockForm extends Component {
 
@@ -158,8 +158,9 @@ class UpdateTimeBlockForm extends Component {
   }
 
   handleDeleteClick = () => {
-    console.log("delete!")
     this.toggleShowMoreOptions()
+    this.props.setSideBarBlockId(null)
+    this.props.deleteTimeBlock(this.props.timeblock)
   }
 
   render() {
@@ -246,6 +247,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     updateTimeBlock: (timeBlockData) => {
       dispatch(updateTimeBlock(timeBlockData))
+    },
+    deleteTimeBlock: (timeBlockData) => {
+      dispatch(deleteTimeBlock(timeBlockData))
     },
   }
 }
