@@ -10,9 +10,9 @@ class DashboardContainer extends Component {
     super()
     this.state = {
       activePopup: "",
+      hiddenCategoryIds: [],
     }
   }
-
 
   // after first first render asks api to load user data for the logged in user
   componentDidMount() {
@@ -37,6 +37,18 @@ class DashboardContainer extends Component {
     })
   } 
 
+  toggleHideCategory = (categoryId) => {
+    if (this.state.hiddenCategoryIds.includes(categoryId)) {
+      this.setState({
+        hiddenCategoryIds: this.state.hiddenCategoryIds.filter((i) => i !== categoryId)
+      })
+    } else {
+      this.setState({
+        hiddenCategoryIds: this.state.hiddenCategoryIds.concat(categoryId)
+      })
+    }
+  }
+
   renderPopupIfActive = (activePopup) => {
     if (!!activePopup) {
       return(
@@ -60,6 +72,7 @@ class DashboardContainer extends Component {
           categories={this.props.entities.categories}
           projects={this.mapUserProjects()}
           setActivePopup={this.setActivePopup}
+          toggleHideCategory={this.toggleHideCategory}
         />
       </div>
     )
