@@ -44,6 +44,21 @@ class Api::TimeblocksController < Api::ApiController
     
   end
 
+  def destroy 
+    @timeblock = valid_timeline.timeblocks.find_by(id: params[:id])
+    if @timeblock
+      @timeblock.delete
+      render json: {
+        timeblock_deleted: true,
+        deleted_timeblock_id: @timeblock.id,
+      }
+    else 
+      render json: {
+        errors: "Delete was unsuccessful"
+      }
+    end
+  end
+
   private 
 
   # returns timeline if timeblock timeline belongs to current_user or false if not
