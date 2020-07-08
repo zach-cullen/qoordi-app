@@ -24,6 +24,17 @@ const putToApi = (params = {}, url = '') => {
   return fetch(`${API_URL}${url}`, payload)
 }
 
+const deleteToApi = (params = {}, url = '') => {
+  let payload = {
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
+    credentials: "include",
+    method: "DELETE",
+    body: JSON.stringify({ timeblock: params })
+  }
+
+  return fetch(`${API_URL}${url}`, payload)
+}
+
 
 // specific time block dispatch for new timeblock with id of 0, used only as proxy until saved
 export const addNewTimeBlock = (timeline_id, startTime, endTime) => {
@@ -119,6 +130,21 @@ export const updateTimeBlock = (timeBlockData) => {
           payload: {
             timeblock: json.timeblock,
           },
+        })
+      }
+    })
+}
+
+export const deleteTimeBlock = (timeBlockData) => {
+  return (dispatch) => deleteToApi(timeBlockData, `/timeblocks/${timeBlockData.id}`)
+    .then(res => res.json())
+    .then(json => {
+      if (json.timeblock_deleted === true) {
+        dispatch({
+          type: "DELETE_TIMEBLOCK",
+          payload: {
+            timeBlockId: json.deleted_timeblock_id,
+          }
         })
       }
     })
