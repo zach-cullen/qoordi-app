@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
 import CloseIcon from '@material-ui/icons/Close'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import { updateTimeBlock } from '../../../../actions/timeblocksActions'
 
@@ -15,6 +16,7 @@ class UpdateTimeBlockForm extends Component {
       color: props.timeblock.color,
       formEdited: false,
       showColorOptions: false,
+      showMoreOptions: false,
     }
   }
 
@@ -129,6 +131,36 @@ class UpdateTimeBlockForm extends Component {
     })
   }
 
+  showMoreOptions = () => {
+    if (this.state.showMoreOptions === true) {
+      return(
+        <div className="sidebar-options-display">
+          <div 
+            className="sidebar-option"
+            onClick={this.handleDeleteClick}  
+          >
+            <span className="sidebar-option-icon">
+              <DeleteForeverIcon color="inherit" fontSize="inherit" />
+            </span>
+            <span className="sidebar-option-text">
+              Delete Event
+            </span>
+          </div>
+        </div>
+      )
+    }
+  }
+
+  toggleShowMoreOptions = () => {
+    this.setState({
+      showMoreOptions: !this.state.showMoreOptions,
+    })
+  }
+
+  handleDeleteClick = () => {
+    console.log("delete!")
+    this.toggleShowMoreOptions()
+  }
 
   render() {
     return(
@@ -143,9 +175,13 @@ class UpdateTimeBlockForm extends Component {
 
           <div className="sidebar-split-even sidebar-icons">
             <span className="sidebar-icon-left">
-              <span className="sidebar-icon">
+              <span 
+                className="sidebar-icon"
+                onClick={this.toggleShowMoreOptions}
+              >
                 <MoreHorizIcon color="inherit" fontSize="inherit" />
               </span>
+              { this.showMoreOptions() }
             </span>
             <span className="sidebar-icon-right">
               <span 

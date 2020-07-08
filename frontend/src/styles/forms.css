@@ -166,4 +166,35 @@ input:focus {
   margin-bottom: 0.25rem;
 }
 
+.sidebar-options-display {
+  position: relative;
+  width: 150%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  background-color: var(--light-bg-1);
+  box-sizing: border-box;
+  border: solid 1px var(--light-bg-3);
+  border-radius: var(--med-border-radius);
+  box-shadow: var(--med-box-shadow);
+}
+
+.sidebar-option {
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.6;
+}
+
+.sidebar-option:hover {
+  opacity: 1.0;
+}
+
+.sidebar-option-text {
+  font-size: 0.8rem;
+}
+
+.sidebar-option-icon {
+  margin-right: 0.5rem;
+  vertical-align: -12.5%;
+}
+
 
