@@ -22,6 +22,10 @@
   background-color: var(--option-purple);
 }
 
+.option-bg-gray {
+  background-color: var(--option-gray);
+}
+
 
 .option-font-blue {
   color: var(--option-blue);
@@ -45,6 +49,10 @@
 
 .option-font-purple {
   color: var(--option-purple);
+}
+
+.option-font-gray {
+  color: var(--option-gray);
 }
 
 

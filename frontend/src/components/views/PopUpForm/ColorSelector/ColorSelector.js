@@ -3,7 +3,7 @@ import React from 'react'
 
 const ColorSelector = (props) => {
 
-  const colorOptions = ["blue", "green", "yellow", "orange", "pink", "purple"]
+  const colorOptions = ["blue", "green", "yellow", "orange", "pink", "purple", "gray"]
 
   const handleColorClick = (event) => {
     const color = event.target.getAttribute("data-value")
