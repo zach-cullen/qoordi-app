@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { logOutUser } from '../services/authService'
 
-const LogoutContainer = ({ session }) => {
+class LogoutContainer extends Component {
 
   // calls authService action immediately on load of this component that sends logout request to api
-  logOutUser({id: session.user.id})
+  // logOutUser({id: props.session.user.id})
+  logOut = () => {
+    this.props.dispatch({ type: "RESET_STORE"})
+    logOutUser({id: this.props.session.user.id})
+  }
+
+  componentDidMount() {
+    this.logOut()
+  }
 
   // this container renders a temporary element until successful logout action updates state and causes router to redirect
-  return(
-    <div className="main" id="logout">
-      <div className="main-container">
-        <h3>Logging out user...</h3>
+  render() {
+    return(
+      <div className="main" id="logout">
+        <div className="main-container">
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default connect(state => ({session: state.session}))(LogoutContainer)
