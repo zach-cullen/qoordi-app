@@ -73,6 +73,7 @@ class DashboardContainer extends Component {
           projects={this.mapUserProjects()}
           setActivePopup={this.setActivePopup}
           toggleHideCategory={this.toggleHideCategory}
+          hiddenCategoryIds={this.state.hiddenCategoryIds}
         />
       </div>
     )
