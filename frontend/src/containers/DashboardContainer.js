@@ -27,7 +27,12 @@ class DashboardContainer extends Component {
   // transforms projects object normalized for redux to an array of objects
   mapUserProjects = () => {
     const projects = this.props.entities.projects
-    return projects.allIds.map((id) => projects.byId[id])
+    const projectsArray = projects.allIds.map((id) => projects.byId[id])
+    return this.filterHiddenProjects(projectsArray)
+  }
+
+  filterHiddenProjects = (projectsArray) => {
+    return projectsArray.filter((project) => !this.state.hiddenCategoryIds.includes(project.category_id))
   }
 
   setActivePopup = (popUpTitle) => {
