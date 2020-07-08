@@ -7,9 +7,16 @@ const CategoryFilters = (props) => {
 
   const renderCategoryFilters = () => {
     return props.categories.allIds.map((id) => {
-      let category = props.categories.byId[id]
+      const category = props.categories.byId[id]
+      const categoryIsHidden = props.hiddenCategoryIds.includes(id)
+
       return (
-        <CategoryFilter key={id} category={category} toggleHideCategory={props.toggleHideCategory}/>
+        <CategoryFilter 
+          key={id} 
+          category={category} 
+          toggleHideCategory={props.toggleHideCategory}
+          categoryHidden={categoryIsHidden}
+        />
       )
     })
   }
