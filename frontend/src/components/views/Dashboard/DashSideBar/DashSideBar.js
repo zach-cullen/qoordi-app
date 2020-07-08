@@ -14,6 +14,7 @@ const DashSideBar = (props) => {
           <CategoryFilters 
             categories={props.categories}
             setActivePopup={props.setActivePopup}
+            toggleHideCategory={props.toggleHideCategory}
           />
         </div>
       </div>

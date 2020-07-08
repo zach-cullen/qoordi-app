@@ -13,6 +13,7 @@ const Dashboard = (props) => {
       <DashSideBar 
         categories={props.categories}
         setActivePopup={props.setActivePopup}
+        toggleHideCategory={props.toggleHideCategory}
       />
       <div id="dash-content">
           <div id="dash-content-tools">

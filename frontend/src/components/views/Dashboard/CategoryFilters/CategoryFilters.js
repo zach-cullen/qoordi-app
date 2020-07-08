@@ -9,7 +9,7 @@ const CategoryFilters = (props) => {
     return props.categories.allIds.map((id) => {
       let category = props.categories.byId[id]
       return (
-        <CategoryFilter key={id} category={category} />
+        <CategoryFilter key={id} category={category} toggleHideCategory={props.toggleHideCategory}/>
       )
     })
   }
