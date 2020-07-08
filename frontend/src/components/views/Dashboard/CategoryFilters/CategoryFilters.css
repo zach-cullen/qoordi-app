@@ -4,7 +4,7 @@
 }
 
 .category-filter {
-  cursor: pointer;
+  cursor: default;
   height: 1.5rem;
   border-radius: 0.25rem;
   margin-bottom: 0.25rem;
@@ -15,6 +15,7 @@
 }
 
 .category-filter-icon {
+  cursor: pointer;
   line-height: 1.5rem;
   display: inline-block;
   font-size: 1rem;
