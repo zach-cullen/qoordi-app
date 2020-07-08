@@ -13,7 +13,6 @@ class UpdateTimeBlockForm extends Component {
       title: props.timeblock.title,
       description: props.timeblock.description,
       color: props.timeblock.color,
-      editDescription: false,
       formEdited: false,
       showColorOptions: false,
     }
@@ -68,33 +67,33 @@ class UpdateTimeBlockForm extends Component {
     return `${hrTo12}:${zeroPadMin} ${amOrPm()}`
   }
 
-  toggleEditDescription = (event) => {
-    event.preventDefault()
-    this.setState({
-      editDescription: !this.state.editDescription,
-    })
-  } 
+  // toggleEditDescription = (event) => {
+  //   event.preventDefault()
+  //   this.setState({
+  //     editDescription: !this.state.editDescription,
+  //   })
+  // } 
 
-  renderDescription = (boolean) => {
-    if (boolean === true) {
-      return (
-        <textarea 
-          type="text-area" name="description"
-          onChange={this.handleChange} 
-          value={this.state.description} 
-          placeholder="Add Description"
-          autoFocus={true}
-          onBlur={this.toggleEditDescription}
-        />
-      )
-    }
+  // renderDescription = (boolean) => {
+  //   if (boolean === true) {
+  //     return (
+  //       <textarea 
+  //         type="text-area" name="description"
+  //         onChange={this.handleChange} 
+  //         value={this.state.description} 
+  //         placeholder="Add Description"
+  //         autoFocus={true}
+  //         onBlur={this.toggleEditDescription}
+  //       />
+  //     )
+  //   }
 
-    return(
-      <p onClick={this.toggleEditDescription}>
-        {this.props.timeblock.description === "" ? "Add Description" : this.props.timeblock.description}
-      </p>
-    )
-  }
+  //   return(
+  //     <p onClick={this.toggleEditDescription}>
+  //       {this.props.timeblock.description === "" ? "Add Description" : this.props.timeblock.description}
+  //     </p>
+  //   )
+  // }
 
   showButtonIfUpdated = () => {
     if (this.state.formEdited === true) {
@@ -202,7 +201,14 @@ class UpdateTimeBlockForm extends Component {
 
           <label>          
             DESCRIPTION
-            {this.renderDescription(this.state.editDescription)}
+            <textarea 
+              type="text-area" name="description"
+              onChange={this.handleChange} 
+              value={this.state.description} 
+              placeholder="Add Description"
+              autoFocus={true}
+              onBlur={this.toggleEditDescription}
+            />
           </label>
 
 
