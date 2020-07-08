@@ -38,6 +38,10 @@ class UpdateTimeBlockForm extends Component {
     })
   }
 
+  closeForm = () => {
+    this.props.setSideBarBlockId(null)
+  }
+
   resetTimeBlockForm = () => {
     this.setState({
       title: this.props.timeblock.title,
@@ -66,34 +70,6 @@ class UpdateTimeBlockForm extends Component {
 
     return `${hrTo12}:${zeroPadMin} ${amOrPm()}`
   }
-
-  // toggleEditDescription = (event) => {
-  //   event.preventDefault()
-  //   this.setState({
-  //     editDescription: !this.state.editDescription,
-  //   })
-  // } 
-
-  // renderDescription = (boolean) => {
-  //   if (boolean === true) {
-  //     return (
-  //       <textarea 
-  //         type="text-area" name="description"
-  //         onChange={this.handleChange} 
-  //         value={this.state.description} 
-  //         placeholder="Add Description"
-  //         autoFocus={true}
-  //         onBlur={this.toggleEditDescription}
-  //       />
-  //     )
-  //   }
-
-  //   return(
-  //     <p onClick={this.toggleEditDescription}>
-  //       {this.props.timeblock.description === "" ? "Add Description" : this.props.timeblock.description}
-  //     </p>
-  //   )
-  // }
 
   showButtonIfUpdated = () => {
     if (this.state.formEdited === true) {
@@ -167,10 +143,17 @@ class UpdateTimeBlockForm extends Component {
 
           <div className="sidebar-split-even sidebar-icons">
             <span className="sidebar-icon-left">
-              <CloseIcon color="inherit" fontSize="inherit" />
+              <span className="sidebar-icon">
+                <MoreHorizIcon color="inherit" fontSize="inherit" />
+              </span>
             </span>
             <span className="sidebar-icon-right">
-              <MoreHorizIcon color="inherit" fontSize="inherit" />
+              <span 
+                className="sidebar-icon" 
+                onClick={this.closeForm}
+              >
+                <CloseIcon color="inherit" fontSize="inherit" />
+              </span>
             </span>
           </div>
           <label>
