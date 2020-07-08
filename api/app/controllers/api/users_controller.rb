@@ -10,6 +10,8 @@ class Api::UsersController < Api::ApiController
       password_confirmation: user_params[:password_confirmation]
     )
 
+    @user.categories.build(title: "Other", color: "gray")
+
     if @user.save
       session[:user_id] = @user.id
       render json: {
