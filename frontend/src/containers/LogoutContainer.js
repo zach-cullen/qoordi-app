@@ -5,7 +5,7 @@ import { logOutUser } from '../services/authService'
 class LogoutContainer extends Component {
 
   // calls authService action immediately on load of this component that sends logout request to api
-  // logOutUser({id: props.session.user.id})
+  // dispatches reset store to prevent data leak to other users
   logOut = () => {
     this.props.dispatch({ type: "RESET_STORE"})
     logOutUser({id: this.props.session.user.id})
