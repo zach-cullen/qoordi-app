@@ -24,6 +24,21 @@ const timeblocksReducer = (state = {
           [action.payload.timeblock.id]: action.payload.timeblock,
         }
       }
+    
+    case "DELETE_TIMEBLOCK":
+      const filterAllIds = state.allIds.filter((id) => id !== action.payload.timeBlockId)
+      const mapById = filterAllIds.reduce((newObj, id) => {
+        return {
+          ...newObj,
+          [id]: state.byId[id]
+        }
+      }, {})
+
+      return {
+        ...state,
+        byId: mapById,
+        allIds: filterAllIds,
+      }
 
     case "PROXY_UPDATE_TIMEBLOCK_TIMES":
       return {
