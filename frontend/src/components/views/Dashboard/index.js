@@ -14,6 +14,7 @@ const Dashboard = (props) => {
         categories={props.categories}
         setActivePopup={props.setActivePopup}
         toggleHideCategory={props.toggleHideCategory}
+        hiddenCategoryIds={props.hiddenCategoryIds}
       />
       <div id="dash-content">
           <div id="dash-content-tools">
