@@ -26,6 +26,10 @@
   background-color: var(--option-gray);
 }
 
+.option-bg-inactive {
+  background-color: var(--option-inactive);
+}
+
 
 .option-font-blue {
   color: var(--option-blue);
@@ -53,6 +57,10 @@
 
 .option-font-gray {
   color: var(--option-gray);
+}
+
+.option-font-inactive {
+  color: var(--option-inactive);
 }
 
 
