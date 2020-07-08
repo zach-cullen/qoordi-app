@@ -31,6 +31,7 @@ const TimeBlockInfo = (props) => {
         project={props.project}
         timeblock={thisBlock}
         key={thisBlock.id}
+        setSideBarBlockId={props.setSideBarBlockId}
       />
     )
   }
