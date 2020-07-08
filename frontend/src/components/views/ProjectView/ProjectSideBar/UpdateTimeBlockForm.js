@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ColorSelector from '../../PopUpForm/ColorSelector/ColorSelector'
+import CloseIcon from '@material-ui/icons/Close'
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import { updateTimeBlock } from '../../../../actions/timeblocksActions'
 
 class UpdateTimeBlockForm extends Component {
@@ -105,13 +107,12 @@ class UpdateTimeBlockForm extends Component {
             Discard Changes
           </button>
           <button 
-          type="submit" 
-          className="sm-sidebar-btn form-btn-enabled"
-        >
-          Save Changes
-        </button>
-
-      </div>
+            type="submit" 
+            className="sm-sidebar-btn form-btn-enabled"
+          >
+            Save Changes
+          </button>
+        </div>
       )
     }
   }
@@ -165,6 +166,14 @@ class UpdateTimeBlockForm extends Component {
           onSubmit={this.handleSubmit}
         >
 
+          <div className="sidebar-split-even sidebar-icons">
+            <span className="sidebar-icon-left">
+              <CloseIcon color="inherit" fontSize="inherit" />
+            </span>
+            <span className="sidebar-icon-right">
+              <MoreHorizIcon color="inherit" fontSize="inherit" />
+            </span>
+          </div>
           <label>
             EVENT
             <input 
@@ -176,11 +185,10 @@ class UpdateTimeBlockForm extends Component {
           </label>
           <br />
 
-          <div>
+          <div className="sidebar-uneditable">
             <h6>TIME</h6>
-            {this.time24to12(this.props.timeblock.start_time)} - {this.time24to12(this.props.timeblock.end_time)}
+            <span>{this.time24to12(this.props.timeblock.start_time)} - {this.time24to12(this.props.timeblock.end_time)}</span>
           </div>
-          <br />
 
           <label>
             COLOR
