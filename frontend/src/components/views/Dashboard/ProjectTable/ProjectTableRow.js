@@ -13,13 +13,21 @@ const ProjectTableRow = (props) => {
     )
   }
 
+  const dateStringPrettyFormat = (dateString) => {
+    const date = new Date(dateString)
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"]
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const pretty = `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+    return pretty
+  }
+
   return(
     <div className="project-row-columns project-table-row">
       <div>
         { props.project.title }
       </div>
       <div>
-        { props.project.date }
+        { dateStringPrettyFormat(props.project.date) }
       </div>
       <div>
         { categoryLoaded ? renderCategory(props.category) : ""}
