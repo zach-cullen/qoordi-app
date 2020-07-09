@@ -202,6 +202,7 @@ class UpdateTimeBlockForm extends Component {
               onChange={this.handleChange} 
               value={this.state.title} 
               placeholder="Add Title"
+              spellCheck={false}
             />
           </label>
           <br />
@@ -230,6 +231,7 @@ class UpdateTimeBlockForm extends Component {
               placeholder="Add Description"
               autoFocus={true}
               onBlur={this.toggleEditDescription}
+              spellCheck={false}
             />
           </label>
 

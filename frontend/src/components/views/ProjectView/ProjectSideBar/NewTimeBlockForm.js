@@ -155,6 +155,7 @@ class NewTimeBlockForm extends Component {
               onChange={this.handleChange} 
               value={this.state.title} 
               placeholder="Add Title"
+              spellCheck={false}
             />
           </label>
           <br />
@@ -200,6 +201,7 @@ class NewTimeBlockForm extends Component {
               onChange={this.handleChange} 
               value={this.state.description} 
               placeholder="Add Description"
+              spellCheck={false}
             />
           </label>
           <div className="sidebar-split-even">
