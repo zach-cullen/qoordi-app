@@ -133,7 +133,7 @@ class SignupForm extends Component {
         </label>
         <br/>
         
-        <button className="form-btn" type="submit">Submit</button>
+        <button className="form-btn form-btn-enabled" type="submit">Submit</button>
     
         { this.renderErrors() }
 
