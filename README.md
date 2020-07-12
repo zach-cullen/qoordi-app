@@ -8,8 +8,6 @@ Qoordi is an app that helps users coordinate and plan for projects where multipl
 
 ## Features
 
-![](https://i.imgur.com/MbfnK4H.png)
-
 #### **Interactive Timeline Interface**
 ![](https://i.imgur.com/eDoLFju.gif/)
 
