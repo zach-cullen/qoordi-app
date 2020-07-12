@@ -28,7 +28,7 @@ class DashboardContainer extends Component {
   mapUserProjects = () => {
     const projects = this.props.entities.projects
     const projectsArray = projects.allIds.map((id) => projects.byId[id])
-    return this.filterHiddenProjects(projectsArray)
+    return this.sortProjectsByDateAsc(this.filterHiddenProjects(projectsArray))
   }
 
   filterHiddenProjects = (projectsArray) => {
