@@ -35,6 +35,14 @@ class DashboardContainer extends Component {
     return projectsArray.filter((project) => !this.state.hiddenCategoryIds.includes(project.category_id))
   }
 
+  // takes an array of projects and returns an array of same projects sorted by date in ascending order
+  sortProjectsByDateAsc = (projectsArray) => {
+    // converts dateString ISO format "yyyy-mm-dd" to integer of same digits
+    const dateToInt = (project) => parseInt(project.date.split("-").join(""))
+    // return array sorted by date in ascending order using ISO date to integer function
+    return projectsArray.sort((a, b) => dateToInt(a) - dateToInt(b))
+  }
+
   setActivePopup = (popUpTitle) => {
     this.setState({
       ...this.state,
