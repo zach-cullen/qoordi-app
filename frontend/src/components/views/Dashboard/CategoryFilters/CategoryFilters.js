@@ -5,6 +5,8 @@ import CategoryFilterNew from './CategoryFilterNew'
 
 const CategoryFilters = (props) => {
 
+  // maps over categories passed as props (normalized object of all categories in redux store)
+  // renders category filter component with categoryIsHidden prop using list of hidden categories from DashboardContainer
   const renderCategoryFilters = () => {
     return props.categories.allIds.map((id) => {
       const category = props.categories.byId[id]
