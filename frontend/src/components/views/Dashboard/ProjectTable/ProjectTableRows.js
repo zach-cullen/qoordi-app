@@ -3,10 +3,6 @@ import ProjectTableRow from './ProjectTableRow'
 import { Link } from 'react-router-dom'
 
 const ProjectTableRows = (props) => {
-
-  const projects = props.projects
-
-
   // renders a project tableRow for each project loaded, or a message if no projects exist
   const renderProjectRows = (projects) => {
     if (projects.length === 0) {
@@ -14,13 +10,12 @@ const ProjectTableRows = (props) => {
         <p>You don't have any projects yet.</p>
       )
     }
-
+    // map over projects array and render table row that links to project page, with project and its category as prop
     return projects.map((project) => {
       return(
         <Link key={project.id} to={`/projects/${project.id}`}>
           <ProjectTableRow 
             project={project} 
-            // pass the category object referenced by category_id in project object
             category={props.categories.byId[project.category_id]} 
           />
         </Link>
@@ -30,7 +25,7 @@ const ProjectTableRows = (props) => {
 
   return (
     <div id="project-table-rows">
-      { renderProjectRows(projects) }
+      { renderProjectRows(props.projects) }
     </div>
   )
 }
