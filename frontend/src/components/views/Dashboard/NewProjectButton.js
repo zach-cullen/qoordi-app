@@ -2,10 +2,9 @@ import React from 'react'
 
 const NewProjectButton = (props) => {
 
-  const thisProps = props
-
+  // callback function from DashboardContainer with string argument that will result in display of new project form at top level of dashboard view
   const handleClick = () => {
-    thisProps.setActivePopup("new-project")
+    props.setActivePopup("new-project")
   }
 
   return(
