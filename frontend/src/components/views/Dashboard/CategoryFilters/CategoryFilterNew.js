@@ -3,10 +3,8 @@ import AddIcon from '@material-ui/icons/Add'
 
 const CategoryFilterNew = (props) => {
 
-  const thisProps = props
-
   const handleClick = () => {
-    thisProps.setActivePopup("new-category")
+    props.setActivePopup("new-category")
   }
 
   return(
