@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { createProject } from '../../../actions/projectsActions'
 import CategorySelector from './CategorySelector/CategorySelector'
 
-
 class NewProjectForm extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +13,6 @@ class NewProjectForm extends Component {
       showCategoryOptions: false,
     }
   }
-
 
   // dispatches action using form data stored in this state
   handleSubmit = (event) => {
