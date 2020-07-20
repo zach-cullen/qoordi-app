@@ -3,6 +3,7 @@ import AddIcon from '@material-ui/icons/Add'
 
 const CategoryFilterNew = (props) => {
 
+  // callback function passed from DashboardContainer that displays new category form as popup
   const handleClick = () => {
     props.setActivePopup("new-category")
   }
