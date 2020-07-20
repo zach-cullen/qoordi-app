@@ -31,6 +31,7 @@ class DashboardContainer extends Component {
     return this.sortProjectsByDateAsc(this.filterHiddenProjects(projectsArray))
   }
 
+  // takes array of projets and removes projects with categories contained in hidden category array (in state)
   filterHiddenProjects = (projectsArray) => {
     return projectsArray.filter((project) => !this.state.hiddenCategoryIds.includes(project.category_id))
   }
@@ -43,6 +44,7 @@ class DashboardContainer extends Component {
     return projectsArray.sort((a, b) => dateToInt(a) - dateToInt(b))
   }
 
+  // when called uses string variable passed in to set state, rendering a form specific to the passed in title
   setActivePopup = (popUpTitle) => {
     this.setState({
       ...this.state,
@@ -50,18 +52,23 @@ class DashboardContainer extends Component {
     })
   } 
 
+  // when called with categoryId, adds or removes from array of hidden categories. These are used to both render toggle icon and filter rows in project table
   toggleHideCategory = (categoryId) => {
+    // remove id from array if already included (effectively showing category)
     if (this.state.hiddenCategoryIds.includes(categoryId)) {
       this.setState({
         hiddenCategoryIds: this.state.hiddenCategoryIds.filter((i) => i !== categoryId)
       })
-    } else {
+    } 
+    // add to array of hidden if not included already (effectively hiding category)
+    else {
       this.setState({
         hiddenCategoryIds: this.state.hiddenCategoryIds.concat(categoryId)
       })
     }
   }
 
+  // render popup with prop selecting specific form based on the string if state is not null
   renderPopupIfActive = (activePopup) => {
     if (!!activePopup) {
       return(
@@ -72,7 +79,6 @@ class DashboardContainer extends Component {
       )
     }
   }
-
 
 
   render() {
