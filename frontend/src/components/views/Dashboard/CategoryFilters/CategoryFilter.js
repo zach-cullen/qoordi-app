@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import * as QueryString from 'query-string'
+import queryString from 'query-string'
 import ToggleOnIcon from '@material-ui/icons/ToggleOn'
 import ToggleOffIcon from '@material-ui/icons/ToggleOff'
 
@@ -9,17 +9,17 @@ const CategoryFilter = (props) => {
   // connect to history api using react-router hook
   const history = useHistory()
   // uses history location and query-string library to parse array of hidden categories from url query strings
-  const params = QueryString.parse(history.location.search)
+  const params = queryString.parse(history.location.search)
   // add or remove hideCat param for prop category
   const toggleCategory = () => {
     // strip search from url params of initial ? and category filter if this category is included
+    // not removing question mark would cause error in case of no search params
     let prevSearch = history.location.search.replace('?', '').replace(`&hideCat=${props.category.id}`, '')
     // push new search params removing this category if hidden or adding if not hidden
     props.categoryHidden ? history.push(`?${prevSearch}`) : history.push(`?${prevSearch}&hideCat=${props.category.id}`)
   }
 
   const handleClick = () => {
-    props.toggleHideCategory(props.category.id)
     toggleCategory()
   }
 
