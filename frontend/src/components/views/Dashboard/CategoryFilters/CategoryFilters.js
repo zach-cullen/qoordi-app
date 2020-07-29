@@ -16,7 +16,6 @@ const CategoryFilters = (props) => {
         <CategoryFilter 
           key={id} 
           category={category} 
-          toggleHideCategory={props.toggleHideCategory}
           categoryHidden={categoryIsHidden}
         />
       )

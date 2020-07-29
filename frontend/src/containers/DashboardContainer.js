@@ -14,6 +14,16 @@ class DashboardContainer extends Component {
     }
   }
 
+  // after first first render asks api to load user data for the logged in user
+  componentDidMount() {
+    this.props.fetchUser(this.props.session.user)
+  }
+
+  // returns user in entities corresponding to the session user, returns undefined if not found
+  currentUser = () => {
+    return this.props.entities.users.byId[this.props.session.user.id]
+  }
+
   // returns array of all hidden category ids parsed from url query parameter string
   hiddenCategoryIds = () => {
     let hiddenCategoryIds = []
@@ -23,16 +33,6 @@ class DashboardContainer extends Component {
     if (!params.hideCat) { return hiddenCategoryIds }
     // map category ids to integer array
     return hiddenCategoryIds.concat(params.hideCat).map((idString) => parseInt(idString))
-  }
-
-  // after first first render asks api to load user data for the logged in user
-  componentDidMount() {
-    this.props.fetchUser(this.props.session.user)
-  }
-
-  // returns user in entities corresponding to the session user, returns undefined if not found
-  currentUser = () => {
-    return this.props.entities.users.byId[this.props.session.user.id]
   }
 
   // transforms projects object normalized for redux to an array of objects
@@ -87,7 +87,6 @@ class DashboardContainer extends Component {
           categories={this.props.entities.categories}
           projects={this.mapUserProjects()}
           setActivePopup={this.setActivePopup}
-          toggleHideCategory={this.toggleHideCategory}
           hiddenCategoryIds={this.hiddenCategoryIds()}
         />
       </div>
