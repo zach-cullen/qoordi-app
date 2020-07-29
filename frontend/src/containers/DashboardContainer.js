@@ -1,17 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import queryString from 'query-string'
 import { fetchUser } from '../actions/usersActions'
 import Dashboard from '../components/views/Dashboard'
 import PopUpForm from '../components/views/PopUpForm'
 
 class DashboardContainer extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       activePopup: "",
-      hiddenCategoryIds: [],
     }
+  }
+
+  // returns array of all hidden category ids parsed from url query parameter string
+  hiddenCategoryIds = () => {
+    let hiddenCategoryIds = []
+    // parse object containing all query params using queryString library
+    const params = queryString.parse(this.props.location.search)
+    // return empty array if no hidden category params exist
+    if (!params.hideCat) { return hiddenCategoryIds }
+    // map category ids to integer array
+    return hiddenCategoryIds.concat(params.hideCat).map((idString) => parseInt(idString))
   }
 
   // after first first render asks api to load user data for the logged in user
@@ -33,7 +44,7 @@ class DashboardContainer extends Component {
 
   // takes array of projets and removes projects with categories contained in hidden category array (in state)
   filterHiddenProjects = (projectsArray) => {
-    return projectsArray.filter((project) => !this.state.hiddenCategoryIds.includes(project.category_id))
+    return projectsArray.filter((project) => !this.hiddenCategoryIds().includes(project.category_id))
   }
 
   // takes an array of projects and returns an array of same projects sorted by date in ascending order
@@ -52,22 +63,6 @@ class DashboardContainer extends Component {
     })
   } 
 
-  // when called with categoryId, adds or removes from array of hidden categories. These are used to both render toggle icon and filter rows in project table
-  toggleHideCategory = (categoryId) => {
-    // remove id from array if already included (effectively showing category)
-    if (this.state.hiddenCategoryIds.includes(categoryId)) {
-      this.setState({
-        hiddenCategoryIds: this.state.hiddenCategoryIds.filter((i) => i !== categoryId)
-      })
-    } 
-    // add to array of hidden if not included already (effectively hiding category)
-    else {
-      this.setState({
-        hiddenCategoryIds: this.state.hiddenCategoryIds.concat(categoryId)
-      })
-    }
-  }
-
   // render popup with prop selecting specific form based on the string if state is not null
   renderPopupIfActive = (activePopup) => {
     if (!!activePopup) {
@@ -82,6 +77,7 @@ class DashboardContainer extends Component {
 
 
   render() {
+
     return(
       <div className="main">
         {this.renderPopupIfActive(this.state.activePopup)}
@@ -92,7 +88,7 @@ class DashboardContainer extends Component {
           projects={this.mapUserProjects()}
           setActivePopup={this.setActivePopup}
           toggleHideCategory={this.toggleHideCategory}
-          hiddenCategoryIds={this.state.hiddenCategoryIds}
+          hiddenCategoryIds={this.hiddenCategoryIds()}
         />
       </div>
     )
