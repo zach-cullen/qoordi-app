@@ -1,8 +1,9 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 import ToggleOnIcon from '@material-ui/icons/ToggleOn'
 import ToggleOffIcon from '@material-ui/icons/ToggleOff'
 
-const CategoryFilter = (props) => {
+const CategoryFilterInRouter = (props) => {
 
   const handleClick = () => {
     props.toggleHideCategory(props.category.id)
@@ -39,5 +40,7 @@ const CategoryFilter = (props) => {
     </div>
   )
 }
+
+const CategoryFilter = withRouter(CategoryFilterInRouter)
 
 export default CategoryFilter
